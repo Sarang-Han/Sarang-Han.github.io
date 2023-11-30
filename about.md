@@ -3,6 +3,21 @@ layout: page
 title: About
 ---
 
-**Not Pure Poole** is a simple, beautiful, and powerful Jekyll theme for blogs. It is built on [Poole](https://github.com/poole/poole) and [Pure](https://purecss.io/).
+<br>
+오픈소스 이화 플리마켓 프로젝트 **OISO** 의 기술 블로그 입니다.
+<br>
 
-For more information about Not Pure Poole, please browse the [README](https://github.com/vszhub/not-pure-poole) file.
+---
+
+**기여자** <br>
+
+@[Sarang-Han](https://github.com/Sarang-Han) <br>
+@[dmsquf03](https://github.com/dmsquf03)<br>
+@[eugene03850](https://github.com/eugene03850) <br>
+@[ye-eunlee](https://github.com/ye-eunlee)<br>
+@[gilmeee](https://github.com/gilmeee) <br>
+@[dayoungs](https://github.com/dayoungs) <br>
+
+---
+
+Oiso GitHub [Oiso-Project](https://github.com/Sarang-Han/Oiso) <br>

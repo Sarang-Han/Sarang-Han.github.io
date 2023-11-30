@@ -1,11 +1,11 @@
 # Setup
-title: Not Pure Poole
-description: A simple, beautiful, and powerful Jekyll theme for blogs
+title: OISO
+description: Ewha-Market Project "Oiso"의 블로그입니다.
 url: https://sarang-han.github.io/
-avatar: /avatar.jpeg
+avatar: /oiso_logo.png
 paginate: 5
 permalink: pretty
-cover_image: /bg.jpeg
+cover_image: /plant.jpeg
 
 # Gems
 plugins:
@@ -29,14 +29,13 @@ exclude:
 
 # Optimize Jekyl SEO Tag
 twitter:
-  username: vszhub
+  username: Oiso
   card: summary
 logo: logo.png
 social:
-  name: Songzi Vong
+  name: Oiso
   links:
-    - https://twitter.com/vszhub
-    - https://github.com/vszhub
+    - https://github.com/Sarang-Han/Oiso
 google_site_verification: xxxxx
 lang: en
 
@@ -54,6 +53,5 @@ sass:
 
 # Specify the author for blog posts
 author:
-  name: Songzi Vong
-  url: https://github.com/vszhub/
-  email: vszhub@gmail.com
+  name: Oiso
+  url: hhttps://github.com/Sarang-Han/Oiso
