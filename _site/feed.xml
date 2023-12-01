@@ -1,186 +1,465 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="en" /><updated>2023-11-30T15:22:20+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">OISO</title><subtitle>Ewha-Market Project &quot;Oiso&quot;의 블로그입니다.</subtitle><author><name>Oiso</name></author><entry><title type="html">2023년 11월 포스트 테스트</title><link href="http://localhost:4000/dates/2023/11/30/test2/" rel="alternate" type="text/html" title="2023년 11월 포스트 테스트" /><published>2023-11-30T09:00:00+09:00</published><updated>2023-11-30T09:00:00+09:00</updated><id>http://localhost:4000/dates/2023/11/30/test2</id><content type="html" xml:base="http://localhost:4000/dates/2023/11/30/test2/">&lt;p&gt;테스트 포스트입니다&lt;/p&gt;</content><author><name>Sarang-Han</name></author><category term="dates" /><category term="test" /><summary type="html">테스트 포스트입니다</summary></entry><entry><title type="html">Testing MathJax</title><link href="http://localhost:4000/2020/10/02/testing-mathjax/" rel="alternate" type="text/html" title="Testing MathJax" /><published>2020-10-02T16:32:00+09:00</published><updated>2020-10-02T16:32:00+09:00</updated><id>http://localhost:4000/2020/10/02/testing-mathjax</id><content type="html" xml:base="http://localhost:4000/2020/10/02/testing-mathjax/">&lt;p&gt;Not Pure Poole supports &lt;a href=&quot;https://www.mathjax.org/&quot;&gt;MathJax&lt;/a&gt;. You can enable it on a page by setting &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;math: true&lt;/code&gt; in the front matter.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="en" /><updated>2023-12-02T00:30:59+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">OISO</title><subtitle>Ewha-Market Project &quot;Oiso&quot;의 블로그입니다.</subtitle><author><name>Oiso</name></author><entry><title type="html">AJAX 사용하여 좋아요 기능 구현 팁</title><link href="http://localhost:4000/dates/2023/12/01/tip/" rel="alternate" type="text/html" title="AJAX 사용하여 좋아요 기능 구현 팁" /><published>2023-12-01T09:00:00+09:00</published><updated>2023-12-01T09:00:00+09:00</updated><id>http://localhost:4000/dates/2023/12/01/tip</id><content type="html" xml:base="http://localhost:4000/dates/2023/12/01/tip/">&lt;h2 id=&quot;ajax란&quot;&gt;AJAX란?&lt;/h2&gt;
+&lt;p&gt;효율적인 클라이언트-서버와의 통신을 위한 JS에서 제공하는 라이브러리이다.&lt;br /&gt;
+HTML의 일부분만 새로고침 하기 위해 주로 사용한다.&lt;br /&gt;&lt;/p&gt;
 
-&lt;p&gt;An inline math: \(E=mc^2\).&lt;/p&gt;
+&lt;h2 id=&quot;ajax-기본-문법&quot;&gt;AJAX 기본 문법&lt;/h2&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$.ajax({
+    type: ’통신방식(GET or POST)’,
+    url: ‘보낼url’,
+    data: {JSON 형식의 보낼 데이터},
+    success: function(response){ #response란? 백엔드에서 넘겨받는 JSON데이터
+        AJAX 성공시 수행할 코드
+    },
+    error: function(request, status, error){
+        AJAX 실패시 수행할 코드
+    }
+})
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;A display math:&lt;/p&gt;
-
-\[i\hbar \frac{\partial \Psi}{\partial t} = -\frac{\hbar^2}{2m}
-\frac{\partial^2 \Psi}{\partial x^2} + V \Psi\]</content><author><name>Oiso</name></author><category term="mathjax" /><summary type="html">Not Pure Poole supports MathJax. You can enable it on a page by setting math: true in the front matter.</summary></entry><entry><title type="html">Releasing Not Pure Poole v0.1.0</title><link href="http://localhost:4000/2020/10/01/releasing-not-pure-poole-v0-1-0/" rel="alternate" type="text/html" title="Releasing Not Pure Poole v0.1.0" /><published>2020-10-01T14:56:00+09:00</published><updated>2020-10-01T14:56:00+09:00</updated><id>http://localhost:4000/2020/10/01/releasing-not-pure-poole-v0-1-0</id><content type="html" xml:base="http://localhost:4000/2020/10/01/releasing-not-pure-poole-v0-1-0/">&lt;p&gt;The Jekyll theme &lt;strong&gt;Not Pure Poole&lt;/strong&gt; v0.1.0 was released!&lt;/p&gt;
-
-&lt;p&gt;Not Pure Poole is a simple, beautiful, and powerful Jekyll theme for blogs. It is built on &lt;a href=&quot;https://github.com/poole/poole&quot;&gt;Poole&lt;/a&gt; and &lt;a href=&quot;https://purecss.io/&quot;&gt;Pure&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;For more information about this theme, you can read the &lt;a href=&quot;https://github.com/vszhub/not-pure-poole/blob/master/README.md&quot;&gt;README&lt;/a&gt; file.&lt;/p&gt;</content><author><name>Songzi Vong</name></author><category term="jekyll theme" /><category term="jekyll" /><summary type="html">The Jekyll theme Not Pure Poole v0.1.0 was released!</summary></entry><entry><title type="html">Welcome to Not Pure Poole</title><link href="http://localhost:4000/2020/09/30/welcome-to-not-pure-poole/" rel="alternate" type="text/html" title="Welcome to Not Pure Poole" /><published>2020-09-30T00:18:00+09:00</published><updated>2020-10-01T02:08:25+09:00</updated><id>http://localhost:4000/2020/09/30/welcome-to-not-pure-poole</id><content type="html" xml:base="http://localhost:4000/2020/09/30/welcome-to-not-pure-poole/">&lt;p class=&quot;message&quot;&gt;Welcome to &lt;strong&gt;Not Pure Poole&lt;/strong&gt;! This is an example post to show the layout.&lt;/p&gt;
-
-&lt;p&gt;First, do you notice the TOC on the right side? Try to scroll down to read this post, you’ll find that the TOC is always sticky in the viewport.&lt;/p&gt;
-
-&lt;p&gt;Cum sociis natoque penatibus et magnis &lt;a href=&quot;#&quot;&gt;dis parturient montes&lt;/a&gt;, nascetur ridiculus mus. &lt;em&gt;Aenean eu leo quam.&lt;/em&gt; Pellentesque ornare sem lacinia quam venenatis vestibulum. Sed posuere consectetur est at lobortis. Cras mattis consectetur purus sit amet fermentum.&lt;/p&gt;
-
+&lt;h2 id=&quot;오이-기능일반적인-찜-기능-구현&quot;&gt;오이 기능(일반적인 찜 기능) 구현&lt;/h2&gt;
+&lt;h3 id=&quot;osp-실습에서&quot;&gt;OSP 실습에서&lt;/h3&gt;
 &lt;blockquote&gt;
-  &lt;p&gt;Curabitur blandit tempus porttitor. Nullam quis risus eget urna mollis ornare vel eu leo. Nullam id dolor id nibh ultricies vehicula ut id elit.&lt;/p&gt;
+  &lt;p&gt;OSP 수업 실습에서는 i 태그를 이용하여 상품 옆에 하트를 띄우고, css에서 하트의 색상 변경을 통해 찜 기능을 구현하였다.&lt;br /&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;p&gt;Etiam porta &lt;strong&gt;sem malesuada magna&lt;/strong&gt; mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;실습 코드&lt;br /&gt;&lt;/p&gt;
+  &lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;showHeart&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;ajax&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;GET&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;/show_heart//&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{},&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;success&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+                &lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;my_heart&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;my_heart&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;my_heart&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;interested&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;==&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;Y&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+                    &lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;#heart&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;css&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;color&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;red&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+                    &lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;#heart&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;attr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;onclick&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;unlike()&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+                &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+                    &lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;#heart&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;css&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;color&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;grey&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+                    &lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;#heart&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;attr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;onclick&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;like()&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+                &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+                &lt;span class=&quot;c1&quot;&gt;//alert(&quot;showheart!&quot;)&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+&lt;/blockquote&gt;
 
-&lt;h2 id=&quot;inline-html-elements&quot;&gt;Inline HTML elements&lt;/h2&gt;
-
-&lt;p&gt;HTML defines a long list of available inline tags, a complete list of which can be found on the &lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/HTML/Element&quot;&gt;Mozilla Developer Network&lt;/a&gt;.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;To bold text&lt;/strong&gt;, use &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;strong&amp;gt;&lt;/code&gt;.&lt;/li&gt;
-  &lt;li&gt;&lt;em&gt;To italicize text&lt;/em&gt;, use &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;em&amp;gt;&lt;/code&gt;.&lt;/li&gt;
-  &lt;li&gt;&lt;mark&gt;To highlight&lt;/mark&gt;, use &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;mark&amp;gt;&lt;/code&gt;.&lt;/li&gt;
-  &lt;li&gt;Abbreviations, like &lt;abbr title=&quot;HyperText Markup Langage&quot;&gt;HTML&lt;/abbr&gt; should use &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;abbr&amp;gt;&lt;/code&gt;, with an optional &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;title&lt;/code&gt; attribute for the full phrase.&lt;/li&gt;
-  &lt;li&gt;Citations, like &lt;cite&gt;— Mark Otto&lt;/cite&gt;, should use &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;cite&amp;gt;&lt;/code&gt;.&lt;/li&gt;
-  &lt;li&gt;&lt;del&gt;Deleted&lt;/del&gt; text should use &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;del&amp;gt;&lt;/code&gt; and &lt;ins&gt;inserted&lt;/ins&gt; text should use &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;ins&amp;gt;&lt;/code&gt;.&lt;/li&gt;
-  &lt;li&gt;Superscript &lt;sup&gt;text&lt;/sup&gt; uses &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;sup&amp;gt;&lt;/code&gt; and subscript &lt;sub&gt;text&lt;/sub&gt; uses &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;sub&amp;gt;&lt;/code&gt;.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Most of these elements are styled by browsers with few modifications on our part.&lt;/p&gt;
-
-&lt;h2 id=&quot;footnotes&quot;&gt;Footnotes&lt;/h2&gt;
-
-&lt;p&gt;Footnotes are supported as part of the Markdown syntax. Here’s one in action. Clicking this number&lt;sup id=&quot;fnref:fn-sample_footnote&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:fn-sample_footnote&quot; class=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt; will lead you to a footnote. The syntax looks like:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;Clicking this number[^fn-sample_footnote]&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;Each footnote needs the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;^fn-&lt;/code&gt; prefix and a unique ID to be referenced for the footnoted content. The syntax for that list looks something like this:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;[^fn-sample_footnote]: Handy! Now click the return link to go back.&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;You can place the footnoted content wherever you like. Markdown parsers should properly place it at the bottom of the post.&lt;/p&gt;
-
-&lt;h2 id=&quot;heading&quot;&gt;Heading&lt;/h2&gt;
-
-&lt;p&gt;Vivamus sagittis lacus vel augue rutrum faucibus dolor auctor. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.&lt;/p&gt;
-
-&lt;h3 id=&quot;code&quot;&gt;Code&lt;/h3&gt;
-
-&lt;p&gt;Inline code is available with the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;code&amp;gt;&lt;/code&gt; element. Snippets of multiple lines of code are supported through Rouge. Longer lines will automatically scroll horizontally when needed. You may also use code fencing (triple backticks) for rendering code.&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-js&quot; data-lang=&quot;js&quot;&gt;&lt;span class=&quot;c1&quot;&gt;// Example can be run directly in your JavaScript console&lt;/span&gt;
-
-&lt;span class=&quot;c1&quot;&gt;// Create a function that takes two arguments and returns the sum of those arguments&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;adder&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;return a + b&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-
-&lt;span class=&quot;c1&quot;&gt;// Call the function&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;adder&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// &amp;gt; 8&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;You may also optionally show code snippets with line numbers. Add &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;linenos&lt;/code&gt; to the Rouge tags.&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-js&quot; data-lang=&quot;js&quot;&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-2
-3
-4
-5
-6
-7
-8
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;c1&quot;&gt;// Example can be run directly in your JavaScript console&lt;/span&gt;
-
-&lt;span class=&quot;c1&quot;&gt;// Create a function that takes two arguments and returns the sum of those arguments&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;adder&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;return a + b&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-
-&lt;span class=&quot;c1&quot;&gt;// Call the function&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;adder&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// &amp;gt; 8&lt;/span&gt;
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;Aenean lacinia bibendum nulla sed consectetur. Etiam porta sem malesuada magna mollis euismod. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa.&lt;/p&gt;
-
-&lt;h3 id=&quot;lists&quot;&gt;Lists&lt;/h3&gt;
-
-&lt;p&gt;Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean lacinia bibendum nulla sed consectetur. Etiam porta sem malesuada magna mollis euismod. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Praesent commodo cursus magna, vel scelerisque nisl consectetur et.&lt;/li&gt;
-  &lt;li&gt;Donec id elit non mi porta gravida at eget metus.&lt;/li&gt;
-  &lt;li&gt;Nulla vitae elit libero, a pharetra augue.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Donec ullamcorper nulla non metus auctor fringilla. Nulla vitae elit libero, a pharetra augue.&lt;/p&gt;
+&lt;h3 id=&quot;oiso의-경우&quot;&gt;Oiso의 경우&lt;/h3&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;우리 프로젝트에서는, 다른 팀과의 차별성을 두기 위해 별도로 ‘오이목록’을 만들어 오이아이콘으로 찜 기능 구현을 설계하였다.&lt;br /&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
 
 &lt;ol&gt;
-  &lt;li&gt;Vestibulum id ligula porta felis euismod semper.&lt;/li&gt;
-  &lt;li&gt;Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.&lt;/li&gt;
-  &lt;li&gt;Maecenas sed diam eget risus varius blandit sit amet non magna.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;첫 시도&lt;/strong&gt;&lt;br /&gt;
+    &lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;showOi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
+     &lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;ajax&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
+         &lt;span class=&quot;na&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;GET&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+         &lt;span class=&quot;na&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;/show_oi//&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+         &lt;span class=&quot;na&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{},&lt;/span&gt;
+         &lt;span class=&quot;na&quot;&gt;success&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+             &lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;my_oi&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;my_oi&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+             &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;my_oi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;interested&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;==&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;Y&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+                 &lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;#oi&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;attr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;src&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;이미지&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;경로&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+                 &lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;#oi&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;attr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;onclick&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;unlike()&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+             &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+             &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+                 &lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;#oi&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;attr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;src&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;이미지&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;경로&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+                 &lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;#oi&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;attr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;onclick&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;like()&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+             &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+         &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+     &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+ &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+    &lt;blockquote&gt;
+      &lt;p&gt;상품 상세 화면에서 표시되는 오이 버튼이 i 태그가 아닌 img 태그로 작성되었기 때문에 실습 코드와 같이 css를 변경하여 오이의 색상을 변경할 수는 없었고, 대신 오이의 이미지 경로를 컬러 오이의 이미지 경로로 바꾸는 것으로 구현하면 되지 않을까 하여 위와 같이 코드를 작성했지만 작동하지 않았다.&lt;br /&gt;&lt;/p&gt;
+    &lt;/blockquote&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;구현 성공!&lt;/strong&gt;&lt;br /&gt;
+    &lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;showOi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
+     &lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;ajax&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
+         &lt;span class=&quot;na&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;GET&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+         &lt;span class=&quot;na&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;/show_oi//&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+         &lt;span class=&quot;na&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{},&lt;/span&gt;
+         &lt;span class=&quot;na&quot;&gt;success&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+             &lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;my_oi&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;my_oi&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+                 &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;my_oi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;interested&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;==&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;Y&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+                     &lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;#oi&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;attr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;onclick&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;unlike()&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+                     &lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;#oi&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;on&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
+                         &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;click&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
+                             &lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;#oi&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;attr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;src&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;이미지&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;경로&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+                         &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+                     &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+                     &lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;#oi&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;attr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;src&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;이미지&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;경로&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+                 &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+                 &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+                     &lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;#oi&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;attr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;onclick&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;like()&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+                     &lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;#oi&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;on&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
+                         &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;click&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
+                             &lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;#oi&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;attr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;src&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;이미지&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;경로&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+                         &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+                     &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+                     &lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;#oi&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;attr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;src&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;이미지&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;경로&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+                 &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+         &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+     &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+ &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+    &lt;blockquote&gt;
+      &lt;p&gt;위와 같이 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$(&quot;#oi&quot;).on&lt;/code&gt; 메소드를 사용하여 오이가 클릭되는 경우에 이미지 경로가 바뀌도록 코드를 수정하였더니 작동하였다!! 그리고 반드시 그 밑에 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$(&quot;#oi&quot;).attr&lt;/code&gt; 메소드를 사용하여 이미지 경로를 바꾸는 코드를 추가해주어야 한다. 안 그러면 클릭하는 순간에만 오이의 컬러가 바뀌는 불상사가 일어날 수 있다.&lt;br /&gt;&lt;/p&gt;
+    &lt;/blockquote&gt;
+  &lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;p&gt;Cras mattis consectetur purus sit amet fermentum. Sed posuere consectetur est at lobortis.&lt;/p&gt;
+&lt;p&gt;끝!&lt;/p&gt;</content><author><name>Dayoung Shin</name></author><category term="dates" /><category term="Debug/Tips" /><summary type="html">AJAX란? 효율적인 클라이언트-서버와의 통신을 위한 JS에서 제공하는 라이브러리이다. HTML의 일부분만 새로고침 하기 위해 주로 사용한다.</summary></entry><entry><title type="html">Flak 설치 가이드 [VS Code, Window]</title><link href="http://localhost:4000/dates/2023/11/30/guide/" rel="alternate" type="text/html" title="Flak 설치 가이드 [VS Code, Window]" /><published>2023-11-30T09:00:00+09:00</published><updated>2023-11-30T09:00:00+09:00</updated><id>http://localhost:4000/dates/2023/11/30/guide</id><content type="html" xml:base="http://localhost:4000/dates/2023/11/30/guide/">&lt;h1 id=&quot;flask-설치-가이드-vs-code-window&quot;&gt;Flask 설치 가이드 [VS Code, Window]&lt;/h1&gt;
 
-&lt;dl&gt;
-  &lt;dt&gt;HyperText Markup Language (HTML)&lt;/dt&gt;
-  &lt;dd&gt;The language used to describe and define the content of a Web page&lt;/dd&gt;
+&lt;h3 id=&quot;--window-환경의-flask-설치-vs-code에서-flask-실행-가이드&quot;&gt;- window 환경의 flask 설치, vs code에서 flask 실행 가이드&lt;/h3&gt;
 
-  &lt;dt&gt;Cascading Style Sheets (CSS)&lt;/dt&gt;
-  &lt;dd&gt;Used to describe the appearance of Web content&lt;/dd&gt;
+&lt;p&gt;window 환경에서 웹어플리케이션 개발을 지원하는 Python API인 flask를 설치해보자.&lt;/p&gt;
 
-  &lt;dt&gt;JavaScript (JS)&lt;/dt&gt;
-  &lt;dd&gt;The programming language used to build advanced Web sites and applications&lt;/dd&gt;
-&lt;/dl&gt;
+&lt;p&gt;&lt;strong&gt;1. python 설치&lt;/strong&gt;
+&lt;strong&gt;2. VScode 설치 (extenstion : Python 설치)&lt;/strong&gt;
+&lt;strong&gt;3. flask 설치&lt;/strong&gt;
+&lt;strong&gt;4. VScode 설정&lt;/strong&gt;
+&lt;strong&gt;추가. 기본 실행 파일 변경 ⇒ 환경 변수 설정&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Nullam quis risus eget urna mollis ornare vel eu leo.&lt;/p&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
 
-&lt;h3 id=&quot;images&quot;&gt;Images&lt;/h3&gt;
+&lt;p&gt;총 &lt;strong&gt;4단계&lt;/strong&gt;로 이루어진 글이다.
+설치는 모두 디폴트 설정으로 설치했다. 자신의 컴퓨터환경에 이미 설치된 것이 있다면 그 다음 단계부터 빠르게 보아도 괜찮을 것 같다!&lt;/p&gt;
 
-&lt;p&gt;Quisque consequat sapien eget quam rhoncus, sit amet laoreet diam tempus. Aliquam aliquam metus erat, a pulvinar turpis suscipit at.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://placehold.it/800x400&quot; alt=&quot;placeholder&quot; title=&quot;Large example image&quot; /&gt;
-&lt;img src=&quot;http://placehold.it/400x200&quot; alt=&quot;placeholder&quot; title=&quot;Medium example image&quot; /&gt;
-&lt;img src=&quot;http://placehold.it/200x200&quot; alt=&quot;placeholder&quot; title=&quot;Small example image&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Align to the center by adding &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;class=&quot;align-center&quot;&lt;/code&gt;:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://placehold.it/400x200&quot; alt=&quot;placeholder&quot; title=&quot;Medium example image&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;tables&quot;&gt;Tables&lt;/h3&gt;
-
-&lt;p&gt;Aenean lacinia bibendum nulla sed consectetur. Lorem ipsum dolor sit amet, consectetur adipiscing elit.&lt;/p&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th&gt;Name&lt;/th&gt;
-      &lt;th&gt;Upvotes&lt;/th&gt;
-      &lt;th&gt;Downvotes&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tfoot&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Totals&lt;/td&gt;
-      &lt;td&gt;21&lt;/td&gt;
-      &lt;td&gt;23&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tfoot&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Alice&lt;/td&gt;
-      &lt;td&gt;10&lt;/td&gt;
-      &lt;td&gt;11&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Bob&lt;/td&gt;
-      &lt;td&gt;4&lt;/td&gt;
-      &lt;td&gt;3&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Charlie&lt;/td&gt;
-      &lt;td&gt;7&lt;/td&gt;
-      &lt;td&gt;9&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;p&gt;Nullam id dolor id nibh ultricies vehicula ut id elit. Sed posuere consectetur est at lobortis. Nullam quis risus eget urna mollis ornare vel eu leo.&lt;/p&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
 
 &lt;hr /&gt;
 
-&lt;p&gt;Want to see something else added? &lt;a href=&quot;https://github.com/vszhub/not-pure-poole/issues/new&quot;&gt;Open an issue.&lt;/a&gt;&lt;/p&gt;
+&lt;h4 id=&quot;1-python-설치-anaconda&quot;&gt;1. Python 설치 (anaconda)&lt;/h4&gt;
 
-&lt;div class=&quot;footnotes&quot; role=&quot;doc-endnotes&quot;&gt;
-  &lt;ol&gt;
-    &lt;li id=&quot;fn:fn-sample_footnote&quot; role=&quot;doc-endnote&quot;&gt;
-      &lt;p&gt;Handy! Now click the return link to go back. &lt;a href=&quot;#fnref:fn-sample_footnote&quot; class=&quot;reversefootnote&quot; role=&quot;doc-backlink&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
-    &lt;/li&gt;
-  &lt;/ol&gt;
-&lt;/div&gt;</content><author><name>Oiso</name></author><category term="jekyll theme" /><category term="jekyll" /><category term="tutorial" /><summary type="html">Welcome to Not Pure Poole! This is an example post to show the layout.</summary></entry></feed>
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;컴퓨터 64비트 지원 여부 확인&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;anaconda로 python을 설치할 것인데, 파일 설치 전 컴퓨터 사양을 확인해 64비트 지원 여부를 확인한다.
+&lt;u&gt;지원된다면 다음&lt;/u&gt;으로 넘어가자.&lt;/p&gt;
+
+&lt;p&gt;시작 아이콘 옆 검색창에 ‘설정’ 검색 - 설정 열기 - 시스템 - 정보 - 시스템 종류 확인
+또는 검색창에 ‘시스템 정보’ 검색 - 시스템 종류 확인&lt;/p&gt;
+
+&lt;p&gt;검색창에 설정을 검색하고,
+&lt;img src=&quot;https://github.com/Sarang-Han/Oiso/assets/99008137/f262d983-1940-482b-b68b-3509eedcd51c&quot; alt=&quot;검색창에 설정 검색&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;열어준다.
+&lt;img src=&quot;https://github.com/Sarang-Han/Oiso/assets/99008137/f31592c6-c06f-4ec4-8289-1d702d52cd17&quot; alt=&quot;설정 열기&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;‘시스템’ 메뉴 선택
+&lt;img src=&quot;https://github.com/Sarang-Han/Oiso/assets/99008137/96ee6507-4418-4272-87d0-1cf32550f9b6&quot; alt=&quot;시스템 선택&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;스크롤해서 내리면 마지막에 ‘정보’
+&lt;img src=&quot;https://github.com/Sarang-Han/Oiso/assets/99008137/564ac65f-18bf-46f3-a90b-2f78134775cb&quot; alt=&quot;정보 선택&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;시스템 종류에서 확인이 가능하다. x64
+&lt;img src=&quot;https://github.com/Sarang-Han/Oiso/assets/99008137/ca270d00-ff10-4d20-a18e-96031c0a173f&quot; alt=&quot;사양 확인&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;다른 확인 방법 : 검색창에 ‘시스템 정보’ 검색, 열기
+&lt;img src=&quot;https://github.com/Sarang-Han/Oiso/assets/99008137/482ef866-ac0c-45ee-a81a-d612100c7a3e&quot; alt=&quot;시스템 정보&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;화면 오른쪽에 글씨가 많은데 ‘시스템 종류’ 확인하면 된다.
+&lt;img src=&quot;https://github.com/Sarang-Han/Oiso/assets/99008137/4e721a71-cae6-4ded-a1d6-8fa821e5a560&quot; alt=&quot;시스템 종류 확인&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;64비트 지원을 확인하였다.&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Anaconda 설치&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;아래 주소로 들어가 다운로드 버튼 클릭
+https://www.anaconda.com/download&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://github.com/Sarang-Han/Oiso/assets/99008137/c03d3642-a89b-4060-8388-81997f41e0ab&quot; alt=&quot;anaconda 파일 다운&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;다운 후, 파일 실행
+&lt;img src=&quot;https://github.com/Sarang-Han/Oiso/assets/99008137/ac998b8b-bcc9-4325-afc7-7bf44ee13464&quot; alt=&quot;anaconda 파일 실행&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;next 쭉 누르기
+&lt;img src=&quot;https://github.com/Sarang-Han/Oiso/assets/99008137/fd58f8fa-0ab4-4dd9-bb6b-cdc788496090&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;동의
+&lt;img src=&quot;https://github.com/Sarang-Han/Oiso/assets/99008137/aff0727c-4bfd-4f8b-9463-8cefa1cff6fc&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;계속 next
+&lt;img src=&quot;https://github.com/Sarang-Han/Oiso/assets/99008137/d3a1bfc7-d34b-4406-9185-d079fe796bd2&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;install 클릭
+&lt;img src=&quot;https://github.com/Sarang-Han/Oiso/assets/99008137/bbd6f640-a0dd-4e23-87a5-7e08422fdba2&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;설치 완료!
+&lt;img src=&quot;https://github.com/Sarang-Han/Oiso/assets/99008137/bad17b87-7c8b-4bd8-aa9c-f0d3df4084f3&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Anaconda 설치 확인&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;이제 설치가 잘 되었는지 확인해보자.&lt;/p&gt;
+
+&lt;p&gt;Anaconda prompt 열기 - python 입력
+&lt;img src=&quot;https://github.com/Sarang-Han/Oiso/assets/99008137/41ed591b-7bdf-4b00-8f72-dcada877f7e1&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;python&lt;/code&gt; 입력했을 때 버전이 나오면 설치가 된 것.
+&lt;img src=&quot;https://github.com/Sarang-Han/Oiso/assets/99008137/2ac2e4e6-827d-470e-82a2-b2dccf6a0323&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h4 id=&quot;2-vscode-설치-extenstion--python-설치&quot;&gt;2. VScode 설치 (extenstion : Python 설치)&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;VScode 설치&lt;/strong&gt;
+https://code.visualstudio.com/download&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;다운 후, 실행
+&lt;img src=&quot;https://github.com/Sarang-Han/Oiso/assets/99008137/65605af4-7b4c-4b08-8b54-64b9a63fb1cb&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;동의하고 계속 다음 누르기
+&lt;img src=&quot;https://github.com/Sarang-Han/Oiso/assets/99008137/e0a75e0e-9841-4439-92f5-01ed6ee94c43&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;설치
+&lt;img src=&quot;https://github.com/Sarang-Han/Oiso/assets/99008137/fd9afd5e-14ce-43a2-862b-f19b3aab8d3e&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;설치 완료!
+&lt;img src=&quot;https://github.com/Sarang-Han/Oiso/assets/99008137/f0617182-3d0a-486b-999f-2a2c8bae6b45&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;vscode가 실행되면&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;한국어로 변경&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;F1 키 누름 - language 검색 - comfigure display language 선택 - 한국어 선택
+&lt;img src=&quot;https://github.com/Sarang-Han/Oiso/assets/99008137/9c06e2c3-14b8-4105-928c-2c383687555b&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://github.com/Sarang-Han/Oiso/assets/99008137/ebd8a94c-9d36-4292-8070-f29fb313c0c2&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Python 확장 설치&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;확장(extension) 탭 클릭&lt;/li&gt;
+  &lt;li&gt;검색창 ‘python’ 검색&lt;/li&gt;
+  &lt;li&gt;맨 위의 Python 클릭&lt;/li&gt;
+  &lt;li&gt;설치&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://github.com/Sarang-Han/Oiso/assets/99008137/01f29ac3-fdb0-4135-a463-227a39878b16&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h4 id=&quot;3-flask-설치&quot;&gt;3. Flask 설치&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;가상환경 생성 및 활성화&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;아까 python 설치를 확인했던 anaconda prompt (또는 anaconda powershell)를 연다.&lt;/p&gt;
+
+&lt;p&gt;Anaconda prompt 열기
+&lt;img src=&quot;https://github.com/Sarang-Han/Oiso/assets/99008137/41ed591b-7bdf-4b00-8f72-dcada877f7e1&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;conda create -n [가상환경 이름] python=[원하는 파이썬 버전]&lt;/code&gt;&lt;/strong&gt; 입력&lt;/p&gt;
+
+&lt;p&gt;예시) 파이썬 버전 3.11.4, 이름 test 인 가상환경 생성
+&lt;img src=&quot;https://github.com/Sarang-Han/Oiso/assets/99008137/cd324455-8a0b-48b0-9f63-9d0c67ae109c&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;입력하면 쭉 뜨는데, 패키지 설치여부 묻는다, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;y&lt;/code&gt; 입력
+&lt;img src=&quot;https://github.com/Sarang-Han/Oiso/assets/99008137/5c68fa15-2624-43b1-b41f-1314589d404b&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;가상환경 생성 완료!
+&lt;strong&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;conda activate [가상환경 이름]&lt;/code&gt;&lt;/strong&gt; 으로 활성화 하자.
+&lt;img src=&quot;https://github.com/Sarang-Han/Oiso/assets/99008137/c4c3c99b-46ab-4fcd-be77-ca1cea45509e&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;flask 설치&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;conda install flask&lt;/code&gt;&lt;/strong&gt; 입력 - &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;y&lt;/code&gt; 입력
+&lt;img src=&quot;https://github.com/Sarang-Han/Oiso/assets/99008137/7a8510ef-1fe7-4785-b140-b1de435185cc&quot; alt=&quot;image&quot; /&gt;
+&lt;img src=&quot;https://github.com/Sarang-Han/Oiso/assets/99008137/b4b49665-54f8-4ea0-9a66-58f712f9ad1e&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Windows Powershell 실행 정책 변경&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;windows powershell 열기 - &lt;strong&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Set-ExecutionPolicyUnrestricted&lt;/code&gt;&lt;/strong&gt; 입력 - &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;y&lt;/code&gt; 입력&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://github.com/Sarang-Han/Oiso/assets/99008137/d2e4bb3c-12aa-4894-a0ff-870695abce17&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://github.com/Sarang-Han/Oiso/assets/99008137/ec8f8bed-71b9-48bf-97c4-f7311725b6a1&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h4 id=&quot;4-vscode-설정&quot;&gt;4. VScode 설정&lt;/h4&gt;
+
+&lt;p&gt;이제 vscode를 실행하고 설정을 진행하자&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;interpreter 선택&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;F1 키 누르기 - interpreter 검색 - Python: Select Interpreter 선택
+&lt;img src=&quot;https://github.com/Sarang-Han/Oiso/assets/99008137/94fd9361-2275-4d72-9f08-7e90ec4e33c9&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;아까 만든 가상환경 선택
+&lt;img src=&quot;https://github.com/Sarang-Han/Oiso/assets/99008137/b452c0bd-f9b4-4678-afd6-537959404081&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;encoding UTF-8 확인&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;설정(setting) - encoding 검색 - UTF-8 확인 (아니면 바꿔주자)
+&lt;img src=&quot;https://github.com/Sarang-Han/Oiso/assets/99008137/5f87da8f-562f-4727-9c72-3c4be28087ac&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://github.com/Sarang-Han/Oiso/assets/99008137/df7e3097-e8a6-4d2f-b807-ab4e47476e71&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;app.py&lt;/code&gt; 생성 (기본 실행 파일)&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;파일 만들 폴더 선택 - &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;app.py&lt;/code&gt; 생성 - 코드 입력
+&lt;img src=&quot;https://github.com/Sarang-Han/Oiso/assets/99008137/a75c013b-e820-4779-bbcf-e34faec51167&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;파일 + 누르고 이름 app.py로 쓰기
+&lt;img src=&quot;https://github.com/Sarang-Han/Oiso/assets/99008137/d19deaa8-9f9f-4cc1-b117-fe50f10d5d33&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;파일에 아래 코드 입력&lt;/p&gt;
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;flask&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Flask&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;app&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Flask&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;__name__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;route&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'/'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;hello&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'Hello world!'&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;__name__&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;__main__&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;run&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;host&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'0.0.0.0'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;img src=&quot;https://github.com/Sarang-Han/Oiso/assets/99008137/04328209-b579-471d-b45c-57fc52901c15&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;터미널 열기&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;상단바의 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;...&lt;/code&gt; 클릭 - 터미널 - 새 터미널
+&lt;img src=&quot;https://github.com/Sarang-Han/Oiso/assets/99008137/ac67d3e0-6727-4394-a19b-21d5d37a3d84&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;그러면 화면 하단에 터미널 창이 생긴다.
+cmd가 아니라면,
+작은 화살표 - command prompt 클릭 해서 cmd로 바꾸자
+&lt;img src=&quot;https://github.com/Sarang-Han/Oiso/assets/99008137/7b26a575-d05a-4aed-94bc-8c4109d4b7bf&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;flask 실행&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;이제 터미널 창에 &lt;strong&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;flask run&lt;/code&gt;&lt;/strong&gt; 입력
+하단에 뜨는 주소를 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Ctrl + 클릭&lt;/code&gt;하면
+&lt;img src=&quot;https://github.com/Sarang-Han/Oiso/assets/99008137/2a92ec7d-f760-45cb-9564-18492361f717&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;인터넷 창이 생기면서 출력되는 것을 볼 수 있다.
+&lt;img src=&quot;https://github.com/Sarang-Han/Oiso/assets/99008137/edfc179e-9349-4ed0-9dbf-841d1a165d01&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;터미널 창에 &lt;strong&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Ctrl + C&lt;/code&gt; 누르면 작업 종료&lt;/strong&gt;,
+&lt;strong&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;conda deactivate&lt;/code&gt; 치면 가상환경 비활성화&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;끝!&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;추가-기본-실행-파일--변경하고-싶을-때&quot;&gt;추가. 기본 실행 파일  변경하고 싶을 때&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;⇒ 환경 변수를 설정해주자!&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;cmd에 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;set FLASK_APP= [프로젝트 이름]&lt;/code&gt; 입력&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;환경 변수를 설정하는 것인데, Flask 서버 가동시, 실행할 어플리케이션을 지정해준다.
+지정하지 않으면 기본은 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;app.py&lt;/code&gt; 이다.&lt;/p&gt;
+
+&lt;p&gt;예시) 기본 실행 파일을 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;application.py&lt;/code&gt; 로 설정&lt;/p&gt;
+
+&lt;p&gt;아까 파일 이름을 변경했다.
+&lt;img src=&quot;https://github.com/Sarang-Han/Oiso/assets/99008137/31be2d55-159e-4208-b1c8-bb9fb1fb5ff6&quot; alt=&quot;image&quot; /&gt;
+실행이 잘 되는 것을 볼 수 있다.
+&lt;img src=&quot;https://github.com/Sarang-Han/Oiso/assets/99008137/154612f9-d39d-4c81-b492-a747911c7299&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;문제는 이 설정은 PC 종료 등의 상황에 초기화가 된다.&lt;/p&gt;
+
+&lt;p&gt;매번 설정해주기 번거로우므로,&lt;/p&gt;
+
+&lt;p&gt;나는 기본 실행 파일을 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;application.py&lt;/code&gt; 로 설정하기 위해 &lt;strong&gt;시스템 환경 변수를 추가&lt;/strong&gt;했다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;시스템 환경 변수 추가&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;시스템 환경 변수 편집 검색 - 열기
+&lt;img src=&quot;https://github.com/Sarang-Han/Oiso/assets/99008137/5333f296-0042-47d1-84c1-8e10bba384ff&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;환경 변수 클릭
+&lt;img src=&quot;https://github.com/Sarang-Han/Oiso/assets/99008137/e7de5605-98cc-4e95-862d-d07aac752af5&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;시스템 변수의 새로 만들기 클릭
+&lt;img src=&quot;https://github.com/Sarang-Han/Oiso/assets/99008137/a6c984a3-780f-4901-87b3-943cef082a25&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;변수 이름 : &lt;strong&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;FLASK_APP&lt;/code&gt;&lt;/strong&gt;
+변수 값: 원하는 파일 이름 지정
+확인 누르기
+&lt;img src=&quot;https://github.com/Sarang-Han/Oiso/assets/99008137/f9b70ee1-a9c8-4318-b592-3da56c0ca8b7&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;이제 환경 변수 설정 없이
+그냥 가상환경 활성화 후, flask run을 치면 실행된다!&lt;/p&gt;
+
+&lt;p&gt;진짜 끝!&lt;/p&gt;</content><author><name>Eunbyeol-Choi</name></author><category term="dates" /><category term="Guide" /><summary type="html">Flask 설치 가이드 [VS Code, Window]</summary></entry><entry><title type="html">Oiso의 마이페이지 기능 소개</title><link href="http://localhost:4000/dates/2023/11/30/%ED%95%B4%EC%84%A4_%EB%A7%88%EC%9D%B4%ED%8E%98%EC%9D%B4%EC%A7%80/" rel="alternate" type="text/html" title="Oiso의 마이페이지 기능 소개" /><published>2023-11-30T09:00:00+09:00</published><updated>2023-11-30T09:00:00+09:00</updated><id>http://localhost:4000/dates/2023/11/30/%ED%95%B4%EC%84%A4_%EB%A7%88%EC%9D%B4%ED%8E%98%EC%9D%B4%EC%A7%80</id><content type="html" xml:base="http://localhost:4000/dates/2023/11/30/%ED%95%B4%EC%84%A4_%EB%A7%88%EC%9D%B4%ED%8E%98%EC%9D%B4%EC%A7%80/">&lt;h2 id=&quot;들어가며&quot;&gt;들어가며&lt;/h2&gt;
+&lt;p&gt;‘마켓 웹 어플리케이션 개발’이라는 주제를 받은 후, 가장 열심히 고민했던 주제 중 하나는 ‘어떻게 오이소만의 특징을 드러낼 수 있을까?’였습니다. 마켓 서비스 이용에 도움이 되면서도 오이소의 정체성을 톡톡히 드러낼 수 있도록 하기 위해 저희가 선택한 것은 바로 ‘마이페이지’의 구현이었습니다.&lt;br /&gt;
+ &lt;a href=&quot;https://docs.google.com/spreadsheets/d/13xf21WoCUF8Idq2_T3Hkjd5kDhR1O_bbwQH4rXohkF8/edit?usp=sharing&quot;&gt;프로젝트 요구사항 한눈에 보기&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;개괄-및-디자인-설계&quot;&gt;개괄 및 디자인 설계&lt;/h2&gt;
+&lt;p&gt;필수 구현 사항에는 포함되어있지 않지만, 내 정보를 비롯한 다양한 사항을 압축적으로 확인할 수 있는 마이페이지 창은 마켓을 이용하는 데 아주 중요합니다. 따라서 디자인 설계에서는 유저들이 알고 싶어할 내용, 그리고 필요하다고 느낄만한 내용을 편리하게 확인할 수 있도록 하기 위해 노력했습니다.&lt;br /&gt;
+ &lt;a href=&quot;https://www.figma.com/file/puXAFwygAR84p0ITGv9VHa/Menu-Structure?type=design&amp;amp;node-id=0-1&amp;amp;mode=design&amp;amp;t=3vJG8YYLp33K1KRv-0&quot;&gt;전체 화면 구성 한눈에 보기&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://github.com/Sarang-Han/Sarang-Han.github.io/assets/144914664/141b54e0-46f2-403c-9df3-47ca318c64ad&quot; alt=&quot;마이페이지 디자인&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;페이지-기능&quot;&gt;페이지 기능&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;프로필&lt;/strong&gt;: 유저의 프로필 사진과 닉네임, ID를 확인할 수 있습니다.&lt;br /&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;로그아웃&lt;/strong&gt;: 프로필 옆 자물쇠 버튼을 눌러 로그아웃할 수 있습니다.&lt;br /&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;구매내역&lt;/strong&gt;: 메뉴바 중 첫번째 ‘구매내역’ 바를 눌러 내가 구매한 상품들을 확인할 수 있습니다.&lt;br /&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;구매내역&lt;/strong&gt;: 메뉴바 중 첫 번째 ‘구매내역’ 바를 눌러 내가 구매한 상품들을 확인할 수 있습니다.&lt;br /&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;판매내역&lt;/strong&gt;: 메뉴바 중 두 번째 ‘판매내역’ 바를 눌러 내가 판매한 상품들을 확인할 수 있습니다.&lt;br /&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;내 오이목록&lt;/strong&gt;: 메뉴바 중 세 번째 ‘내 오이목록’ 바를 눌러 내가 오이 버튼을 눌러 찜했던 상품들을 확인할 수 있습니다.&lt;br /&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;내 리뷰&lt;/strong&gt;: 메뉴바 아래에는 ‘내 리뷰’ 칸을 두어 내가 받은 리뷰들과 작성한 리뷰들을 한 눈에 확인할 수 있도록 했습니다. 사진을 클릭하면 각 리뷰의 상세창으로 이동할 수 있습니다.&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>Yujin-Yang</name></author><category term="dates" /><category term="description" /><summary type="html">들어가며 ‘마켓 웹 어플리케이션 개발’이라는 주제를 받은 후, 가장 열심히 고민했던 주제 중 하나는 ‘어떻게 오이소만의 특징을 드러낼 수 있을까?’였습니다. 마켓 서비스 이용에 도움이 되면서도 오이소의 정체성을 톡톡히 드러낼 수 있도록 하기 위해 저희가 선택한 것은 바로 ‘마이페이지’의 구현이었습니다. 프로젝트 요구사항 한눈에 보기</summary></entry></feed>

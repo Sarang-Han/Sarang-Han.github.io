@@ -1,0 +1,494 @@
+<!doctype html>
+<html lang="en">
+
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/pure-min.css" integrity="sha384-cg6SkqEOCV1NbJoCu11+bm0NvBRc8IYLRGXkmNrqUBfTjmMYwNKPWBTIKyw9mHNJ" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/grids-responsive-min.css">
+  <link rel="stylesheet" href="/assets/styles.css"><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Flak 설치 가이드 [VS Code, Window] | OISO</title>
+<meta name="generator" content="Jekyll v3.9.0" />
+<meta property="og:title" content="Flak 설치 가이드 [VS Code, Window]" />
+<meta name="author" content="Eunbyeol-Choi" />
+<meta property="og:locale" content="en" />
+<meta name="description" content="Flask 설치 가이드 [VS Code, Window]" />
+<meta property="og:description" content="Flask 설치 가이드 [VS Code, Window]" />
+<link rel="canonical" href="http://localhost:4000/dates/2023/11/30/guide/" />
+<meta property="og:url" content="http://localhost:4000/dates/2023/11/30/guide/" />
+<meta property="og:site_name" content="OISO" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2023-11-30T09:00:00+09:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Flak 설치 가이드 [VS Code, Window]" />
+<meta name="twitter:site" content="@Oiso" />
+<meta name="twitter:creator" content="@Eunbyeol-Choi" />
+<meta name="google-site-verification" content="xxxxx" />
+<script type="application/ld+json">
+{"@type":"BlogPosting","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/logo.png"},"name":"Eunbyeol-Choi"},"headline":"Flak 설치 가이드 [VS Code, Window]","dateModified":"2023-11-30T09:00:00+09:00","datePublished":"2023-11-30T09:00:00+09:00","author":{"@type":"Person","name":"Eunbyeol-Choi"},"mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/dates/2023/11/30/guide/"},"description":"Flask 설치 가이드 [VS Code, Window]","url":"http://localhost:4000/dates/2023/11/30/guide/","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="OISO" />
+</head>
+
+
+  <body>
+
+    <div class="container pure-g"><div class="sidebar-left pure-u-1 pure-u-md-1-4" style="background-color: rgb(40, 73, 77); color: rgb(255, 255, 255); background-image: url(/plant.jpeg);"><header class="masthead">
+  <div class="avatar"><img src="/oiso_logo.png" class="avatar-image" alt="Oiso">
+    </div>
+  <div class="masthead-title">
+    <a href="/" title="Home">OISO</a>
+  </div>
+  <div class="masthead-tagline">
+    <small>Ewha-Market Project "Oiso"의 블로그입니다.</small>
+  </div><nav class="navigation">
+    <ul class="navigation-list"><li class="navigation-item">
+        <a onclick="sessionStorage.setItem('forceCheckScroll', 'true')" href="/">Blog</a>
+      </li><li class="navigation-item">
+        <a onclick="sessionStorage.setItem('forceCheckScroll', 'true')" href="/about/">About</a>
+      </li></ul>
+  </nav><div class="social pure-menu pure-menu-horizontal">
+      <ul class="social-icons pure-menu-list">
+      <li class="pure-menu-item">
+          <a class="social-icon pure-menu-link" href="https://github.com/Sarang-Han/Oiso">
+            <i class="fab fa-github" title="GitHub"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
+</header>
+</div>
+
+      <div class="content pure-u-1 pure-u-md-1-2"><main>
+  <article class="post">
+  <h1 class="post-title">Flak 설치 가이드 [VS Code, Window]</h1>
+  <div class="post-meta"><time datetime="2023-11-30T09:00:00+09:00" itemprop="datePublished">30 Nov 2023</time><span> • </span>
+      
+        <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+          Eunbyeol-Choi
+        </span></div>
+
+  <h1 id="flask-설치-가이드-vs-code-window">Flask 설치 가이드 [VS Code, Window]</h1>
+
+<h3 id="--window-환경의-flask-설치-vs-code에서-flask-실행-가이드">- window 환경의 flask 설치, vs code에서 flask 실행 가이드</h3>
+
+<p>window 환경에서 웹어플리케이션 개발을 지원하는 Python API인 flask를 설치해보자.</p>
+
+<p><strong>1. python 설치</strong>
+<strong>2. VScode 설치 (extenstion : Python 설치)</strong>
+<strong>3. flask 설치</strong>
+<strong>4. VScode 설정</strong>
+<strong>추가. 기본 실행 파일 변경 ⇒ 환경 변수 설정</strong></p>
+
+<p><br /></p>
+
+<p>총 <strong>4단계</strong>로 이루어진 글이다.
+설치는 모두 디폴트 설정으로 설치했다. 자신의 컴퓨터환경에 이미 설치된 것이 있다면 그 다음 단계부터 빠르게 보아도 괜찮을 것 같다!</p>
+
+<p><br /></p>
+
+<hr />
+
+<h4 id="1-python-설치-anaconda">1. Python 설치 (anaconda)</h4>
+
+<ul>
+  <li><strong>컴퓨터 64비트 지원 여부 확인</strong></li>
+</ul>
+
+<p>anaconda로 python을 설치할 것인데, 파일 설치 전 컴퓨터 사양을 확인해 64비트 지원 여부를 확인한다.
+<u>지원된다면 다음</u>으로 넘어가자.</p>
+
+<p>시작 아이콘 옆 검색창에 ‘설정’ 검색 - 설정 열기 - 시스템 - 정보 - 시스템 종류 확인
+또는 검색창에 ‘시스템 정보’ 검색 - 시스템 종류 확인</p>
+
+<p>검색창에 설정을 검색하고,
+<img src="https://github.com/Sarang-Han/Oiso/assets/99008137/f262d983-1940-482b-b68b-3509eedcd51c" alt="검색창에 설정 검색" /></p>
+
+<p>열어준다.
+<img src="https://github.com/Sarang-Han/Oiso/assets/99008137/f31592c6-c06f-4ec4-8289-1d702d52cd17" alt="설정 열기" /></p>
+
+<p>‘시스템’ 메뉴 선택
+<img src="https://github.com/Sarang-Han/Oiso/assets/99008137/96ee6507-4418-4272-87d0-1cf32550f9b6" alt="시스템 선택" /></p>
+
+<p>스크롤해서 내리면 마지막에 ‘정보’
+<img src="https://github.com/Sarang-Han/Oiso/assets/99008137/564ac65f-18bf-46f3-a90b-2f78134775cb" alt="정보 선택" /></p>
+
+<p>시스템 종류에서 확인이 가능하다. x64
+<img src="https://github.com/Sarang-Han/Oiso/assets/99008137/ca270d00-ff10-4d20-a18e-96031c0a173f" alt="사양 확인" /></p>
+
+<p>다른 확인 방법 : 검색창에 ‘시스템 정보’ 검색, 열기
+<img src="https://github.com/Sarang-Han/Oiso/assets/99008137/482ef866-ac0c-45ee-a81a-d612100c7a3e" alt="시스템 정보" /></p>
+
+<p>화면 오른쪽에 글씨가 많은데 ‘시스템 종류’ 확인하면 된다.
+<img src="https://github.com/Sarang-Han/Oiso/assets/99008137/4e721a71-cae6-4ded-a1d6-8fa821e5a560" alt="시스템 종류 확인" /></p>
+
+<p>64비트 지원을 확인하였다.</p>
+
+<p><br /></p>
+
+<ul>
+  <li><strong>Anaconda 설치</strong></li>
+</ul>
+
+<p>아래 주소로 들어가 다운로드 버튼 클릭
+https://www.anaconda.com/download</p>
+
+<p><img src="https://github.com/Sarang-Han/Oiso/assets/99008137/c03d3642-a89b-4060-8388-81997f41e0ab" alt="anaconda 파일 다운" /></p>
+
+<p>다운 후, 파일 실행
+<img src="https://github.com/Sarang-Han/Oiso/assets/99008137/ac998b8b-bcc9-4325-afc7-7bf44ee13464" alt="anaconda 파일 실행" /></p>
+
+<p>next 쭉 누르기
+<img src="https://github.com/Sarang-Han/Oiso/assets/99008137/fd58f8fa-0ab4-4dd9-bb6b-cdc788496090" alt="image" /></p>
+
+<p>동의
+<img src="https://github.com/Sarang-Han/Oiso/assets/99008137/aff0727c-4bfd-4f8b-9463-8cefa1cff6fc" alt="image" /></p>
+
+<p>계속 next
+<img src="https://github.com/Sarang-Han/Oiso/assets/99008137/d3a1bfc7-d34b-4406-9185-d079fe796bd2" alt="image" /></p>
+
+<p>install 클릭
+<img src="https://github.com/Sarang-Han/Oiso/assets/99008137/bbd6f640-a0dd-4e23-87a5-7e08422fdba2" alt="image" /></p>
+
+<p>설치 완료!
+<img src="https://github.com/Sarang-Han/Oiso/assets/99008137/bad17b87-7c8b-4bd8-aa9c-f0d3df4084f3" alt="image" /></p>
+
+<p><br /></p>
+
+<ul>
+  <li><strong>Anaconda 설치 확인</strong></li>
+</ul>
+
+<p>이제 설치가 잘 되었는지 확인해보자.</p>
+
+<p>Anaconda prompt 열기 - python 입력
+<img src="https://github.com/Sarang-Han/Oiso/assets/99008137/41ed591b-7bdf-4b00-8f72-dcada877f7e1" alt="image" /></p>
+
+<p><code class="language-plaintext highlighter-rouge">python</code> 입력했을 때 버전이 나오면 설치가 된 것.
+<img src="https://github.com/Sarang-Han/Oiso/assets/99008137/2ac2e4e6-827d-470e-82a2-b2dccf6a0323" alt="image" /></p>
+
+<p><br /></p>
+
+<hr />
+
+<h4 id="2-vscode-설치-extenstion--python-설치">2. VScode 설치 (extenstion : Python 설치)</h4>
+
+<ul>
+  <li><strong>VScode 설치</strong>
+https://code.visualstudio.com/download</li>
+</ul>
+
+<p>다운 후, 실행
+<img src="https://github.com/Sarang-Han/Oiso/assets/99008137/65605af4-7b4c-4b08-8b54-64b9a63fb1cb" alt="image" /></p>
+
+<p>동의하고 계속 다음 누르기
+<img src="https://github.com/Sarang-Han/Oiso/assets/99008137/e0a75e0e-9841-4439-92f5-01ed6ee94c43" alt="image" /></p>
+
+<p>설치
+<img src="https://github.com/Sarang-Han/Oiso/assets/99008137/fd9afd5e-14ce-43a2-862b-f19b3aab8d3e" alt="image" /></p>
+
+<p>설치 완료!
+<img src="https://github.com/Sarang-Han/Oiso/assets/99008137/f0617182-3d0a-486b-999f-2a2c8bae6b45" alt="image" /></p>
+
+<p><br /></p>
+
+<p>vscode가 실행되면</p>
+
+<ul>
+  <li><strong>한국어로 변경</strong></li>
+</ul>
+
+<p>F1 키 누름 - language 검색 - comfigure display language 선택 - 한국어 선택
+<img src="https://github.com/Sarang-Han/Oiso/assets/99008137/9c06e2c3-14b8-4105-928c-2c383687555b" alt="image" /></p>
+
+<p><img src="https://github.com/Sarang-Han/Oiso/assets/99008137/ebd8a94c-9d36-4292-8070-f29fb313c0c2" alt="image" /></p>
+
+<p><br /></p>
+
+<ul>
+  <li><strong>Python 확장 설치</strong></li>
+</ul>
+
+<ol>
+  <li>확장(extension) 탭 클릭</li>
+  <li>검색창 ‘python’ 검색</li>
+  <li>맨 위의 Python 클릭</li>
+  <li>설치</li>
+</ol>
+
+<p><img src="https://github.com/Sarang-Han/Oiso/assets/99008137/01f29ac3-fdb0-4135-a463-227a39878b16" alt="image" /></p>
+
+<p><br /></p>
+
+<hr />
+
+<h4 id="3-flask-설치">3. Flask 설치</h4>
+
+<ul>
+  <li><strong>가상환경 생성 및 활성화</strong></li>
+</ul>
+
+<p>아까 python 설치를 확인했던 anaconda prompt (또는 anaconda powershell)를 연다.</p>
+
+<p>Anaconda prompt 열기
+<img src="https://github.com/Sarang-Han/Oiso/assets/99008137/41ed591b-7bdf-4b00-8f72-dcada877f7e1" alt="image" /></p>
+
+<p><strong><code class="language-plaintext highlighter-rouge">conda create -n [가상환경 이름] python=[원하는 파이썬 버전]</code></strong> 입력</p>
+
+<p>예시) 파이썬 버전 3.11.4, 이름 test 인 가상환경 생성
+<img src="https://github.com/Sarang-Han/Oiso/assets/99008137/cd324455-8a0b-48b0-9f63-9d0c67ae109c" alt="image" /></p>
+
+<p>입력하면 쭉 뜨는데, 패키지 설치여부 묻는다, <code class="language-plaintext highlighter-rouge">y</code> 입력
+<img src="https://github.com/Sarang-Han/Oiso/assets/99008137/5c68fa15-2624-43b1-b41f-1314589d404b" alt="image" /></p>
+
+<p>가상환경 생성 완료!
+<strong><code class="language-plaintext highlighter-rouge">conda activate [가상환경 이름]</code></strong> 으로 활성화 하자.
+<img src="https://github.com/Sarang-Han/Oiso/assets/99008137/c4c3c99b-46ab-4fcd-be77-ca1cea45509e" alt="image" /></p>
+
+<p><br /></p>
+
+<ul>
+  <li><strong>flask 설치</strong></li>
+</ul>
+
+<p><strong><code class="language-plaintext highlighter-rouge">conda install flask</code></strong> 입력 - <code class="language-plaintext highlighter-rouge">y</code> 입력
+<img src="https://github.com/Sarang-Han/Oiso/assets/99008137/7a8510ef-1fe7-4785-b140-b1de435185cc" alt="image" />
+<img src="https://github.com/Sarang-Han/Oiso/assets/99008137/b4b49665-54f8-4ea0-9a66-58f712f9ad1e" alt="image" /></p>
+
+<p><br /></p>
+
+<ul>
+  <li><strong>Windows Powershell 실행 정책 변경</strong></li>
+</ul>
+
+<p>windows powershell 열기 - <strong><code class="language-plaintext highlighter-rouge">Set-ExecutionPolicyUnrestricted</code></strong> 입력 - <code class="language-plaintext highlighter-rouge">y</code> 입력</p>
+
+<p><img src="https://github.com/Sarang-Han/Oiso/assets/99008137/d2e4bb3c-12aa-4894-a0ff-870695abce17" alt="image" /></p>
+
+<p><img src="https://github.com/Sarang-Han/Oiso/assets/99008137/ec8f8bed-71b9-48bf-97c4-f7311725b6a1" alt="image" /></p>
+
+<p><br /></p>
+
+<hr />
+
+<h4 id="4-vscode-설정">4. VScode 설정</h4>
+
+<p>이제 vscode를 실행하고 설정을 진행하자</p>
+
+<ul>
+  <li><strong>interpreter 선택</strong></li>
+</ul>
+
+<p>F1 키 누르기 - interpreter 검색 - Python: Select Interpreter 선택
+<img src="https://github.com/Sarang-Han/Oiso/assets/99008137/94fd9361-2275-4d72-9f08-7e90ec4e33c9" alt="image" /></p>
+
+<p>아까 만든 가상환경 선택
+<img src="https://github.com/Sarang-Han/Oiso/assets/99008137/b452c0bd-f9b4-4678-afd6-537959404081" alt="image" /></p>
+
+<p><br /></p>
+
+<ul>
+  <li><strong>encoding UTF-8 확인</strong></li>
+</ul>
+
+<p>설정(setting) - encoding 검색 - UTF-8 확인 (아니면 바꿔주자)
+<img src="https://github.com/Sarang-Han/Oiso/assets/99008137/5f87da8f-562f-4727-9c72-3c4be28087ac" alt="image" /></p>
+
+<p><img src="https://github.com/Sarang-Han/Oiso/assets/99008137/df7e3097-e8a6-4d2f-b807-ab4e47476e71" alt="image" /></p>
+
+<p><br /></p>
+
+<ul>
+  <li><strong><code class="language-plaintext highlighter-rouge">app.py</code> 생성 (기본 실행 파일)</strong></li>
+</ul>
+
+<p>파일 만들 폴더 선택 - <code class="language-plaintext highlighter-rouge">app.py</code> 생성 - 코드 입력
+<img src="https://github.com/Sarang-Han/Oiso/assets/99008137/a75c013b-e820-4779-bbcf-e34faec51167" alt="image" /></p>
+
+<p>파일 + 누르고 이름 app.py로 쓰기
+<img src="https://github.com/Sarang-Han/Oiso/assets/99008137/d19deaa8-9f9f-4cc1-b117-fe50f10d5d33" alt="image" /></p>
+
+<p>파일에 아래 코드 입력</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span>
+<span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span>
+
+<span class="o">@</span><span class="n">app</span><span class="p">.</span><span class="n">route</span><span class="p">(</span><span class="s">'/'</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">hello</span><span class="p">:</span>
+    <span class="k">return</span> <span class="s">'Hello world!'</span>
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">"__main__"</span><span class="p">:</span>
+    <span class="n">app</span><span class="p">.</span><span class="n">run</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="s">'0.0.0.0'</span><span class="p">)</span>
+</code></pre></div></div>
+<p><img src="https://github.com/Sarang-Han/Oiso/assets/99008137/04328209-b579-471d-b45c-57fc52901c15" alt="image" /></p>
+
+<p><br /></p>
+
+<ul>
+  <li><strong>터미널 열기</strong></li>
+</ul>
+
+<p>상단바의 <code class="language-plaintext highlighter-rouge">...</code> 클릭 - 터미널 - 새 터미널
+<img src="https://github.com/Sarang-Han/Oiso/assets/99008137/ac67d3e0-6727-4394-a19b-21d5d37a3d84" alt="image" /></p>
+
+<p>그러면 화면 하단에 터미널 창이 생긴다.
+cmd가 아니라면,
+작은 화살표 - command prompt 클릭 해서 cmd로 바꾸자
+<img src="https://github.com/Sarang-Han/Oiso/assets/99008137/7b26a575-d05a-4aed-94bc-8c4109d4b7bf" alt="image" /></p>
+
+<p><br /></p>
+
+<ul>
+  <li><strong>flask 실행</strong></li>
+</ul>
+
+<p>이제 터미널 창에 <strong><code class="language-plaintext highlighter-rouge">flask run</code></strong> 입력
+하단에 뜨는 주소를 <code class="language-plaintext highlighter-rouge">Ctrl + 클릭</code>하면
+<img src="https://github.com/Sarang-Han/Oiso/assets/99008137/2a92ec7d-f760-45cb-9564-18492361f717" alt="image" /></p>
+
+<p>인터넷 창이 생기면서 출력되는 것을 볼 수 있다.
+<img src="https://github.com/Sarang-Han/Oiso/assets/99008137/edfc179e-9349-4ed0-9dbf-841d1a165d01" alt="image" /></p>
+
+<p>터미널 창에 <strong><code class="language-plaintext highlighter-rouge">Ctrl + C</code> 누르면 작업 종료</strong>,
+<strong><code class="language-plaintext highlighter-rouge">conda deactivate</code> 치면 가상환경 비활성화</strong></p>
+
+<p>끝!</p>
+
+<p><br /></p>
+
+<h4 id="추가-기본-실행-파일--변경하고-싶을-때">추가. 기본 실행 파일  변경하고 싶을 때</h4>
+<p><strong>⇒ 환경 변수를 설정해주자!</strong></p>
+
+<ul>
+  <li><strong>cmd에 <code class="language-plaintext highlighter-rouge">set FLASK_APP= [프로젝트 이름]</code> 입력</strong></li>
+</ul>
+
+<p>환경 변수를 설정하는 것인데, Flask 서버 가동시, 실행할 어플리케이션을 지정해준다.
+지정하지 않으면 기본은 <code class="language-plaintext highlighter-rouge">app.py</code> 이다.</p>
+
+<p>예시) 기본 실행 파일을 <code class="language-plaintext highlighter-rouge">application.py</code> 로 설정</p>
+
+<p>아까 파일 이름을 변경했다.
+<img src="https://github.com/Sarang-Han/Oiso/assets/99008137/31be2d55-159e-4208-b1c8-bb9fb1fb5ff6" alt="image" />
+실행이 잘 되는 것을 볼 수 있다.
+<img src="https://github.com/Sarang-Han/Oiso/assets/99008137/154612f9-d39d-4c81-b492-a747911c7299" alt="image" /></p>
+
+<p>문제는 이 설정은 PC 종료 등의 상황에 초기화가 된다.</p>
+
+<p>매번 설정해주기 번거로우므로,</p>
+
+<p>나는 기본 실행 파일을 <code class="language-plaintext highlighter-rouge">application.py</code> 로 설정하기 위해 <strong>시스템 환경 변수를 추가</strong>했다.</p>
+
+<ul>
+  <li><strong>시스템 환경 변수 추가</strong></li>
+</ul>
+
+<p>시스템 환경 변수 편집 검색 - 열기
+<img src="https://github.com/Sarang-Han/Oiso/assets/99008137/5333f296-0042-47d1-84c1-8e10bba384ff" alt="image" /></p>
+
+<p>환경 변수 클릭
+<img src="https://github.com/Sarang-Han/Oiso/assets/99008137/e7de5605-98cc-4e95-862d-d07aac752af5" alt="image" /></p>
+
+<p>시스템 변수의 새로 만들기 클릭
+<img src="https://github.com/Sarang-Han/Oiso/assets/99008137/a6c984a3-780f-4901-87b3-943cef082a25" alt="image" /></p>
+
+<p>변수 이름 : <strong><code class="language-plaintext highlighter-rouge">FLASK_APP</code></strong>
+변수 값: 원하는 파일 이름 지정
+확인 누르기
+<img src="https://github.com/Sarang-Han/Oiso/assets/99008137/f9b70ee1-a9c8-4318-b592-3da56c0ca8b7" alt="image" /></p>
+
+<p>이제 환경 변수 설정 없이
+그냥 가상환경 활성화 후, flask run을 치면 실행된다!</p>
+
+<p>진짜 끝!</p>
+
+
+  
+    
+      <div class="post-tags-section">
+  <i class="post-tags-icon fas fa-tags"></i>
+  <ul class="post-tags"><li>
+        <a class="post-tag" href="/tags/#guide">guide</a></li></ul>
+</div>
+
+  
+
+  
+</article>
+
+
+<aside class="related">
+  <h2>Related posts</h2>
+  <ul class="related-posts">
+    
+      <li>
+        <a href="/dates/2023/12/01/tip/">
+          AJAX 사용하여 좋아요 기능 구현 팁
+          <small><time datetime="2023-12-01T09:00:00+09:00">01 Dec 2023</time></small>
+        </a>
+      </li>
+    
+      <li>
+        <a href="/dates/2023/11/30/%ED%95%B4%EC%84%A4_%EB%A7%88%EC%9D%B4%ED%8E%98%EC%9D%B4%EC%A7%80/">
+          Oiso의 마이페이지 기능 소개
+          <small><time datetime="2023-11-30T09:00:00+09:00">30 Nov 2023</time></small>
+        </a>
+      </li>
+    
+  </ul>
+</aside>
+
+
+</main>
+
+<footer class="footer"><small>
+    &copy; 2023 <a href="hhttps://github.com/Sarang-Han/Oiso">Oiso</a>. All rights reserved.
+    Powered by <a href="https://jekyllrb.com/">Jekyll</a> & <a href="https://github.com/vszhub/not-pure-poole">Not Pure Poole</a>.
+  </small>
+</footer>
+</div>
+      <div class="sidebar-right pure-u-1 pure-u-md-1-4">
+</div>
+    </div>
+
+    <script async src="https://use.fontawesome.com/releases/v5.0.12/js/all.js"></script><script>
+  function strip(str, remove) {
+    while (str.length > 0 && remove.indexOf(str.charAt(0)) != -1) {
+      str = str.substr(1);
+    }
+    while (str.length > 0 && remove.indexOf(str.charAt(str.length - 1)) != -1) {
+      str = str.substr(0, str.length - 1);
+    }
+    return str;
+  }
+
+  function scroll() {
+    console.log('scroll');
+    window.scrollTo({
+      left: 0, 
+      top: window.innerHeight,
+      behavior: 'smooth'
+    });
+    sessionStorage.removeItem('forceCheckScroll');
+  }
+
+  const forceCheckScroll = sessionStorage.getItem('forceCheckScroll') === 'true';
+  const checkScroll = strip(window.location.pathname, '/') !== strip('', '/');
+
+  if (forceCheckScroll || checkScroll) {
+    const maxWidth = "(max-width: 48rem)";
+    const result = window.matchMedia(maxWidth);
+    if (result.matches) {
+      scroll();
+    } else {
+      result.addListener((match) => {
+        if (match.media == maxWidth) {
+          if (match.matches) {
+            scroll();
+          }
+        }
+      });
+    }
+  }
+</script>
+</body>
+</html>
