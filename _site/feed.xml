@@ -1,4 +1,79 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="en" /><updated>2023-12-04T20:17:16+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">OISO</title><subtitle>Ewha-Market Project &quot;Oiso&quot;의 블로그입니다.</subtitle><author><name>Oiso</name></author><entry><title type="html">OSP 이화마켓 제작 프로젝트 소개</title><link href="http://localhost:4000/dates/2023/12/04/%EC%98%A4%EC%9D%B4%EC%86%8C%EC%86%8C%EA%B0%9C/" rel="alternate" type="text/html" title="OSP 이화마켓 제작 프로젝트 소개" /><published>2023-12-04T18:48:00+09:00</published><updated>2023-12-04T18:48:00+09:00</updated><id>http://localhost:4000/dates/2023/12/04/%EC%98%A4%EC%9D%B4%EC%86%8C%EC%86%8C%EA%B0%9C</id><content type="html" xml:base="http://localhost:4000/dates/2023/12/04/%EC%98%A4%EC%9D%B4%EC%86%8C%EC%86%8C%EA%B0%9C/">&lt;p class=&quot;message&quot;&gt;이화 중고마켓 플랫폼 &lt;strong&gt;오이소&lt;/strong&gt; 프로젝트에 대해 소개합니다.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="en" /><updated>2023-12-04T21:30:08+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">OISO</title><subtitle>Ewha-Market Project &quot;Oiso&quot;의 블로그입니다.</subtitle><author><name>Oiso</name></author><entry><title type="html">Oiso에 사용된 기술 개념 소개</title><link href="http://localhost:4000/dates/2023/12/04/%EA%B0%9C%EB%85%90/" rel="alternate" type="text/html" title="Oiso에 사용된 기술 개념 소개" /><published>2023-12-04T00:00:00+09:00</published><updated>2023-12-04T00:00:00+09:00</updated><id>http://localhost:4000/dates/2023/12/04/%EA%B0%9C%EB%85%90</id><content type="html" xml:base="http://localhost:4000/dates/2023/12/04/%EA%B0%9C%EB%85%90/">&lt;h2 id=&quot;oiso에서-활용한-기술-개요&quot;&gt;Oiso에서 활용한 기술 개요&lt;/h2&gt;
+&lt;p&gt;&lt;br /&gt;
+ Oiso 프로젝트에는 프론트엔드 기술로 &lt;b&gt;HTML, CSS, Javascript&lt;/b&gt;를, 백엔드 기술로는 &lt;b&gt;Flask와 Firebase&lt;/b&gt;를 사용하였습니다. 
+&lt;br /&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;html-활용&quot;&gt;HTML 활용&lt;/h2&gt;
+&lt;p&gt;&lt;br /&gt; 
+HTML에 CSS와 JavaScript를 함께 사용하여 웹 페이지를 더 동적이고 사용자 친화적으로 만들어보았습니다.&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;CSS는 페이지의 시각적인 부분을 담당하고, JavaScript는 동적인 기능을 추가하여 더 풍부한 사용자 경험을 제공합니다.&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;JavaScript를 사용하여 사용자의 동작에 대응하여 특정 동작을 수행할 수 있으며, HTML 문서의 구조를 변경하거나, 새로운 HTML 요소를 추가하거나 삭제할 수 있습니다. 또한 외부 데이터를 가져와서 표시하거나, 사용자로부터 데이터를 입력받아 처리할 수 있습니다. &lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;아래는 저희의 프로젝트에 사용된 Javascript 코드입니다.&lt;br /&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;goBack&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//뒤로가기 기능&lt;/span&gt;
+    &lt;span class=&quot;nb&quot;&gt;window&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;location&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;href&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;previewImage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;event&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//추가한 프로필 사진을 미리 볼 수 있는 기능&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;reader&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;FileReader&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;reader&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;onload&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;preview&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getElementById&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;preview&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+            &lt;span class=&quot;nx&quot;&gt;preview&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;src&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;reader&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;reader&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;readAsDataURL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;event&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;target&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;files&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]);&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;br /&gt;
+첫 번째 함수는 뒤로가기 기능을 하는 함수입니다. 브라우저의 주소를 변경하여 이동합니다. &lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;두 번째 함수는 업로드한 프로필 사진을 미리 보여주는 기능을 하는 함수입니다. 선택한 이미지 파일을 읽고, 해당 이미지를 미리볼 수 있도록 이미지 요소의 src 속성에 설정합니다. &lt;br /&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;flask란&quot;&gt;Flask란?&lt;/h2&gt;
+&lt;p&gt;&lt;br /&gt;
+Flask는 Python 웹 애플리케이션을 빠르고 쉽게 개발할 수 있게 하는 마이크로 웹 프레임워크로, Api server의 역할을 합니다.&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;Flask는 쉽게 확장할 수 있도록 설계되어 있기 때문에 각자 필요한 도구와 라이브러리를 자유롭게 선택해서 적용할 수 있다는 장점이 있습니다. GET, POST, PUT, DELETE와 같은 다양한 HTTP 요청을 처리할 수 있으며, 데이터베이스를 통해 정보를 영구적으로 저장하고 관리할 수 있습니다.&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;템플릿 엔진은 HTML 템플릿 내에 Python 코드를 삽입할 수 있게 함으로써 HTML 페이지를 동적으로 생성할 수 있게 해줍니다. &lt;br /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;flask에서-firebase-사용하기&quot;&gt;Flask에서 Firebase 사용하기&lt;/h3&gt;
+
+&lt;p&gt;Flask에서 Firebase로 데이터를 주고받을 수 있습니다. Firebase의 Realtime Database와 같은 서비스는 NoSQL 데이터베이스로서 JSON 형식의 데이터를 저장하고, Flask에서 이 데이터를 읽거나 쓸 수 있습니다. &lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;아래는 저희의 프로젝트에 사용된 코드입니다.&lt;br /&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;pyrebase&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;json&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;DBhandler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+     &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;user_duplicate_check&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;id_string&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# 아이디 중복체크 함수
+&lt;/span&gt;        &lt;span class=&quot;n&quot;&gt;users&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;db&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;child&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;users&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+        
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;users&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;val&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;None&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;# 첫 번째 등록인 경우
+&lt;/span&gt;            &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;False&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;#아이디가 중복된 경우
+&lt;/span&gt;            &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;res&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;users&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;each&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;value&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;val&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'id'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;id_string&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+                    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;False&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;br /&gt;
+이 함수를 호출하면 해당 아이디의 중복 여부를 알 수 있습니다. &lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;함수는 self와 id_string 두 개의 매개변수를 받습니다. self는 클래스 메소드를 나타내며, id_string은 중복을 체크할 아이디 문자열입니다. 
+가져온 데이터가 “None”인 경우, 즉 데이터베이스에 사용자가 등록되어 있지 않은 경우를 나타냅니다. &lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;따라서 아이디 중복이 아닌 경우 False를 반환합니다. 데이터베이스에 사용자가 등록되어 있는 경우, 각 사용자에 대한 정보를 순회하면서 입력받은 id_string과 비교합니다. &lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;만약 중복된 아이디가 발견되면 True를 반환하고 함수를 종료하고, 중복된 아이디가 발견되지 않으면 False를 반환합니다.&lt;/p&gt;</content><author><name>Girim-Kim</name></author><category term="dates" /><category term="description" /><summary type="html">Oiso 프로젝트에는 프론트엔드 기술로 HTML, CSS, Javascript를, 백엔드 기술로는 Flask와 Firebase를 사용하였습니다. ...</summary></entry><entry><title type="html">OSP 이화마켓 제작 프로젝트 소개</title><link href="http://localhost:4000/dates/2023/12/04/%EC%98%A4%EC%9D%B4%EC%86%8C%EC%86%8C%EA%B0%9C/" rel="alternate" type="text/html" title="OSP 이화마켓 제작 프로젝트 소개" /><published>2023-12-04T00:00:00+09:00</published><updated>2023-12-04T00:00:00+09:00</updated><id>http://localhost:4000/dates/2023/12/04/%EC%98%A4%EC%9D%B4%EC%86%8C%EC%86%8C%EA%B0%9C</id><content type="html" xml:base="http://localhost:4000/dates/2023/12/04/%EC%98%A4%EC%9D%B4%EC%86%8C%EC%86%8C%EA%B0%9C/">&lt;p class=&quot;message&quot;&gt;이화 중고마켓 플랫폼 &lt;strong&gt;오이소&lt;/strong&gt; 프로젝트에 대해 소개합니다.&lt;/p&gt;
 
 &lt;h2 id=&quot;오이소-로고&quot;&gt;오이소 로고&lt;/h2&gt;
 
@@ -55,7 +130,7 @@
 &lt;p&gt;&lt;em&gt;마이페이지에 대한 상세한 설명은 &lt;a href=&quot;https://sarang-han.github.io/dates/2023/11/30/%ED%95%B4%EC%84%A4_%EB%A7%88%EC%9D%B4%ED%8E%98%EC%9D%B4%EC%A7%80/&quot;&gt;마이페이지 기능 소개 글&lt;/a&gt;에서 볼 수 있습니다.&lt;/em&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;오이소박이-팀스페이스&quot;&gt;오이소박이 팀스페이스&lt;/h2&gt;
-&lt;p&gt;&lt;em&gt;오이소박이 노션 팀스페이스는 &lt;strong&gt;&lt;a href=&quot;https://www.notion.so/74fb1a71b7964b2ab6450a1cead6434e&quot;&gt;여기&lt;/a&gt;&lt;/strong&gt;서 확인할 수 있습니다.&lt;/em&gt;&lt;/p&gt;</content><author><name>Yeeun Lee</name></author><category term="dates" /><category term="description" /><summary type="html">이화 중고마켓 플랫폼 오이소 프로젝트에 대해 소개합니다.</summary></entry><entry><title type="html">AJAX 사용하여 좋아요 기능 구현 팁</title><link href="http://localhost:4000/dates/2023/12/01/tip/" rel="alternate" type="text/html" title="AJAX 사용하여 좋아요 기능 구현 팁" /><published>2023-12-01T09:00:00+09:00</published><updated>2023-12-01T09:00:00+09:00</updated><id>http://localhost:4000/dates/2023/12/01/tip</id><content type="html" xml:base="http://localhost:4000/dates/2023/12/01/tip/">&lt;h2 id=&quot;ajax란&quot;&gt;AJAX란?&lt;/h2&gt;
+&lt;p&gt;&lt;em&gt;오이소박이 노션 팀스페이스는 &lt;strong&gt;&lt;a href=&quot;https://www.notion.so/74fb1a71b7964b2ab6450a1cead6434e&quot;&gt;여기&lt;/a&gt;&lt;/strong&gt;서 확인할 수 있습니다.&lt;/em&gt;&lt;/p&gt;</content><author><name>Yeeun Lee</name></author><category term="dates" /><category term="description" /><summary type="html">이화 중고마켓 플랫폼 오이소 프로젝트에 대해 소개합니다. ...</summary></entry><entry><title type="html">AJAX 사용하여 좋아요 기능 구현 팁</title><link href="http://localhost:4000/dates/2023/12/01/tip/" rel="alternate" type="text/html" title="AJAX 사용하여 좋아요 기능 구현 팁" /><published>2023-12-01T00:00:00+09:00</published><updated>2023-12-01T00:00:00+09:00</updated><id>http://localhost:4000/dates/2023/12/01/tip</id><content type="html" xml:base="http://localhost:4000/dates/2023/12/01/tip/">&lt;h2 id=&quot;ajax란&quot;&gt;AJAX란?&lt;/h2&gt;
 &lt;p&gt;효율적인 클라이언트-서버와의 통신을 위한 JS에서 제공하는 라이브러리이다.&lt;br /&gt;
 HTML의 일부분만 새로고침 하기 위해 주로 사용한다.&lt;br /&gt;&lt;/p&gt;
 
@@ -169,7 +244,7 @@ HTML의 일부분만 새로고침 하기 위해 주로 사용한다.&lt;br /&gt;
   &lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;p&gt;끝!&lt;/p&gt;</content><author><name>Dayoung Shin</name></author><category term="dates" /><category term="Debug/Tips" /><summary type="html">AJAX란? 효율적인 클라이언트-서버와의 통신을 위한 JS에서 제공하는 라이브러리이다. HTML의 일부분만 새로고침 하기 위해 주로 사용한다.</summary></entry><entry><title type="html">Flask 설치 가이드 [VS Code, Window]</title><link href="http://localhost:4000/dates/2023/11/30/guide/" rel="alternate" type="text/html" title="Flask 설치 가이드 [VS Code, Window]" /><published>2023-11-30T09:00:00+09:00</published><updated>2023-11-30T09:00:00+09:00</updated><id>http://localhost:4000/dates/2023/11/30/guide</id><content type="html" xml:base="http://localhost:4000/dates/2023/11/30/guide/">&lt;h3 id=&quot;--window-환경의-flask-설치-vs-code에서-flask-실행-가이드&quot;&gt;- window 환경의 flask 설치, vs code에서 flask 실행 가이드&lt;/h3&gt;
+&lt;p&gt;끝!&lt;/p&gt;</content><author><name>Dayoung Shin</name></author><category term="dates" /><category term="Debug/Tips" /><summary type="html">효율적인 클라이언트-서버와의 통신을 위한 JS에서 제공하는 라이브러리이다. HTML의 일부분만 새로고침 하기 위해 주로 사용한다. ...</summary></entry><entry><title type="html">Flask 설치 가이드 [VS Code, Window]</title><link href="http://localhost:4000/dates/2023/11/30/guide/" rel="alternate" type="text/html" title="Flask 설치 가이드 [VS Code, Window]" /><published>2023-11-30T00:00:00+09:00</published><updated>2023-11-30T00:00:00+09:00</updated><id>http://localhost:4000/dates/2023/11/30/guide</id><content type="html" xml:base="http://localhost:4000/dates/2023/11/30/guide/">&lt;h3 id=&quot;--window-환경의-flask-설치-vs-code에서-flask-실행-가이드&quot;&gt;- window 환경의 flask 설치, vs code에서 flask 실행 가이드&lt;/h3&gt;
 
 &lt;p&gt;window 환경에서 웹어플리케이션 개발을 지원하는 Python API인 flask를 설치해보자.&lt;/p&gt;
 
@@ -498,7 +573,7 @@ cmd가 아니라면,
 &lt;p&gt;이제 환경 변수 설정 없이
 그냥 가상환경 활성화 후, flask run을 치면 실행된다!&lt;/p&gt;
 
-&lt;p&gt;진짜 끝!&lt;/p&gt;</content><author><name>Eunbyeol-Choi</name></author><category term="dates" /><category term="Guide" /><summary type="html">- window 환경의 flask 설치, vs code에서 flask 실행 가이드</summary></entry><entry><title type="html">Oiso의 마이페이지 기능 소개</title><link href="http://localhost:4000/dates/2023/11/30/%ED%95%B4%EC%84%A4_%EB%A7%88%EC%9D%B4%ED%8E%98%EC%9D%B4%EC%A7%80/" rel="alternate" type="text/html" title="Oiso의 마이페이지 기능 소개" /><published>2023-11-30T09:00:00+09:00</published><updated>2023-11-30T09:00:00+09:00</updated><id>http://localhost:4000/dates/2023/11/30/%ED%95%B4%EC%84%A4_%EB%A7%88%EC%9D%B4%ED%8E%98%EC%9D%B4%EC%A7%80</id><content type="html" xml:base="http://localhost:4000/dates/2023/11/30/%ED%95%B4%EC%84%A4_%EB%A7%88%EC%9D%B4%ED%8E%98%EC%9D%B4%EC%A7%80/">&lt;h2 id=&quot;들어가며&quot;&gt;들어가며&lt;/h2&gt;
+&lt;p&gt;진짜 끝!&lt;/p&gt;</content><author><name>Eunbyeol-Choi</name></author><category term="dates" /><category term="Guide" /><summary type="html">- window 환경의 flask 설치, vs code에서 flask 실행 가이드</summary></entry><entry><title type="html">Oiso의 마이페이지 기능 소개</title><link href="http://localhost:4000/dates/2023/11/30/%ED%95%B4%EC%84%A4_%EB%A7%88%EC%9D%B4%ED%8E%98%EC%9D%B4%EC%A7%80/" rel="alternate" type="text/html" title="Oiso의 마이페이지 기능 소개" /><published>2023-11-30T00:00:00+09:00</published><updated>2023-11-30T00:00:00+09:00</updated><id>http://localhost:4000/dates/2023/11/30/%ED%95%B4%EC%84%A4_%EB%A7%88%EC%9D%B4%ED%8E%98%EC%9D%B4%EC%A7%80</id><content type="html" xml:base="http://localhost:4000/dates/2023/11/30/%ED%95%B4%EC%84%A4_%EB%A7%88%EC%9D%B4%ED%8E%98%EC%9D%B4%EC%A7%80/">&lt;h2 id=&quot;들어가며&quot;&gt;들어가며&lt;/h2&gt;
 &lt;p&gt;‘마켓 웹 어플리케이션 개발’이라는 주제를 받은 후, 가장 열심히 고민했던 주제 중 하나는 ‘어떻게 오이소만의 특징을 드러낼 수 있을까?’였습니다. &lt;br /&gt;&lt;/p&gt;
 
 &lt;p&gt;마켓 서비스 이용에 도움이 되면서도 오이소의 정체성을 톡톡히 드러낼 수 있도록 하기 위해 저희가 선택한 것은 바로 ‘마이페이지’의 구현이었습니다.&lt;br /&gt;
@@ -519,4 +594,4 @@ cmd가 아니라면,
   &lt;li&gt;&lt;strong&gt;판매내역&lt;/strong&gt;: 메뉴바 중 두 번째 ‘판매내역’ 바를 눌러 내가 판매한 상품들을 확인할 수 있습니다.&lt;br /&gt;&lt;/li&gt;
   &lt;li&gt;&lt;strong&gt;내 오이목록&lt;/strong&gt;: 메뉴바 중 세 번째 ‘내 오이목록’ 바를 눌러 내가 오이 버튼을 눌러 찜했던 상품들을 확인할 수 있습니다.&lt;br /&gt;&lt;/li&gt;
   &lt;li&gt;&lt;strong&gt;내 리뷰&lt;/strong&gt;: 메뉴바 아래에는 ‘내 리뷰’ 칸을 두어 내가 받은 리뷰들과 작성한 리뷰들을 한 눈에 확인할 수 있도록 했습니다. 사진을 클릭하면 각 리뷰의 상세창으로 이동할 수 있습니다.&lt;br /&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>Yujin-Yang</name></author><category term="dates" /><category term="description" /><summary type="html">들어가며 ‘마켓 웹 어플리케이션 개발’이라는 주제를 받은 후, 가장 열심히 고민했던 주제 중 하나는 ‘어떻게 오이소만의 특징을 드러낼 수 있을까?’였습니다. 마켓 서비스 이용에 도움이 되면서도 오이소의 정체성을 톡톡히 드러낼 수 있도록 하기 위해 저희가 선택한 것은 바로 ‘마이페이지’의 구현이었습니다. 프로젝트 요구사항 한눈에 보기</summary></entry></feed>
+&lt;/ul&gt;</content><author><name>Yujin-Yang</name></author><category term="dates" /><category term="description" /><summary type="html">마켓 웹 어플리케이션 개발이라는 주제를 받은 후, 가장 열심히 고민했던 주제 중 하나는 '어떻게 오이소만의 특징을 드러낼 수 있을까?'였습니다...</summary></entry></feed>
