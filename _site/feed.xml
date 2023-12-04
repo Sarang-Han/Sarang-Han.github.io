@@ -1,4 +1,61 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="en" /><updated>2023-12-02T00:30:59+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">OISO</title><subtitle>Ewha-Market Project &quot;Oiso&quot;의 블로그입니다.</subtitle><author><name>Oiso</name></author><entry><title type="html">AJAX 사용하여 좋아요 기능 구현 팁</title><link href="http://localhost:4000/dates/2023/12/01/tip/" rel="alternate" type="text/html" title="AJAX 사용하여 좋아요 기능 구현 팁" /><published>2023-12-01T09:00:00+09:00</published><updated>2023-12-01T09:00:00+09:00</updated><id>http://localhost:4000/dates/2023/12/01/tip</id><content type="html" xml:base="http://localhost:4000/dates/2023/12/01/tip/">&lt;h2 id=&quot;ajax란&quot;&gt;AJAX란?&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="en" /><updated>2023-12-04T20:17:16+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">OISO</title><subtitle>Ewha-Market Project &quot;Oiso&quot;의 블로그입니다.</subtitle><author><name>Oiso</name></author><entry><title type="html">OSP 이화마켓 제작 프로젝트 소개</title><link href="http://localhost:4000/dates/2023/12/04/%EC%98%A4%EC%9D%B4%EC%86%8C%EC%86%8C%EA%B0%9C/" rel="alternate" type="text/html" title="OSP 이화마켓 제작 프로젝트 소개" /><published>2023-12-04T18:48:00+09:00</published><updated>2023-12-04T18:48:00+09:00</updated><id>http://localhost:4000/dates/2023/12/04/%EC%98%A4%EC%9D%B4%EC%86%8C%EC%86%8C%EA%B0%9C</id><content type="html" xml:base="http://localhost:4000/dates/2023/12/04/%EC%98%A4%EC%9D%B4%EC%86%8C%EC%86%8C%EA%B0%9C/">&lt;p class=&quot;message&quot;&gt;이화 중고마켓 플랫폼 &lt;strong&gt;오이소&lt;/strong&gt; 프로젝트에 대해 소개합니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;오이소-로고&quot;&gt;오이소 로고&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;오이소&lt;/strong&gt;는 간편함, 신선함, 그리고 이대생이라면 누구나 이용할 수 있는 이화 중고거래 마켓 플랫폼입니다. 팀 명인 &lt;strong&gt;오이소박이&lt;/strong&gt;를 따와 이름을 정했고, 이름과 어울리는 오이 이미지를 모티브로 로고를 제작하였습니다.&lt;br /&gt;
+로고의 중앙에는 손을 맞잡는 세 사람을 표현해 거래로 이어지는 이웃들을 표현했습니다. &lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://github.com/ye-eunlee/osp23-2/assets/144983247/d0ad4ffe-383c-4be3-b681-0696964b4d97&quot; alt=&quot;오이소 로고디자인1&quot; style=&quot;height: 200px;&quot; /&gt;
+&lt;img src=&quot;https://github.com/ye-eunlee/osp23-2/assets/144983247/45b36b25-0b9e-4eb4-abf5-834526e68be3&quot; alt=&quot;오이소 로고디자인2&quot; style=&quot;width: 200px;&quot; /&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;오이소-전체-메뉴-구조&quot;&gt;오이소 전체 메뉴 구조&lt;/h2&gt;
+
+&lt;p&gt;오이소의 전체 메뉴 및 서비스를 시각화한 메뉴 구조입니다.
+&lt;img src=&quot;https://github.com/ye-eunlee/osp23-2/assets/144983247/19b07815-fb01-4a5d-ac1d-f8a7f531979c&quot; alt=&quot;메뉴 구조&quot; /&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;오이소에서-구현할-기능&quot;&gt;오이소에서 구현할 기능&lt;/h2&gt;
+
+&lt;p&gt;&lt;em&gt;이번 프로젝트에서 필수적으로 요구되는 8가지 화면 + 우리 팀만의 차별성을 갖는 화면으로 웰컴페이지, 카테고리별 상품 조회 화면, 채팅 화면, 마이페이지, 구매내역/판매내역 화면, 관심목록 화면을 추가했습니다.&lt;/em&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;로그인회원가입웰컴페이지&quot;&gt;로그인/회원가입/웰컴페이지&lt;/h3&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;기본 화면은 로그인 화면. 아이디와 패스워드를 입력해 로그인을 받고, 계정이 없다면 회원가입 창에서 회원가입을 진행합니다. 회원가입이 완료되면 웰컴페이지가 나타나고, 로그인하러 가기 버튼을 눌러 로그인 화면으로 이동합니다.
+&lt;img src=&quot;https://github.com/ye-eunlee/osp23-2/assets/144983247/9355cacd-7a34-40d8-aa9e-b5f2e49d935b&quot; alt=&quot;로그인&quot; /&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;상품-등록전체조회세부&quot;&gt;상품 등록/전체조회/세부&lt;/h3&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;오이소의 메인 화면은 상품 전체조회 화면. 우측 상단의 카테고리 선택 버튼을 눌러 카테고리별로 상품을 모아볼 수 있습니다. 상품 전체조회 화면에서 각 상품을 누르면 상품 세부 화면으로 연결되어 상품 상세 정보와 판매자의 프로필을 볼 수 있다. 상품 등록은 하단 내비게이션 바의 중앙 버튼을 눌러 할 수 있습니다.
+&lt;img src=&quot;https://github.com/ye-eunlee/osp23-2/assets/144983247/63dce4b6-45c1-41d5-8962-ed2bea495ba8&quot; alt=&quot;상품화면&quot; /&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;채팅&quot;&gt;채팅&lt;/h3&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;내비게이션 바의 채팅보기 버튼을 누르면 채팅 목록 화면으로 연결. 이용자의 1대1 채팅방을 모아볼 수 있고, 각각의 채팅을 누르면 해당 채팅방으로 연결됩니다.
+&lt;img src=&quot;https://github.com/ye-eunlee/osp23-2/assets/144983247/ac315559-c786-4555-b316-94384dd023ed&quot; alt=&quot;채팅&quot; /&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;리뷰-전체보기상세&quot;&gt;리뷰 전체보기/상세&lt;/h3&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;내비게이션 바의 전체 리뷰 버튼을 누르면 리뷰 전체 보기 화면으로 연결. 각각의 리뷰 이미지를 누르면 상품 리뷰 상세 화면으로 연결됩니다.
+&lt;img src=&quot;https://github.com/ye-eunlee/osp23-2/assets/144983247/b067924d-a16a-4e00-b086-d627fa2a4b05&quot; alt=&quot;리뷰&quot; /&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;다른-이용자-프로필&quot;&gt;다른 이용자 프로필&lt;/h3&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;다른 이용자의 프로필 사진을 누르면 해당 프로필로 연결이 되고, 이용자가 받은 리뷰와 작성한 리뷰를 볼 수 있습니다. 각각의 리뷰를 누르면 상품 리뷰 상세 화면으로 연결됩니다.
+&lt;img src=&quot;https://github.com/ye-eunlee/osp23-2/assets/144983247/1768b6cb-c04c-4a8d-ad89-1b500a9d382b&quot; alt=&quot;다른 이용자 프로필&quot; /&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;마이페이지---내-프로필구매내역리뷰-작성판매내역내-오이목록&quot;&gt;마이페이지 - 내 프로필/구매내역/리뷰 작성/판매내역/내 오이목록&lt;/h3&gt;
+&lt;p&gt;&lt;em&gt;마이페이지에 대한 상세한 설명은 &lt;a href=&quot;https://sarang-han.github.io/dates/2023/11/30/%ED%95%B4%EC%84%A4_%EB%A7%88%EC%9D%B4%ED%8E%98%EC%9D%B4%EC%A7%80/&quot;&gt;마이페이지 기능 소개 글&lt;/a&gt;에서 볼 수 있습니다.&lt;/em&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;오이소박이-팀스페이스&quot;&gt;오이소박이 팀스페이스&lt;/h2&gt;
+&lt;p&gt;&lt;em&gt;오이소박이 노션 팀스페이스는 &lt;strong&gt;&lt;a href=&quot;https://www.notion.so/74fb1a71b7964b2ab6450a1cead6434e&quot;&gt;여기&lt;/a&gt;&lt;/strong&gt;서 확인할 수 있습니다.&lt;/em&gt;&lt;/p&gt;</content><author><name>Yeeun Lee</name></author><category term="dates" /><category term="description" /><summary type="html">이화 중고마켓 플랫폼 오이소 프로젝트에 대해 소개합니다.</summary></entry><entry><title type="html">AJAX 사용하여 좋아요 기능 구현 팁</title><link href="http://localhost:4000/dates/2023/12/01/tip/" rel="alternate" type="text/html" title="AJAX 사용하여 좋아요 기능 구현 팁" /><published>2023-12-01T09:00:00+09:00</published><updated>2023-12-01T09:00:00+09:00</updated><id>http://localhost:4000/dates/2023/12/01/tip</id><content type="html" xml:base="http://localhost:4000/dates/2023/12/01/tip/">&lt;h2 id=&quot;ajax란&quot;&gt;AJAX란?&lt;/h2&gt;
 &lt;p&gt;효율적인 클라이언트-서버와의 통신을 위한 JS에서 제공하는 라이브러리이다.&lt;br /&gt;
 HTML의 일부분만 새로고침 하기 위해 주로 사용한다.&lt;br /&gt;&lt;/p&gt;
 
@@ -112,9 +169,7 @@ HTML의 일부분만 새로고침 하기 위해 주로 사용한다.&lt;br /&gt;
   &lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;p&gt;끝!&lt;/p&gt;</content><author><name>Dayoung Shin</name></author><category term="dates" /><category term="Debug/Tips" /><summary type="html">AJAX란? 효율적인 클라이언트-서버와의 통신을 위한 JS에서 제공하는 라이브러리이다. HTML의 일부분만 새로고침 하기 위해 주로 사용한다.</summary></entry><entry><title type="html">Flak 설치 가이드 [VS Code, Window]</title><link href="http://localhost:4000/dates/2023/11/30/guide/" rel="alternate" type="text/html" title="Flak 설치 가이드 [VS Code, Window]" /><published>2023-11-30T09:00:00+09:00</published><updated>2023-11-30T09:00:00+09:00</updated><id>http://localhost:4000/dates/2023/11/30/guide</id><content type="html" xml:base="http://localhost:4000/dates/2023/11/30/guide/">&lt;h1 id=&quot;flask-설치-가이드-vs-code-window&quot;&gt;Flask 설치 가이드 [VS Code, Window]&lt;/h1&gt;
-
-&lt;h3 id=&quot;--window-환경의-flask-설치-vs-code에서-flask-실행-가이드&quot;&gt;- window 환경의 flask 설치, vs code에서 flask 실행 가이드&lt;/h3&gt;
+&lt;p&gt;끝!&lt;/p&gt;</content><author><name>Dayoung Shin</name></author><category term="dates" /><category term="Debug/Tips" /><summary type="html">AJAX란? 효율적인 클라이언트-서버와의 통신을 위한 JS에서 제공하는 라이브러리이다. HTML의 일부분만 새로고침 하기 위해 주로 사용한다.</summary></entry><entry><title type="html">Flask 설치 가이드 [VS Code, Window]</title><link href="http://localhost:4000/dates/2023/11/30/guide/" rel="alternate" type="text/html" title="Flask 설치 가이드 [VS Code, Window]" /><published>2023-11-30T09:00:00+09:00</published><updated>2023-11-30T09:00:00+09:00</updated><id>http://localhost:4000/dates/2023/11/30/guide</id><content type="html" xml:base="http://localhost:4000/dates/2023/11/30/guide/">&lt;h3 id=&quot;--window-환경의-flask-설치-vs-code에서-flask-실행-가이드&quot;&gt;- window 환경의 flask 설치, vs code에서 flask 실행 가이드&lt;/h3&gt;
 
 &lt;p&gt;window 환경에서 웹어플리케이션 개발을 지원하는 Python API인 flask를 설치해보자.&lt;/p&gt;
 
@@ -443,8 +498,10 @@ cmd가 아니라면,
 &lt;p&gt;이제 환경 변수 설정 없이
 그냥 가상환경 활성화 후, flask run을 치면 실행된다!&lt;/p&gt;
 
-&lt;p&gt;진짜 끝!&lt;/p&gt;</content><author><name>Eunbyeol-Choi</name></author><category term="dates" /><category term="Guide" /><summary type="html">Flask 설치 가이드 [VS Code, Window]</summary></entry><entry><title type="html">Oiso의 마이페이지 기능 소개</title><link href="http://localhost:4000/dates/2023/11/30/%ED%95%B4%EC%84%A4_%EB%A7%88%EC%9D%B4%ED%8E%98%EC%9D%B4%EC%A7%80/" rel="alternate" type="text/html" title="Oiso의 마이페이지 기능 소개" /><published>2023-11-30T09:00:00+09:00</published><updated>2023-11-30T09:00:00+09:00</updated><id>http://localhost:4000/dates/2023/11/30/%ED%95%B4%EC%84%A4_%EB%A7%88%EC%9D%B4%ED%8E%98%EC%9D%B4%EC%A7%80</id><content type="html" xml:base="http://localhost:4000/dates/2023/11/30/%ED%95%B4%EC%84%A4_%EB%A7%88%EC%9D%B4%ED%8E%98%EC%9D%B4%EC%A7%80/">&lt;h2 id=&quot;들어가며&quot;&gt;들어가며&lt;/h2&gt;
-&lt;p&gt;‘마켓 웹 어플리케이션 개발’이라는 주제를 받은 후, 가장 열심히 고민했던 주제 중 하나는 ‘어떻게 오이소만의 특징을 드러낼 수 있을까?’였습니다. 마켓 서비스 이용에 도움이 되면서도 오이소의 정체성을 톡톡히 드러낼 수 있도록 하기 위해 저희가 선택한 것은 바로 ‘마이페이지’의 구현이었습니다.&lt;br /&gt;
+&lt;p&gt;진짜 끝!&lt;/p&gt;</content><author><name>Eunbyeol-Choi</name></author><category term="dates" /><category term="Guide" /><summary type="html">- window 환경의 flask 설치, vs code에서 flask 실행 가이드</summary></entry><entry><title type="html">Oiso의 마이페이지 기능 소개</title><link href="http://localhost:4000/dates/2023/11/30/%ED%95%B4%EC%84%A4_%EB%A7%88%EC%9D%B4%ED%8E%98%EC%9D%B4%EC%A7%80/" rel="alternate" type="text/html" title="Oiso의 마이페이지 기능 소개" /><published>2023-11-30T09:00:00+09:00</published><updated>2023-11-30T09:00:00+09:00</updated><id>http://localhost:4000/dates/2023/11/30/%ED%95%B4%EC%84%A4_%EB%A7%88%EC%9D%B4%ED%8E%98%EC%9D%B4%EC%A7%80</id><content type="html" xml:base="http://localhost:4000/dates/2023/11/30/%ED%95%B4%EC%84%A4_%EB%A7%88%EC%9D%B4%ED%8E%98%EC%9D%B4%EC%A7%80/">&lt;h2 id=&quot;들어가며&quot;&gt;들어가며&lt;/h2&gt;
+&lt;p&gt;‘마켓 웹 어플리케이션 개발’이라는 주제를 받은 후, 가장 열심히 고민했던 주제 중 하나는 ‘어떻게 오이소만의 특징을 드러낼 수 있을까?’였습니다. &lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;마켓 서비스 이용에 도움이 되면서도 오이소의 정체성을 톡톡히 드러낼 수 있도록 하기 위해 저희가 선택한 것은 바로 ‘마이페이지’의 구현이었습니다.&lt;br /&gt;
  &lt;a href=&quot;https://docs.google.com/spreadsheets/d/13xf21WoCUF8Idq2_T3Hkjd5kDhR1O_bbwQH4rXohkF8/edit?usp=sharing&quot;&gt;프로젝트 요구사항 한눈에 보기&lt;/a&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;개괄-및-디자인-설계&quot;&gt;개괄 및 디자인 설계&lt;/h2&gt;
