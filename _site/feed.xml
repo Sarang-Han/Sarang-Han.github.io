@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="en" /><updated>2023-12-04T22:03:51+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">OISO</title><subtitle>Ewha-Market Project &quot;Oiso&quot;의 블로그입니다.</subtitle><author><name>Oiso</name></author><entry><title type="html">Oiso에 사용된 기술 개념 소개</title><link href="http://localhost:4000/dates/2023/12/04/%EA%B0%9C%EB%85%90/" rel="alternate" type="text/html" title="Oiso에 사용된 기술 개념 소개" /><published>2023-12-04T00:00:00+09:00</published><updated>2023-12-04T00:00:00+09:00</updated><id>http://localhost:4000/dates/2023/12/04/%EA%B0%9C%EB%85%90</id><content type="html" xml:base="http://localhost:4000/dates/2023/12/04/%EA%B0%9C%EB%85%90/">&lt;h2 id=&quot;oiso에서-활용한-기술-개요&quot;&gt;Oiso에서 활용한 기술 개요&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="en" /><updated>2023-12-04T22:26:44+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">OISO</title><subtitle>Ewha-Market Project &quot;Oiso&quot;의 블로그입니다.</subtitle><author><name>Oiso</name></author><entry><title type="html">Oiso에 사용된 기술 개념 소개</title><link href="http://localhost:4000/dates/2023/12/04/%EA%B0%9C%EB%85%90/" rel="alternate" type="text/html" title="Oiso에 사용된 기술 개념 소개" /><published>2023-12-04T00:00:00+09:00</published><updated>2023-12-04T00:00:00+09:00</updated><id>http://localhost:4000/dates/2023/12/04/%EA%B0%9C%EB%85%90</id><content type="html" xml:base="http://localhost:4000/dates/2023/12/04/%EA%B0%9C%EB%85%90/">&lt;h2 id=&quot;oiso에서-활용한-기술-개요&quot;&gt;Oiso에서 활용한 기술 개요&lt;/h2&gt;
 &lt;p&gt;&lt;br /&gt;
  Oiso 프로젝트에는 프론트엔드 기술로 &lt;b&gt;HTML, CSS, Javascript&lt;/b&gt;를, 백엔드 기술로는 &lt;b&gt;Flask와 Firebase&lt;/b&gt;를 사용하였습니다. 
 &lt;br /&gt;&lt;br /&gt;&lt;/p&gt;
@@ -134,10 +134,10 @@ Flask는 Python 웹 애플리케이션을 빠르고 쉽게 개발할 수 있게 
 
 &lt;p&gt;window 환경에서 웹어플리케이션 개발을 지원하는 Python API인 flask를 설치해보자.&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;1. python 설치&lt;/strong&gt;
-&lt;strong&gt;2. VScode 설치 (extenstion : Python 설치)&lt;/strong&gt;
-&lt;strong&gt;3. flask 설치&lt;/strong&gt;
-&lt;strong&gt;4. VScode 설정&lt;/strong&gt;
+&lt;p&gt;&lt;strong&gt;1. python 설치&lt;/strong&gt; &lt;br /&gt;
+&lt;strong&gt;2. VScode 설치 (extenstion : Python 설치)&lt;/strong&gt; &lt;br /&gt;
+&lt;strong&gt;3. flask 설치&lt;/strong&gt; &lt;br /&gt;
+&lt;strong&gt;4. VScode 설정&lt;/strong&gt; &lt;br /&gt;
 &lt;strong&gt;추가. 기본 실행 파일 변경 ⇒ 환경 변수 설정&lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
@@ -149,7 +149,7 @@ Flask는 Python 웹 애플리케이션을 빠르고 쉽게 개발할 수 있게 
 
 &lt;hr /&gt;
 
-&lt;h4 id=&quot;1-python-설치-anaconda&quot;&gt;1. Python 설치 (anaconda)&lt;/h4&gt;
+&lt;h3 id=&quot;1-python-설치-anaconda&quot;&gt;1. Python 설치 (anaconda)&lt;/h3&gt;
 
 &lt;ul&gt;
   &lt;li&gt;&lt;strong&gt;컴퓨터 64비트 지원 여부 확인&lt;/strong&gt;&lt;/li&gt;
@@ -231,7 +231,7 @@ https://www.anaconda.com/download&lt;/p&gt;
 
 &lt;hr /&gt;
 
-&lt;h4 id=&quot;2-vscode-설치-extenstion--python-설치&quot;&gt;2. VScode 설치 (extenstion : Python 설치)&lt;/h4&gt;
+&lt;h3 id=&quot;2-vscode-설치-extenstion--python-설치&quot;&gt;2. VScode 설치 (extenstion : Python 설치)&lt;/h3&gt;
 
 &lt;ul&gt;
   &lt;li&gt;&lt;strong&gt;VScode 설치&lt;/strong&gt;
@@ -282,7 +282,7 @@ https://code.visualstudio.com/download&lt;/li&gt;
 
 &lt;hr /&gt;
 
-&lt;h4 id=&quot;3-flask-설치&quot;&gt;3. Flask 설치&lt;/h4&gt;
+&lt;h3 id=&quot;3-flask-설치&quot;&gt;3. Flask 설치&lt;/h3&gt;
 
 &lt;ul&gt;
   &lt;li&gt;&lt;strong&gt;가상환경 생성 및 활성화&lt;/strong&gt;&lt;/li&gt;
@@ -331,7 +331,7 @@ https://code.visualstudio.com/download&lt;/li&gt;
 
 &lt;hr /&gt;
 
-&lt;h4 id=&quot;4-vscode-설정&quot;&gt;4. VScode 설정&lt;/h4&gt;
+&lt;h3 id=&quot;4-vscode-설정&quot;&gt;4. VScode 설정&lt;/h3&gt;
 
 &lt;p&gt;이제 vscode를 실행하고 설정을 진행하자&lt;/p&gt;
 
@@ -415,7 +415,7 @@ cmd가 아니라면,
 
 &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
 
-&lt;h4 id=&quot;추가-기본-실행-파일--변경하고-싶을-때&quot;&gt;추가. 기본 실행 파일  변경하고 싶을 때&lt;/h4&gt;
+&lt;h3 id=&quot;추가-기본-실행-파일--변경하고-싶을-때&quot;&gt;추가. 기본 실행 파일  변경하고 싶을 때&lt;/h3&gt;
 &lt;p&gt;&lt;strong&gt;⇒ 환경 변수를 설정해주자!&lt;/strong&gt;&lt;/p&gt;
 
 &lt;ul&gt;
