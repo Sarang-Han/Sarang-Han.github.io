@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="en" /><updated>2023-12-10T04:34:26+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">OISO</title><subtitle>Ewha-Market Project &quot;Oiso&quot;의 블로그입니다.</subtitle><author><name>Oiso</name></author><entry><title type="html">flask와 firebase로 야매 채팅기능 구현하기</title><link href="http://localhost:4000/dates/2023/12/10/%EC%B1%84%ED%8C%85/" rel="alternate" type="text/html" title="flask와 firebase로 야매 채팅기능 구현하기" /><published>2023-12-10T00:00:00+09:00</published><updated>2023-12-10T00:00:00+09:00</updated><id>http://localhost:4000/dates/2023/12/10/%EC%B1%84%ED%8C%85</id><content type="html" xml:base="http://localhost:4000/dates/2023/12/10/%EC%B1%84%ED%8C%85/">&lt;h2 id=&quot;1-기능-구현에-앞서-생각한-것&quot;&gt;1. 기능 구현에 앞서 생각한 것&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="en" /><updated>2023-12-10T04:41:14+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">OISO</title><subtitle>Ewha-Market Project &quot;Oiso&quot;의 블로그입니다.</subtitle><author><name>Oiso</name></author><entry><title type="html">flask와 firebase로 야매 채팅기능 구현하기</title><link href="http://localhost:4000/dates/2023/12/10/%EC%B1%84%ED%8C%85/" rel="alternate" type="text/html" title="flask와 firebase로 야매 채팅기능 구현하기" /><published>2023-12-10T00:00:00+09:00</published><updated>2023-12-10T00:00:00+09:00</updated><id>http://localhost:4000/dates/2023/12/10/%EC%B1%84%ED%8C%85</id><content type="html" xml:base="http://localhost:4000/dates/2023/12/10/%EC%B1%84%ED%8C%85/">&lt;h2 id=&quot;1-기능-구현에-앞서-생각한-것&quot;&gt;1. 기능 구현에 앞서 생각한 것&lt;/h2&gt;
 &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
 
 &lt;ol&gt;
@@ -55,18 +55,16 @@
 &lt;br /&gt;&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;hr /&gt;
-
 &lt;h2 id=&quot;2-실제-구현&quot;&gt;2. 실제 구현&lt;/h2&gt;
 &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&quot;https://github.com/Sarang-Han/Sarang-Han.github.io/assets/144914664/36dfa74e-4950-4231-a849-0692b9414678&quot;&gt;메모&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img width=&quot;410&quot; src=&quot;https://github.com/Sarang-Han/Sarang-Han.github.io/assets/144914664/36dfa74e-4950-4231-a849-0692b9414678&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&quot;https://github.com/Sarang-Han/Sarang-Han.github.io/assets/144914664/154a179d-758e-4f96-91b6-492263665ee8&quot;&gt;메모2&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img width=&quot;410&quot; src=&quot;https://github.com/Sarang-Han/Sarang-Han.github.io/assets/144914664/154a179d-758e-4f96-91b6-492263665ee8&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;(DB를 어떻게 설계할지 고민했던 메모들, 최종 chat db의 구조와는 좀 다름)&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&quot;https://github.com/Sarang-Han/Sarang-Han.github.io/assets/144914664/ff5d3a7c-f479-47c4-a638-75224fdf2105&quot;&gt;깃그래프&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img width=&quot;410&quot; src=&quot;https://github.com/Sarang-Han/Sarang-Han.github.io/assets/144914664/ff5d3a7c-f479-47c4-a638-75224fdf2105&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;(커밋기록을 통해 보는 구현 시도)&lt;/p&gt;
 
@@ -91,8 +89,6 @@
 그리고 구현 순서도 첫번째 시도와는 정반대로 진행됐음.&lt;br /&gt;&lt;br /&gt;&lt;/p&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
-
-&lt;hr /&gt;
 
 &lt;h2 id=&quot;을-구현하는-순서&quot;&gt;&lt;채팅기능&gt;을 구현하는 순서!&lt;/채팅기능&gt;&lt;/h2&gt;
 &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
