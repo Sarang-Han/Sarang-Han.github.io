@@ -1,0 +1,417 @@
+<!doctype html>
+<html lang="en">
+
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/pure-min.css" integrity="sha384-cg6SkqEOCV1NbJoCu11+bm0NvBRc8IYLRGXkmNrqUBfTjmMYwNKPWBTIKyw9mHNJ" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/grids-responsive-min.css">
+  <link rel="stylesheet" href="/assets/styles.css"><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>flask와 firebase로 야매 채팅기능 구현하기 | OISO</title>
+<meta name="generator" content="Jekyll v3.9.0" />
+<meta property="og:title" content="flask와 firebase로 야매 채팅기능 구현하기" />
+<meta name="author" content="Sarang Han" />
+<meta property="og:locale" content="en" />
+<meta name="description" content="기능 구현에 앞서 생각한 것 …" />
+<meta property="og:description" content="기능 구현에 앞서 생각한 것 …" />
+<link rel="canonical" href="http://localhost:4000/dates/2023/12/10/%EC%B1%84%ED%8C%85/" />
+<meta property="og:url" content="http://localhost:4000/dates/2023/12/10/%EC%B1%84%ED%8C%85/" />
+<meta property="og:site_name" content="OISO" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2023-12-10T00:00:00+09:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="flask와 firebase로 야매 채팅기능 구현하기" />
+<meta name="twitter:site" content="@Oiso" />
+<meta name="twitter:creator" content="@Sarang Han" />
+<meta name="google-site-verification" content="xxxxx" />
+<script type="application/ld+json">
+{"@type":"BlogPosting","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/logo.png"},"name":"Sarang Han"},"headline":"flask와 firebase로 야매 채팅기능 구현하기","dateModified":"2023-12-10T00:00:00+09:00","datePublished":"2023-12-10T00:00:00+09:00","author":{"@type":"Person","name":"Sarang Han"},"mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/dates/2023/12/10/%EC%B1%84%ED%8C%85/"},"description":"기능 구현에 앞서 생각한 것 …","url":"http://localhost:4000/dates/2023/12/10/%EC%B1%84%ED%8C%85/","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="OISO" />
+</head>
+
+
+  <body>
+
+    <div class="container pure-g"><div class="sidebar-left pure-u-1 pure-u-md-1-4" style="background-color: rgb(40, 73, 77); color: rgb(255, 255, 255); background-image: url(/plant.jpeg);"><header class="masthead">
+  <div class="avatar"><img src="/oiso_logo.png" class="avatar-image" alt="Oiso">
+    </div>
+  <div class="masthead-title">
+    <a href="/" title="Home">OISO</a>
+  </div>
+  <div class="masthead-tagline">
+    <small>Ewha-Market Project "Oiso"의 블로그입니다.</small>
+  </div><nav class="navigation">
+    <ul class="navigation-list"><li class="navigation-item">
+        <a onclick="sessionStorage.setItem('forceCheckScroll', 'true')" href="/">Blog</a>
+      </li><li class="navigation-item">
+        <a onclick="sessionStorage.setItem('forceCheckScroll', 'true')" href="/about/">About</a>
+      </li></ul>
+  </nav><div class="social pure-menu pure-menu-horizontal">
+      <ul class="social-icons pure-menu-list">
+      <li class="pure-menu-item">
+          <a class="social-icon pure-menu-link" href="https://github.com/Sarang-Han/Oiso">
+            <i class="fab fa-github" title="GitHub"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
+</header>
+</div>
+
+      <div class="content pure-u-1 pure-u-md-1-2"><main>
+  <article class="post">
+  <h1 class="post-title">flask와 firebase로 야매 채팅기능 구현하기</h1>
+  <div class="post-meta"><time datetime="2023-12-10T00:00:00+09:00" itemprop="datePublished">10 Dec 2023</time><span> • </span>
+      
+        <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+          Sarang Han
+        </span></div>
+
+  <h2 id="1-기능-구현에-앞서-생각한-것">1. 기능 구현에 앞서 생각한 것</h2>
+<p><br /></p>
+
+<ol>
+  <li>이미 구현된 <strong>채팅 api</strong>를 가져오는 방법은 없을까?
+    <ul>
+      <li>찾아봤지만 복잡하고 부담스러운 상업용 실시간 채팅 api임. 언어도 달라서 어떻게 지금 프레임워크에 적용해야할지 모르겠음</li>
+      <li>api 가져오기는 포기
+<br /><br /></li>
+    </ul>
+  </li>
+  <li>야매로라도 <strong>직접</strong> 만들어봐야겠다. 대충 채팅 기능은 게시판 댓글과 비슷한 게 아닐까?
+채팅 텍스트를 전송한 순간 화면에 띄워지고, 채팅 텍스트는 db에 쓰고 불러오는 과정이 비슷한 것 같다.
+    <ul>
+      <li>flask, firebase로 만든 게시판 댓글 기능들을 찾아봄</li>
+      <li>찾아봤지만 별로 유용한 글이 없어서 0부터 구상했어야 했음
+<br /><br /></li>
+    </ul>
+  </li>
+  <li>
+    <p>채팅기능에 필요한 것들을 생각해보니까 이미 다 배운 것 같다! 
+교수님이 알려주신 구현 방법들(<strong>상품상세</strong>에서 배운 동적 라우팅, <strong>판매목록</strong>에서 배운 db 읽고쓰고참조하기, <strong>오이목록</strong>에서 배운 ajax 등) 전체 다 섞으면 채팅 기능이 구현되겠지?
+<br /><br /></p>
+  </li>
+  <li>먼저 내 생각이 맞는지 다른 실습 저장소(오소플 그룹실습 저장소)에서 <strong>테스트</strong> 해보자. 채팅기능의 핵심인 채팅 상세 페이지부터 테스트해보자.
+    <ul>
+      <li>채팅상세 페이지 html을 만들었고, 메세지 입력칸과 전송칸을 만들어 임시로 css를 적용함.</li>
+      <li>gpt의 힘을 빌려 js와 app.py, db.py에 들어갈 함수들을 만들어봄</li>
+    </ul>
+  </li>
+</ol>
+
+<p><img width="880" alt="스크린샷 2023-12-10 오전 4 28 24" src="https://github.com/Sarang-Han/Sarang-Han.github.io/assets/144914664/8039a498-0121-44b8-90cd-f45425218ce6" /></p>
+
+<p><img width="572" alt="스크린샷 2023-12-10 오전 4 28 40" src="https://github.com/Sarang-Han/Sarang-Han.github.io/assets/144914664/89c7285c-eea4-4ee1-ba2b-f466041af99b" /></p>
+
+<p>→ 채팅 올린 순간 동적으로 화면에 띄우기 + DB 쓰기 읽기를 통해 메세지 데이터를 db에 쓰고 불러오는 <strong>채팅상세</strong> 페이지가 잘 구현되는 것을 확인할 수 있었음</p>
+
+<p>→ 그렇다면 이제 이 기능을 오이소에 적용하면 되겠다!
+<br /><br /></p>
+
+<ul>
+  <li>핵심인 채팅 상세 기능에 대한 로직은 알았는데, 이제 DB들과 어떻게 연계해서 어떤 방식으로 전체 채팅 기능을 구현할까… 고민했음
+<br />
+→ 한 상품에 구매자-판매자 1:1 채팅방이 여러개 만들어지는 식으로 하면 완성도는 있지만 시간이 좀 많이 걸릴것 같다<br />
+→ 상품 하나에 대응되는 채팅방 하나 생성 해서 구매자 여러명이 상품 채팅방 하나에 참여하는 건 구현이 상대적으로 쉬울 것 같다</li>
+</ul>
+
+<p><img width="413" alt="KakaoTalk_Snapshot_20231208_175847" src="https://github.com/Sarang-Han/Sarang-Han.github.io/assets/144914664/d07f9575-3391-40c8-a4fc-73723a900fb1" /></p>
+
+<ul>
+  <li>11.30 수업에서 백엔드 팀원들과 의논해서 더 쉽고 구조가 덜 복잡한 <strong>후자의 방법을 선택</strong>하였음.
+구매목록 부분과 리뷰 부분을 구현하는 것이 어려워서 막혀있었는데, 채팅기능을 결정하니 어떻게 구현해야할지 길이 생김.<br />
+→ 각 상품마다 대응되는 개별 채팅방 만들고, 채팅목록에 구매완료 버튼을 추가해서 구매목록에 연동하는 식으로 나머지 백엔드 구현(채팅, 구매목록, 리뷰)를 완료할 수 있을 것 같다!
+<br /><br /></li>
+</ul>
+
+<hr />
+
+<h2 id="2-실제-구현">2. 실제 구현</h2>
+<p><br /></p>
+
+<p><a href="https://github.com/Sarang-Han/Sarang-Han.github.io/assets/144914664/36dfa74e-4950-4231-a849-0692b9414678">메모</a></p>
+
+<p><a href="https://github.com/Sarang-Han/Sarang-Han.github.io/assets/144914664/154a179d-758e-4f96-91b6-492263665ee8">메모2</a></p>
+
+<p>(DB를 어떻게 설계할지 고민했던 메모들, 최종 chat db의 구조와는 좀 다름)</p>
+
+<p><a href="https://github.com/Sarang-Han/Sarang-Han.github.io/assets/144914664/ff5d3a7c-f479-47c4-a638-75224fdf2105">깃그래프</a></p>
+
+<p>(커밋기록을 통해 보는 구현 시도)</p>
+
+<ul>
+  <li>
+    <p>채팅기능 구현은 <strong>2차 시도</strong> 끝에 성공할 수 있었음.<br /><br /></p>
+  </li>
+  <li>
+    <p>첫번째 시도는 무작정 채팅 상세 기능부터 추가하면서 구현을 시작했고, 부분적인 기능은 실행은 되었지만 다른 팀원들의 실행에서 상세채팅방이 보이지 않는 오류가 있었음. 또한 오이목록도 제대로 기능하지 않게 되었음.<br /><br /></p>
+  </li>
+</ul>
+
+<p>어떻게 해도 오류는 고쳐지지 않아서 디버깅했더니 이유를 알게되었음.<br />
+→ 다른 팀원이 설계한 DB를 잘못 이해해서 DB를 잘못 참조했고, 잘못 참조하는 과정에서 다른 db들의 변수를 잘못 건드려 다른 기능들도 제대로 실행되지 않았음.<br /><br /></p>
+
+<ul>
+  <li>
+    <p>결국 1차 시도에서 생성한 코드들의 오류를 수정하는 것보다 다 버리고 <strong>처음부터 다시 구현</strong>하는 것이 빠를 것 같아서 태초로 돌아가 다시 구현을 시도함.<br /><br /></p>
+  </li>
+  <li>
+    <p>두번째 시도에서는 기능을 좀 더 빠르고 체계적으로 구현할 수 있었음. 
+그리고 구현 순서도 첫번째 시도와는 정반대로 진행됐음.<br /><br /></p>
+  </li>
+</ul>
+
+<hr />
+
+<h2 id="을-구현하는-순서"><채팅기능>을 구현하는 순서!</채팅기능></h2>
+<p><br /></p>
+<ol>
+  <li>
+    <p>전체 채팅 DB 구조를 설계하고 참조할 다른 DB를 생각해둔다</p>
+  </li>
+  <li>
+    <p>먼저 상품 DB를 참조하여 <strong>채팅목록 페이지</strong>를 렌더링한다</p>
+  </li>
+  <li>
+    <p>상품 key를 기반으로 동적 라우팅을 이용하여 <strong>채팅 상세 페이지</strong>를 렌더링한다</p>
+  </li>
+  <li>
+    <p>상품 상세 페이지에서 &lt;<strong>채팅보기</strong>&gt; 버튼으로 채팅상세 페이지에 연결되게 한다
+4-1. 채팅목록 페이지에서 각 채팅방을 누르면 채팅상세 페이지에 연결되게 한다</p>
+  </li>
+  <li>
+    <p>채팅상세 페이지의 <strong>메세지 전송기능</strong>을 구현 완료한다
+<br /><br /></p>
+  </li>
+</ol>
+
+<ul>
+  <li>이후 구매자 채팅방 등록 기능, 구매완료 버튼 기능을 제외한 전체 채팅방 기능을 구현할 수 있었고, 
+제외된 부분은 구매목록 기능을 맡은 다영님이 마무리 구현을 해주셨음.</li>
+</ul>
+
+<p><br /><br /></p>
+<ul>
+  <li>완성된 코드 :</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># application.py
+</span>
+<span class="o">@</span><span class="n">application</span><span class="p">.</span><span class="n">route</span><span class="p">(</span><span class="s">"/채팅목록"</span><span class="p">)</span> <span class="c1"># 채팅목록은 item db를 참조하여 띄워짐.
+</span><span class="o">@</span><span class="n">login_required</span>
+<span class="k">def</span> <span class="nf">chatlist</span><span class="p">():</span>
+    <span class="n">user_id</span> <span class="o">=</span> <span class="n">session</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s">'id'</span><span class="p">,</span> <span class="s">''</span><span class="p">)</span>  <span class="c1"># 세션에서 사용자 ID 가져오기
+</span>    <span class="k">if</span> <span class="n">user_id</span><span class="p">:</span>
+        <span class="n">item_info_list</span> <span class="o">=</span> <span class="n">DB</span><span class="p">.</span><span class="n">get_sellitems_by_seller</span><span class="p">(</span><span class="n">user_id</span><span class="p">)</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">item_info_list</span> <span class="o">==</span> <span class="bp">None</span><span class="p">):</span>
+            <span class="n">sell_total</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">sell_total</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">item_info_list</span><span class="p">)</span>
+
+        <span class="n">buyer_chatlist</span> <span class="o">=</span> <span class="n">DB</span><span class="p">.</span><span class="n">get_chatitems</span><span class="p">(</span><span class="n">user_id</span><span class="p">)</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">buyer_chatlist</span> <span class="o">==</span> <span class="bp">None</span><span class="p">):</span>
+            <span class="n">buy_total</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">buy_total</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">buyer_chatlist</span><span class="p">)</span>
+
+        <span class="n">buylist</span> <span class="o">=</span> <span class="n">DB</span><span class="p">.</span><span class="n">get_buyitems_key</span><span class="p">(</span><span class="n">user_id</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s">"채팅목록.html"</span><span class="p">,</span> <span class="n">item_info_list</span><span class="o">=</span><span class="n">item_info_list</span><span class="p">,</span> <span class="n">sell_total</span><span class="o">=</span><span class="n">sell_total</span><span class="p">,</span>
+                               <span class="n">buyer_chatlist</span><span class="o">=</span><span class="n">buyer_chatlist</span><span class="p">,</span> <span class="n">buy_total</span><span class="o">=</span><span class="n">buy_total</span><span class="p">,</span> <span class="n">buylist</span><span class="o">=</span><span class="n">buylist</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="n">url_for</span><span class="p">(</span><span class="s">'login'</span><span class="p">))</span>
+
+
+<span class="o">@</span><span class="n">application</span><span class="p">.</span><span class="n">route</span><span class="p">(</span><span class="s">"/채팅상세/&lt;item_key&gt;/"</span><span class="p">)</span>
+<span class="o">@</span><span class="n">login_required</span>
+<span class="k">def</span> <span class="nf">chat_detail</span><span class="p">(</span><span class="n">item_key</span><span class="p">):</span>
+    <span class="n">user_id</span> <span class="o">=</span> <span class="n">session</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s">'id'</span><span class="p">,</span> <span class="s">''</span><span class="p">)</span>
+    <span class="n">chat_messages</span> <span class="o">=</span> <span class="n">DB</span><span class="p">.</span><span class="n">get_chat_messages</span><span class="p">(</span><span class="n">item_key</span><span class="p">)</span>  <span class="c1"># item_key에 해당하는 채팅 메시지 가져오기
+</span>    <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s">"채팅상세.html"</span><span class="p">,</span> <span class="n">user_id</span><span class="o">=</span><span class="n">user_id</span><span class="p">,</span> <span class="n">item_key</span><span class="o">=</span><span class="n">item_key</span><span class="p">,</span> <span class="n">chat_messages</span><span class="o">=</span><span class="n">chat_messages</span><span class="p">)</span>
+
+
+<span class="o">@</span><span class="n">application</span><span class="p">.</span><span class="n">route</span><span class="p">(</span><span class="s">"/send_message"</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s">"POST"</span><span class="p">])</span> <span class="c1"># 메세지 보내는 함수
+</span><span class="k">def</span> <span class="nf">send_message</span><span class="p">():</span>
+    <span class="k">if</span> <span class="n">request</span><span class="p">.</span><span class="n">method</span> <span class="o">==</span> <span class="s">"POST"</span><span class="p">:</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">request</span><span class="p">.</span><span class="n">json</span>
+        <span class="n">item_key</span> <span class="o">=</span> <span class="n">data</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s">"item_key"</span><span class="p">)</span>
+        <span class="n">user_id</span> <span class="o">=</span> <span class="n">session</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s">'id'</span><span class="p">,</span> <span class="s">''</span><span class="p">)</span>
+        <span class="n">message</span> <span class="o">=</span> <span class="n">data</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s">"msg"</span><span class="p">)</span>
+        <span class="n">timestamp</span> <span class="o">=</span> <span class="n">data</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s">"timestamp"</span><span class="p">)</span>
+
+        <span class="n">item_info</span> <span class="o">=</span> <span class="n">DB</span><span class="p">.</span><span class="n">get_item_by_key</span><span class="p">(</span><span class="n">item_key</span><span class="p">)</span>
+        <span class="n">seller_id</span> <span class="o">=</span> <span class="n">item_info</span><span class="p">[</span><span class="s">'seller'</span><span class="p">]</span>
+        <span class="c1"># 여기서 DB에 메시지를 저장하는 함수 호출
+</span>        <span class="n">DB</span><span class="p">.</span><span class="n">insert_message</span><span class="p">(</span><span class="n">item_key</span><span class="p">,</span> <span class="n">user_id</span><span class="p">,</span> <span class="n">message</span><span class="p">,</span> <span class="n">timestamp</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="n">seller_id</span> <span class="o">!=</span> <span class="n">user_id</span><span class="p">):</span>
+            <span class="n">item</span> <span class="o">=</span> <span class="n">DB</span><span class="p">.</span><span class="n">get_chatlist_by_itemkey</span><span class="p">(</span><span class="n">user_id</span><span class="p">,</span> <span class="n">item_key</span><span class="p">)</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">item</span> <span class="o">==</span> <span class="bp">None</span><span class="p">):</span>
+                <span class="n">DB</span><span class="p">.</span><span class="n">insert_chatlist</span><span class="p">(</span><span class="n">user_id</span><span class="p">,</span> <span class="n">item_key</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">jsonify</span><span class="p">({</span><span class="s">"success"</span><span class="p">:</span> <span class="bp">True</span><span class="p">}),</span> <span class="mi">200</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">jsonify</span><span class="p">({</span><span class="s">"success"</span><span class="p">:</span> <span class="bp">False</span><span class="p">}),</span> <span class="mi">400</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># database.py
+</span>
+<span class="k">def</span> <span class="nf">get_chat_messages</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item_key</span><span class="p">):</span>
+        <span class="n">chat_ref</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">db</span><span class="p">.</span><span class="n">child</span><span class="p">(</span><span class="s">"chatlist"</span><span class="p">).</span><span class="n">child</span><span class="p">(</span><span class="n">item_key</span><span class="p">).</span><span class="n">get</span><span class="p">().</span><span class="n">val</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">chat_ref</span><span class="p">:</span>
+            <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="n">chat_ref</span><span class="p">.</span><span class="n">values</span><span class="p">())</span>  <span class="c1"># 딕셔너리를 리스트로 변환하여 반환합니다.
+</span>        <span class="k">return</span> <span class="bp">None</span>
+
+<span class="k">def</span> <span class="nf">insert_chatlist</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">uid</span><span class="p">,</span> <span class="n">item_key</span><span class="p">):</span>
+        <span class="n">item_info</span><span class="o">=</span><span class="bp">self</span><span class="p">.</span><span class="n">db</span><span class="p">.</span><span class="n">child</span><span class="p">(</span><span class="s">"item"</span><span class="p">).</span><span class="n">child</span><span class="p">(</span><span class="n">item_key</span><span class="p">).</span><span class="n">get</span><span class="p">().</span><span class="n">val</span><span class="p">()</span>
+        <span class="n">imgpath</span> <span class="o">=</span> <span class="n">item_info</span><span class="p">[</span><span class="s">'img_path'</span><span class="p">]</span>
+        <span class="n">chat_info</span><span class="o">=</span><span class="p">{</span>
+            <span class="s">"img_path"</span><span class="p">:</span> <span class="n">imgpath</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+            <span class="s">"name"</span><span class="p">:</span> <span class="n">item_info</span><span class="p">[</span><span class="s">'name'</span><span class="p">],</span>
+            <span class="s">"price"</span><span class="p">:</span> <span class="n">item_info</span><span class="p">[</span><span class="s">'price'</span><span class="p">],</span>
+            <span class="s">"item_key"</span><span class="p">:</span> <span class="n">item_key</span>
+        <span class="p">}</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">db</span><span class="p">.</span><span class="n">child</span><span class="p">(</span><span class="s">"buyer_chatlist"</span><span class="p">).</span><span class="n">child</span><span class="p">(</span><span class="n">uid</span><span class="p">).</span><span class="n">child</span><span class="p">(</span><span class="n">item_key</span><span class="p">).</span><span class="n">push</span><span class="p">(</span><span class="n">chat_info</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">True</span>
+
+<span class="k">def</span> <span class="nf">insert_message</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item_key</span><span class="p">,</span> <span class="n">user_id</span><span class="p">,</span> <span class="n">message</span><span class="p">,</span> <span class="n">timestamp</span><span class="p">):</span>
+    <span class="c1"># 채팅 메시지 추가
+</span>        <span class="n">chat_ref</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">db</span><span class="p">.</span><span class="n">child</span><span class="p">(</span><span class="s">"chatlist"</span><span class="p">).</span><span class="n">child</span><span class="p">(</span><span class="n">item_key</span><span class="p">)</span>
+
+        <span class="c1"># 새로운 메시지 정보
+</span>        <span class="n">new_message</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s">'id'</span><span class="p">:</span> <span class="n">user_id</span><span class="p">,</span>
+            <span class="s">'msg'</span><span class="p">:</span> <span class="n">message</span><span class="p">,</span>
+            <span class="s">'timestamp'</span><span class="p">:</span> <span class="n">timestamp</span>
+        <span class="p">}</span>
+
+</code></pre></div></div>
+
+<h3 id="최종-db">최종 DB</h3>
+
+<p><img width="606" alt="스크린샷 2023-12-08 오후 6 50 52" src="https://github.com/Sarang-Han/Sarang-Han.github.io/assets/144914664/8b5393e6-ea60-46ca-9bf5-63fe7904d990" /></p>
+
+<p><img width="593" alt="스크린샷 2023-12-08 오후 6 50 23" src="https://github.com/Sarang-Han/Sarang-Han.github.io/assets/144914664/ed3d4954-08ed-4712-b4b5-d7459fea9319" /></p>
+
+<ul>
+  <li>설명:
+chatlist는 <strong>상세채팅방</strong> 구현을 위한 테이블임. 판매자나 구매자가 채팅방에 메세지를 올리면 <strong>상품키 레코드</strong>(채팅방을 뜻함) 아래 <strong>id, msg, timestamp 필드</strong>로 채팅 데이터가 기록됨. 채팅상세 페이지는 상품상세-<채팅보기> 혹은 채팅목록-채팅방 클릭을 통해 연결됨.
+<br /><br /></채팅보기></li>
+</ul>
+
+<p>채팅목록 구현 끝!</p>
+
+
+  
+    
+      <div class="post-tags-section">
+  <i class="post-tags-icon fas fa-tags"></i>
+  <ul class="post-tags"><li>
+        <a class="post-tag" href="/tags/#description">description</a></li></ul>
+</div>
+
+  
+
+  
+</article>
+
+
+<aside class="related">
+  <h2>Related posts</h2>
+  <ul class="related-posts">
+    
+      <li>
+        <a href="/dates/2023/12/04/%EC%98%A4%EC%9D%B4%EC%86%8C%EC%86%8C%EA%B0%9C/">
+          OSP 이화마켓 제작 프로젝트 <오이소> 소개
+          <small><time datetime="2023-12-04T00:00:00+09:00">04 Dec 2023</time></small>
+        </a>
+      </li>
+    
+      <li>
+        <a href="/dates/2023/12/04/%EA%B0%9C%EB%85%90/">
+          Oiso에 사용된 기술 개념 소개
+          <small><time datetime="2023-12-04T00:00:00+09:00">04 Dec 2023</time></small>
+        </a>
+      </li>
+    
+      <li>
+        <a href="/dates/2023/12/01/%ED%95%B4%EC%84%A4_%EB%A7%88%EC%9D%B4%ED%8E%98%EC%9D%B4%EC%A7%80/">
+          Oiso의 마이페이지 기능 소개
+          <small><time datetime="2023-12-01T00:00:00+09:00">01 Dec 2023</time></small>
+        </a>
+      </li>
+    
+  </ul>
+</aside>
+
+
+</main>
+
+<footer class="footer"><small>
+    &copy; 2023 <a href="hhttps://github.com/Sarang-Han/Oiso">Oiso</a>. All rights reserved.
+    Powered by <a href="https://jekyllrb.com/">Jekyll</a> & <a href="https://github.com/vszhub/not-pure-poole">Not Pure Poole</a>.
+  </small>
+</footer>
+</div>
+      <div class="sidebar-right pure-u-1 pure-u-md-1-4">
+<div  class="toc-wrapper">
+  <h2 class="toc-title">Table of Contents</h2>
+    <nav class="toc-nav">
+      <ul class="toc">
+  <li><a href="#1-기능-구현에-앞서-생각한-것">1. 기능 구현에 앞서 생각한 것</a></li>
+  <li><a href="#2-실제-구현">2. 실제 구현</a></li>
+  <li><a href="#을-구현하는-순서"><채팅기능>을 구현하는 순서!</채팅기능></a>
+    <ul>
+      <li><a href="#최종-db">최종 DB</a></li>
+    </ul>
+  </li>
+</ul>
+
+  </nav>
+</div>
+
+</div>
+    </div>
+
+    <script async src="https://use.fontawesome.com/releases/v5.0.12/js/all.js"></script><script>
+  function strip(str, remove) {
+    while (str.length > 0 && remove.indexOf(str.charAt(0)) != -1) {
+      str = str.substr(1);
+    }
+    while (str.length > 0 && remove.indexOf(str.charAt(str.length - 1)) != -1) {
+      str = str.substr(0, str.length - 1);
+    }
+    return str;
+  }
+
+  function scroll() {
+    console.log('scroll');
+    window.scrollTo({
+      left: 0, 
+      top: window.innerHeight,
+      behavior: 'smooth'
+    });
+    sessionStorage.removeItem('forceCheckScroll');
+  }
+
+  const forceCheckScroll = sessionStorage.getItem('forceCheckScroll') === 'true';
+  const checkScroll = strip(window.location.pathname, '/') !== strip('', '/');
+
+  if (forceCheckScroll || checkScroll) {
+    const maxWidth = "(max-width: 48rem)";
+    const result = window.matchMedia(maxWidth);
+    if (result.matches) {
+      scroll();
+    } else {
+      result.addListener((match) => {
+        if (match.media == maxWidth) {
+          if (match.matches) {
+            scroll();
+          }
+        }
+      });
+    }
+  }
+</script>
+</body>
+</html>
