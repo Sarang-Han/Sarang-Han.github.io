@@ -38,8 +38,9 @@ export const metadata: Metadata = {
     locale: 'ko_KR',
     title: `${site.name} — ${site.role}`,
     description: site.description,
+    images: [{ url: site.ogImage, width: 1200, height: 630, alt: `${site.name} — ${site.role}` }],
   },
-  twitter: { card: 'summary_large_image' },
+  twitter: { card: 'summary_large_image', images: [site.ogImage] },
 };
 
 export const viewport: Viewport = {

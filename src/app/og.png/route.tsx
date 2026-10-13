@@ -4,15 +4,19 @@ import { ImageResponse } from 'next/og';
 import { about, site } from '@/content/site';
 import { heart, spritePath } from '@/components/ui/pixel';
 
-/** 링크 공유 미리보기 이미지 — 빌드 시 정적으로 생성 (site.ts 내용 기반) */
-export const alt = `${site.name} — ${site.role}`;
-export const size = { width: 1200, height: 630 };
-export const contentType = 'image/png';
+/**
+ * 링크 공유 미리보기 이미지 — 빌드 시 /og.png로 정적 생성 (site.ts 내용 기반).
+ * opengraph-image 규칙 대신 route를 쓰는 이유: 정적 호스팅(GitHub Pages)은 확장자로
+ * Content-Type을 정하는데, 규칙 파일은 확장자 없이 내보내져 미리보기가 깨질 수 있음.
+ */
+export const dynamic = 'force-static';
+
+const size = { width: 1200, height: 630 };
 
 const C = { bg: '#f6f6f4', fg: '#171717', mute: '#6a6a68', accent: '#3455d1' };
 const font = (p: string) => readFile(join(process.cwd(), 'node_modules', p));
 
-export default async function Image() {
+export async function GET() {
   const [geist, geistMono, galmuri] = await Promise.all([
     font('geist/dist/fonts/geist-sans/Geist-Medium.ttf'),
     font('geist/dist/fonts/geist-mono/GeistMono-Regular.ttf'),

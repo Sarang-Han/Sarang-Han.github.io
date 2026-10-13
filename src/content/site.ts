@@ -5,8 +5,10 @@ export const site = {
   nameKo: '한사랑',
   role: 'AI Engineer',
   identity: 'AI Engineer & Product Builder',
-  /** TODO: 배포 도메인으로 교체 (metadataBase, sitemap에 사용) */
-  url: 'https://example.com',
+  /** 배포 주소 (metadataBase · sitemap · 공유 미리보기 이미지 URL에 사용) */
+  url: 'https://sarang-han.github.io',
+  /** 링크 공유 미리보기 이미지 (src/app/og.png/route.tsx에서 생성) */
+  ogImage: '/og.png',
   description:
     'AI 엔지니어 한사랑의 포트폴리오',
   /** true면 `[...]` 플레이스홀더를 파란 하이라이트로 표시. 공개 전 false로. */

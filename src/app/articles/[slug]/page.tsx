@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
+import { site } from '@/content/site';
 import { articles, getArticle } from '@/content/articles';
 import { ArticleView } from '@/components/article/ArticleView';
 
@@ -18,7 +19,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: a.title,
     description: a.summary,
-    openGraph: { type: 'article', title: a.title, description: a.summary, tags: a.tags },
+    openGraph: { type: 'article', title: a.title, description: a.summary, tags: a.tags, images: [site.ogImage] },
   };
 }
 

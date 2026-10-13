@@ -5,8 +5,16 @@ Next.js 15 (App Router) · TypeScript · Tailwind CSS v4
 ```bash
 npm install
 npm run dev      # http://localhost:3000
-npm run build
+npm run build    # 정적 내보내기 → out/ (output: 'export'라 `npm start`는 쓰지 않음)
 ```
+
+## 배포 (GitHub Pages)
+
+https://sarang-han.github.io — `main`에 푸시하면 `.github/workflows/deploy.yml`이 빌드해서 `out/`만 배포합니다.
+
+- 저장소 Settings → Pages → Source는 **GitHub Actions**여야 합니다(브랜치 배포면 원본 파일이 그대로 공개됨).
+- 로컬에서 결과 확인: `npm run build && npx serve out`
+- 공유 미리보기 이미지는 `/og.png`(`app/og.png/route.tsx`)로 생성 — 정적 호스팅이 확장자로 형식을 판단하기 때문.
 
 ## 구조
 
@@ -20,7 +28,7 @@ src/
     projects/[slug]/page.tsx 케이스 스터디 (generateStaticParams로 정적 생성)
     articles/[slug]/page.tsx 아티클 (테크 블로그 글, 정적 생성)
     sitemap.ts
-    opengraph-image.tsx      링크 공유 미리보기 이미지 (빌드 시 site.ts 내용으로 생성)
+    og.png/route.tsx         링크 공유 미리보기 이미지 → /og.png (빌드 시 site.ts 내용으로 생성)
     globals.css              디자인 토큰(@theme) · 공용 클래스 · 모션
   content/                   ← 텍스트는 전부 여기서 수정
     types.ts                 콘텐츠 타입
