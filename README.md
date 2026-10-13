@@ -13,7 +13,8 @@ npm run build
 ```
 src/
   app/
-    layout.tsx               폰트(Geist, Geist Mono, IBM Plex Sans KR) · 메타데이터
+    layout.tsx               폰트(Geist, Geist Mono, Geist Pixel, IBM Plex Sans KR) · 메타데이터
+    icon.svg                 파비콘 (픽셀 하트)
     page.tsx                 홈
     projects/[slug]/page.tsx 케이스 스터디 (generateStaticParams로 정적 생성)
     sitemap.ts
@@ -27,13 +28,15 @@ src/
     home/                    홈 섹션 (SiteHeader만 client component — 스크롤 스파이)
     case-study/              CaseStudy 템플릿 + Blocks (블록 타입별 렌더러)
     diagrams/                카드 미리보기 · 아키텍처 다이어그램
-    ui/primitives.tsx        Container, Grid, Label, Chip, Rich, TodoBlock, Arrow
+    ui/primitives.tsx        Container, Grid, Label, Chip, Rich, PixelWords, TodoBlock, Arrow
+    ui/pixel.tsx             PixelIcon (ASCII 스프라이트 → SVG) · heart · cursor
 ```
 
 ## 콘텐츠 편집 규칙
 
 - 문자열 안의 `[...]`는 **작성 필요 플레이스홀더**로 자동 렌더링됩니다(`<Rich>`).
   확정되면 대괄호를 지우세요. 남은 항목 찾기: `grep -rn "\[" src/content`
+- 헤드라인 문자열 안의 `{...}`는 픽셀 폰트로 렌더링됩니다(`<PixelWords>`, 예: `'Building {AI} that'`).
 - 링크는 `src/content/site.ts`의 `links`, 프로젝트별 `links`에서 `null` → URL로 바꾸면 실제 링크가 됩니다.
 - 공개 전 `site.highlightPlaceholders`를 `false`로, `site.url`을 실제 도메인으로.
 - 케이스 스터디 섹션은 `sections[].blocks` 배열로 구성됩니다. 블록 타입:
@@ -51,5 +54,18 @@ src/
 | mute | `#737373` | `text-mute` |
 | accent | `#3455D1` | `text-accent` |
 | line | `#E8E8E5` | `border-line` |
+| font-pixel | Geist Pixel Square | `font-pixel` |
+| text-pixel | `13.158px` / 자간 1px | `text-pixel` |
+| shadow-px | `2px 2px 0` line-strong | `shadow-px` |
+| ease-pixel | `steps(3)` | `ease-pixel` |
+
+### 8-bit 디테일
+
+- **타이포**: 본문·제목은 Geist Sans, 레이블·번호·화살표만 Geist Pixel. 작은 픽셀 텍스트는 `text-pixel`
+  (폰트의 1픽셀 = 정확히 1px)로 써야 획이 뭉개지지 않습니다. Geist Pixel엔 한글이 없어 Plex KR로 폴백.
+- **모서리**: `rounded-*`는 `corner-shape: notch`로 한 칸 계단 모서리가 됩니다. 미지원 브라우저는 직각.
+  `rounded-full`은 쓰지 않습니다.
+- **아이콘**: `PixelIcon`에 `#`/`.` 문자열 배열을 넘기면 crisp SVG로 렌더링. `scale`은 정수만.
+- **모션**: 큰 등장 모션은 부드럽게, hover·밑줄·내비 표시줄 같은 마이크로 인터랙션만 `steps()`로 끊어서.
 
 모션: `.reveal`(첫 로드), `.fade`(스크롤 연동, `animation-timeline` 지원 브라우저만), `prefers-reduced-motion`에서 모두 꺼짐.

@@ -10,8 +10,8 @@ function MiniNode({ k, v, tone = 'plain' }: { k: string; v: string; tone?: 'plai
     <div
       className={
         tone === 'dark'
-          ? 'rounded-lg bg-fg px-3.5 py-3 text-center text-bg'
-          : 'rounded-lg border border-line-strong bg-white px-3.5 py-3 text-center'
+          ? 'rounded-md bg-fg px-3.5 py-3 text-center text-bg shadow-px'
+          : 'rounded-md border border-line-strong bg-white px-3.5 py-3 text-center shadow-px'
       }
     >
       <div className={`font-mono text-[10.5px] ${tone === 'dark' ? 'opacity-70' : 'text-mute'}`}>{k}</div>
@@ -21,7 +21,7 @@ function MiniNode({ k, v, tone = 'plain' }: { k: string; v: string; tone?: 'plai
 }
 
 const Sep = () => (
-  <span aria-hidden="true" className="font-mono text-faint">
+  <span aria-hidden="true" className="font-pixel text-faint">
     →
   </span>
 );
@@ -34,11 +34,11 @@ export function BuddybotFlowMini() {
       <MiniNode k="api" v="FastAPI" />
       <Sep />
       <div className="flex flex-col gap-1.5">
-        <div className="rounded-lg bg-accent px-3.5 py-2 text-center text-white">
+        <div className="rounded-md bg-accent px-3.5 py-2 text-center text-white shadow-px">
           <div className="font-mono text-[10.5px] opacity-80">dense</div>
           <div className="text-[13px] font-medium">Embedding</div>
         </div>
-        <div className="rounded-lg border border-accent bg-white px-3.5 py-2 text-center text-accent">
+        <div className="rounded-md border border-accent bg-white px-3.5 py-2 text-center text-accent shadow-px">
           <div className="font-mono text-[10.5px]">sparse</div>
           <div className="text-[13px] font-medium">BM25</div>
         </div>
@@ -67,7 +67,7 @@ export function ContextLayersMini() {
           <div
             key={l.id}
             style={{ marginLeft: i * 12 }}
-            className={`flex justify-between rounded-md border px-3 py-2 ${
+            className={`flex justify-between rounded-sm border px-3 py-2 shadow-px ${
               l.highlight ? 'border-accent bg-accent-wash' : 'border-line-strong bg-white'
             }`}
           >
@@ -77,7 +77,7 @@ export function ContextLayersMini() {
         ))}
       </div>
       <Sep />
-      <div className="flex size-22 flex-col items-center justify-center rounded-full bg-fg text-bg">
+      <div className="flex size-22 flex-col items-center justify-center rounded-lg bg-fg text-bg shadow-px">
         <span className="font-mono text-[10.5px] opacity-70">reply</span>
         <span className="text-[15px] font-medium">LLM</span>
       </div>
@@ -97,7 +97,7 @@ export const previews: Record<PreviewId, () => React.JSX.Element> = {
 function Node({ k, title, note, dark }: { k: string; title: string; note: React.ReactNode; dark?: boolean }) {
   return (
     <div
-      className={`flex items-center justify-between gap-3 rounded-[10px] border px-[18px] py-3.5 ${
+      className={`flex items-center justify-between gap-3 rounded-lg border px-[18px] py-3.5 shadow-px ${
         dark ? 'border-fg bg-fg text-bg' : 'border-line-strong bg-white'
       }`}
     >
@@ -118,15 +118,15 @@ export function BuddybotArchitecture() {
         <div className="vline" aria-hidden="true" />
         <Node k="API" title="FastAPI Backend" note="Python" />
         <div className="vline" aria-hidden="true" />
-        <div className="rounded-xl border border-accent bg-white/60 p-3.5">
+        <div className="rounded-lg border border-accent bg-white/60 p-3.5">
           <div className="lbl mb-2.5 text-[11px] text-accent-ink">Hybrid Retrieval</div>
           <div className="flex flex-col gap-3 sm:flex-row">
-            <div className="flex-1 rounded-lg bg-accent px-3.5 py-3 text-white">
+            <div className="flex-1 rounded-md bg-accent px-3.5 py-3 text-white">
               <div className="font-mono text-[11px] opacity-80">DENSE</div>
               <div className="text-[15px] font-medium">SentenceTransformers</div>
               <div className="text-[13px] opacity-85">+ ChromaDB</div>
             </div>
-            <div className="flex-1 rounded-lg border border-accent bg-white px-3.5 py-3 text-accent-ink">
+            <div className="flex-1 rounded-md border border-accent bg-white px-3.5 py-3 text-accent-ink">
               <div className="font-mono text-[11px]">SPARSE</div>
               <div className="text-[15px] font-medium">BM25</div>
               <div className="text-[13px]">키워드 매칭</div>
@@ -164,7 +164,7 @@ export function ContextLayers() {
         {LAYERS.map((l, i) => (
           <div
             key={l.id}
-            className={`flex items-center justify-between gap-4 rounded-[10px] border px-[18px] py-3.5 max-lg:!ml-0 ${
+            className={`flex items-center justify-between gap-4 rounded-lg border px-[18px] py-3.5 shadow-px max-lg:!ml-0 ${
               l.highlight ? 'border-accent bg-accent-wash' : 'border-line-strong bg-white'
             }`}
             style={{ marginLeft: i * 24 }}
@@ -177,8 +177,12 @@ export function ContextLayers() {
           </div>
         ))}
         <div className="mt-3 flex items-center justify-end gap-4">
-          <span className="font-mono text-xs text-mute">assembled context →</span>
-          <span className="rounded-full bg-fg px-6 py-3 text-base font-medium text-bg">LLM → Character reply</span>
+          <span className="font-mono text-xs text-mute">
+            assembled context <span className="font-pixel">→</span>
+          </span>
+          <span className="rounded-md bg-fg px-6 py-3 text-base font-medium text-bg shadow-px">
+            LLM <span className="font-pixel">→</span> Character reply
+          </span>
         </div>
       </div>
       <figcaption className="mx-auto mt-8 max-w-[720px] font-mono text-xs text-mute">

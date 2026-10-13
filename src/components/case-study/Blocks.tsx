@@ -30,7 +30,7 @@ export function BlockView({ block }: { block: Block }) {
           {block.columns.map((col) => (
             <div key={col.label} className="border-t border-fg pt-3.5">
               <Label className="mb-3">{col.label}</Label>
-              <ul className="m-0 flex flex-col gap-2 pl-[18px] text-[15px]">
+              <ul className="m-0 flex list-[square] flex-col gap-2 pl-[18px] text-[15px] marker:text-faint">
                 {col.items.map((it) => (
                   <li key={it}>
                     <Rich text={it} />
@@ -70,7 +70,7 @@ export function BlockView({ block }: { block: Block }) {
         <div className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,320px),1fr))] gap-6">
           {block.items.map((d) => (
             <article key={d.id} className="border-t border-fg pt-[18px]">
-              <p className="m-0 font-mono text-xs text-accent">{d.id}</p>
+              <p className="m-0 font-pixel text-pixel text-accent">{d.id}</p>
               <h3 className="mt-2 mb-4 text-[21px] leading-[1.35] font-medium tracking-[-0.015em]">{d.question}</h3>
               <dl className="m-0 grid grid-cols-[92px_1fr] gap-x-3 gap-y-2 text-[14.5px]">
                 {(
@@ -102,7 +102,7 @@ export function BlockView({ block }: { block: Block }) {
           {block.items.map((c) => (
             <div key={c.challenge.label} className="grid grid-cols-1 items-stretch gap-3 sm:grid-cols-[minmax(0,1fr)_24px_minmax(0,1fr)]">
               <TodoBlock todo={c.challenge} />
-              <span aria-hidden="true" className="self-center text-center font-mono text-faint max-sm:rotate-90">
+              <span aria-hidden="true" className="self-center text-center font-pixel text-faint max-sm:rotate-90">
                 →
               </span>
               <TodoBlock todo={c.approach} />
@@ -116,7 +116,7 @@ export function BlockView({ block }: { block: Block }) {
         <div className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,340px),1fr))] gap-6">
           {block.items.map((a) => (
             <article key={a.id} className="flex flex-col gap-3 border-t border-fg pt-[18px]">
-              <p className="m-0 font-mono text-xs text-accent">{a.id}</p>
+              <p className="m-0 font-pixel text-pixel text-accent">{a.id}</p>
               <h3 className="m-0 text-[22px] leading-[1.3] font-medium tracking-[-0.02em]">{a.title}</h3>
               <TodoBlock todo={{ label: 'To write', hint: a.hint }} />
             </article>

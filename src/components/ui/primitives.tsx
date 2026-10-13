@@ -36,11 +36,30 @@ export function Rich({ text }: { text: string }) {
   return <>{parts.map((part, i) => (i % 2 === 1 ? <Ph key={i}>{part}</Ph> : part))}</>;
 }
 
+/** 문자열 안의 `{...}` 구간을 픽셀 폰트로 렌더링 — 헤드라인 악센트용 */
+export function PixelWords({ text }: { text: string }) {
+  const parts = text.split(/\{([^}]+)\}/);
+  return (
+    <>
+      {parts.map((part, i) =>
+        i % 2 === 1 ? (
+          // 픽셀 폰트는 weight가 하나뿐이라 stroke로 Sans Medium의 획 두께에 맞춤
+          <span key={i} className="font-pixel tracking-[-0.02em] [-webkit-text-stroke:0.028em_currentColor]">
+            {part}
+          </span>
+        ) : (
+          part
+        ),
+      )}
+    </>
+  );
+}
+
 /** 작성 필요 블록 */
 export function TodoBlock({ todo, className }: { todo: Todo; className?: string }) {
   return (
     <div className={cn('ph-block', className)}>
-      <span className="mb-1 block font-mono text-[11px] tracking-[0.06em] text-accent-ink uppercase">{todo.label}</span>
+      <span className="mb-1 block font-pixel text-pixel text-accent-ink uppercase">{todo.label}</span>
       {todo.hint}
     </div>
   );
@@ -55,7 +74,7 @@ export function Arrow({ dir = 'right', className }: { dir?: 'right' | 'left' | '
     down: 'group-hover:translate-y-[2px]',
   }[dir];
   return (
-    <span aria-hidden="true" className={cn('inline-block transition-transform duration-200', move, className)}>
+    <span aria-hidden="true" className={cn('inline-block font-pixel transition-transform duration-150 ease-pixel', move, className)}>
       {glyph}
     </span>
   );

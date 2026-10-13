@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from 'next';
 import { GeistSans } from 'geist/font/sans';
 import { GeistMono } from 'geist/font/mono';
+import { GeistPixelSquare } from 'geist/font/pixel';
 import { IBM_Plex_Sans_KR } from 'next/font/google';
 import { site } from '@/content/site';
 import './globals.css';
@@ -34,7 +35,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="ko" className={`${GeistSans.variable} ${GeistMono.variable} ${plexKr.variable}`}>
+    <html lang="ko" className={`${GeistSans.variable} ${GeistMono.variable} ${GeistPixelSquare.variable} ${plexKr.variable}`}>
       <body className={site.highlightPlaceholders ? 'show-ph' : undefined}>{children}</body>
     </html>
   );

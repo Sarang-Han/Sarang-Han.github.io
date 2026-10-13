@@ -13,7 +13,7 @@ export function Projects() {
             <Label className="mb-5">(03) — Featured Projects</Label>
             <h2 className="m-0 text-[clamp(40px,5vw,72px)] leading-none font-medium tracking-[-0.04em]">Selected Work</h2>
           </div>
-          <p className="m-0 font-mono text-[13px] text-mute">
+          <p className="m-0 font-pixel text-pixel text-mute">
             {String(projects.length).padStart(2, '0')} projects — engineering &amp; product
           </p>
         </div>
@@ -38,7 +38,7 @@ function ProjectCard({ project: p }: { project: Project }) {
         <Grid>
           {/* Preview */}
           <div className="col-span-12 lg:col-span-7">
-            <div className="overflow-hidden rounded-2xl border border-line bg-panel">
+            <div className="overflow-hidden rounded-2xl border border-line bg-panel transition-shadow duration-150 ease-pixel group-hover:shadow-[4px_4px_0_var(--color-line-strong)]">
               <div
                 className={cn(
                   'flex aspect-[16/10] flex-col justify-between p-6 transition-transform duration-[900ms] ease-(--ease-soft) group-hover:scale-[1.025] sm:p-8',
@@ -58,7 +58,7 @@ function ProjectCard({ project: p }: { project: Project }) {
           {/* Info */}
           <div className="col-span-12 flex flex-col lg:col-span-4 lg:col-start-9">
             <div className="flex items-baseline justify-between">
-              <span className="font-mono text-[13px] text-accent">{p.number}</span>
+              <span className="font-pixel text-pixel text-accent">{p.number}</span>
               <Label as="span">{p.category}</Label>
             </div>
             <h3 className="mt-7 mb-1.5 text-[44px] leading-none font-medium tracking-[-0.035em] transition-colors duration-200 group-hover:text-accent">
@@ -109,7 +109,7 @@ function ExtLink({ label, href }: { label: string; href: string | null }) {
   if (!href)
     return (
       <span>
-        {label} ↗ <Rich text="[URL]" />
+        {label} <Arrow dir="ne" /> <Rich text="[URL]" />
       </span>
     );
   return (

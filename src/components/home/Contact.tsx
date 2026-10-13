@@ -1,5 +1,6 @@
 import { contact, links, site } from '@/content/site';
 import { Arrow, Container, Label, Rich } from '@/components/ui/primitives';
+import { PixelIcon, cursor } from '@/components/ui/pixel';
 
 export function Contact() {
   return (
@@ -8,7 +9,7 @@ export function Contact() {
         <Label className="fade mb-7">(06) — Contact</Label>
         <h2 className="fade m-0 max-w-[1000px] text-[clamp(48px,7.4vw,112px)] leading-[0.98] font-medium tracking-[-0.045em]">
           {contact.headline}
-          <span className="text-accent">.</span>
+          <span className="px-dot">.</span>
         </h2>
         <p className="fade mt-8 mb-0 text-xl text-sub">{contact.body}</p>
 
@@ -18,7 +19,16 @@ export function Contact() {
             const href = value ? (row.key === 'email' ? `mailto:${value}` : value) : null;
             const inner = (
               <>
-                <Label as="span" className="col-span-12 sm:col-span-3">
+                {/* hover 시 게임 메뉴처럼 커서가 나타나고 레이블이 한 칸 밀림 */}
+                <Label
+                  as="span"
+                  className="relative col-span-12 transition-transform duration-150 ease-pixel group-hover:translate-x-4 sm:col-span-3"
+                >
+                  <PixelIcon
+                    sprite={cursor}
+                    scale={2}
+                    className="absolute top-[3px] -left-4 text-accent opacity-0 transition-opacity duration-150 ease-pixel group-hover:opacity-100"
+                  />
                   {row.label}
                 </Label>
                 <span className="col-span-10 text-[22px] tracking-[-0.01em] sm:col-span-8">
@@ -51,7 +61,7 @@ export function Contact() {
 export function SiteFooter({ backHref = '#home', backLabel = 'Back to top ↑' }: { backHref?: string; backLabel?: string }) {
   return (
     <footer className="border-t border-line">
-      <Container className="flex flex-wrap justify-between gap-4 pt-7 pb-10 font-mono text-[12.5px] text-mute">
+      <Container className="flex flex-wrap justify-between gap-4 pt-7 pb-10 font-pixel text-pixel text-mute">
         <span>© {new Date().getFullYear()} {site.name}</span>
         <span>
           Last updated <Rich text={site.lastUpdated} />

@@ -8,7 +8,7 @@ export const site = {
   /** TODO: 배포 도메인으로 교체 (metadataBase, sitemap에 사용) */
   url: 'https://example.com',
   description:
-    'LLM과 AI 기술을 실제 사용자가 경험하는 서비스로 연결하는 주니어 AI 엔지니어 한사랑의 포트폴리오',
+    'AI 엔지니어 한사랑의 포트폴리오',
   /** true면 `[...]` 플레이스홀더를 파란 하이라이트로 표시. 공개 전 false로. */
   highlightPlaceholders: true,
   lastUpdated: '[YYYY.MM.DD]',
@@ -30,6 +30,7 @@ export const nav: NavItem[] = [
 ];
 
 export const hero = {
+  /** `{...}` 구간은 픽셀 폰트로 렌더링 */
   headline: ['Building AI that', 'works in the real world'],
   tagline: 'LLM과 AI 기술을 실제 사용자가 경험하는 서비스로 연결하는 주니어 개발자입니다.',
   intro:

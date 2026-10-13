@@ -20,7 +20,7 @@ export function CaseStudy({ project: p }: { project: Project }) {
             <Arrow dir="left" />
             <span className="link-ul">Han Sarang / Work</span>
           </Link>
-          <span className="text-mute">
+          <span className="font-pixel text-pixel text-mute">
             Case Study {String(index).padStart(2, '0')} / {String(projects.length).padStart(2, '0')}
           </span>
         </Container>
@@ -66,7 +66,7 @@ function CaseHero({ project: p }: { project: Project }) {
     <section className="pt-24 pb-[72px]">
       <Container>
         <div className="reveal mb-10 flex flex-wrap items-center gap-x-6 gap-y-2.5" style={delay(0.05)}>
-          <span className="font-mono text-[13px] text-accent">{p.number}</span>
+          <span className="font-pixel text-pixel text-accent">{p.number}</span>
           <Label as="span">{p.category}</Label>
         </div>
         <h1
@@ -122,12 +122,12 @@ function HeroLink({ label, href }: { label: string; href: string | null }) {
   if (!href)
     return (
       <span>
-        {label} ↗ <Rich text="[URL]" />
+        {label} <Arrow dir="ne" /> <Rich text="[URL]" />
       </span>
     );
   return (
-    <a href={href} target="_blank" rel="noreferrer" className="link-ul hover:text-accent">
-      {label} ↗
+    <a href={href} target="_blank" rel="noreferrer" className="group hover:text-accent">
+      <span className="link-ul">{label}</span> <Arrow dir="ne" />
     </a>
   );
 }
@@ -143,7 +143,7 @@ function ScopeBox({ scope }: { scope: Scope }) {
           </div>
           <div className="col-span-12 border-line lg:col-span-3 lg:border-l lg:pl-5">
             <Label className="mb-2.5 text-accent">Owned — 기획</Label>
-            <ul className="m-0 flex flex-col gap-1 pl-[18px] text-[14.5px]">
+            <ul className="m-0 flex list-[square] flex-col gap-1 pl-[18px] text-[14.5px] marker:text-faint">
               {scope.owned.map((x) => (
                 <li key={x}>{x}</li>
               ))}
@@ -182,7 +182,7 @@ function TocAndLegend({ sections }: { sections: CaseSection[] }) {
               {sections.map((s, i) => (
                 <li key={s.id}>
                   <a href={`#${s.id}`} className="flex items-baseline gap-2.5 border-b border-line py-2.5 text-sm text-sub hover:text-accent">
-                    <span className="font-mono text-[11px] text-faint">{String(i + 1).padStart(2, '0')}</span>
+                    <span className="font-pixel text-pixel text-faint">{String(i + 1).padStart(2, '0')}</span>
                     <span className="link-ul">{s.title}</span>
                   </a>
                 </li>
@@ -192,11 +192,11 @@ function TocAndLegend({ sections }: { sections: CaseSection[] }) {
           <div className="col-span-12 border-t border-fg pt-3.5 text-sm text-sub lg:col-span-4 lg:col-start-9">
             <Label className="mb-3">Reading this page</Label>
             <p className="mt-0 mb-2 flex items-center gap-2.5">
-              <span aria-hidden="true" className="inline-block size-2.5 rounded-[2px] bg-fg" />
+              <span aria-hidden="true" className="inline-block size-2.5 bg-fg" />
               확인된 사실 — 프로젝트 정보 그대로
             </p>
             <p className="m-0 flex items-center gap-2.5">
-              <span aria-hidden="true" className="inline-block size-2.5 rounded-[2px] border border-dashed border-accent" />
+              <span aria-hidden="true" className="inline-block size-2.5 border border-dashed border-accent" />
               <span className="ph">작성 필요 — 본인이 채울 자리</span>
             </p>
           </div>

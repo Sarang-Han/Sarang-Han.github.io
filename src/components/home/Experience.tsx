@@ -15,10 +15,10 @@ export function Experience() {
             <li key={e.role} className={cn('fade border-t border-fg pt-8', idx === experience.length - 1 ? 'pb-4' : 'pb-12')}>
               <Grid>
                 <div className="col-span-12 lg:col-span-3">
-                  <p className="m-0 flex items-center gap-2.5 font-mono text-[13px]">
+                  <p className="m-0 flex items-center gap-2.5 font-pixel text-pixel">
                     <span
                       aria-hidden="true"
-                      className={cn('inline-block size-2 rounded-full', e.current ? 'bg-accent' : 'border border-fg')}
+                      className={cn('inline-block size-2', e.current ? 'bg-accent' : 'border border-fg')}
                     />
                     <Rich text={e.period} />
                   </p>
@@ -34,7 +34,7 @@ export function Experience() {
                   <div className="mt-7 grid grid-cols-1 gap-6 md:grid-cols-9">
                     <div className="md:col-span-5">
                       <Label className="mb-2.5">{e.listLabel}</Label>
-                      <ul className="m-0 flex flex-col gap-1.5 pl-[18px] text-[15px] text-body">
+                      <ul className="m-0 flex list-[square] flex-col gap-1.5 pl-[18px] text-[15px] text-body marker:text-faint">
                         {e.list.map((item) => (
                           <li key={item}>
                             <Rich text={item} />

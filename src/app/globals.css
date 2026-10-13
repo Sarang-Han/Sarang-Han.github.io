@@ -15,11 +15,49 @@
   --color-line-strong: #dadad5;
   --color-panel: #f1f1ee;
   --ease-soft: cubic-bezier(0.2, 0.7, 0.2, 1);
+  /* 마이크로 인터랙션용 — 프레임 단위로 끊어지는 8-bit 모션 */
+  --ease-pixel: steps(3, end);
+
+  /* Pixel corners: 아래 @supports에서 한 칸짜리 계단(notch)으로 렌더링 */
+  --radius-xs: 2px;
+  --radius-sm: 2px;
+  --radius-md: 3px;
+  --radius-lg: 4px;
+  --radius-xl: 4px;
+  --radius-2xl: 6px;
+
+  /* Geist Pixel의 1픽셀(76/1000em)이 정확히 1px — 작은 픽셀 텍스트가 뭉개지지 않는 최소 크기 */
+  --text-pixel: 13.158px;
+  --text-pixel--letter-spacing: 1px;
+
+  /* 블러 없는 하드 섀도 */
+  --shadow-px: 2px 2px 0 var(--color-line-strong);
 }
 
 @theme inline {
   --font-sans: var(--font-geist-sans), var(--font-plex-kr), system-ui, sans-serif;
   --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+  /* Geist Pixel에는 한글이 없어 Plex KR로 폴백 */
+  --font-pixel: var(--font-geist-pixel-square), var(--font-geist-mono), var(--font-plex-kr), ui-monospace, monospace;
+}
+
+/* corner-shape 지원 브라우저: border-radius → 계단형 모서리 / 미지원: 직각 */
+@supports (corner-shape: notch) {
+  *,
+  ::before,
+  ::after {
+    corner-shape: notch;
+  }
+}
+@supports not (corner-shape: notch) {
+  :root {
+    --radius-xs: 0px;
+    --radius-sm: 0px;
+    --radius-md: 0px;
+    --radius-lg: 0px;
+    --radius-xl: 0px;
+    --radius-2xl: 0px;
+  }
 }
 
 /* ── Base ──────────────────────────────────────────────────── */
@@ -49,17 +87,17 @@
   :focus-visible {
     outline: 2px solid var(--color-accent);
     outline-offset: 3px;
-    border-radius: 4px;
+    border-radius: var(--radius-sm);
   }
 }
 
 /* ── Components ────────────────────────────────────────────── */
 @layer components {
-  /* Monospace uppercase label */
+  /* Pixel uppercase label */
   .lbl {
-    font-family: var(--font-mono);
-    font-size: 12px;
-    letter-spacing: 0.06em;
+    font-family: var(--font-pixel);
+    font-size: var(--text-pixel);
+    letter-spacing: var(--text-pixel--letter-spacing);
     text-transform: uppercase;
     color: var(--color-mute);
     line-height: 1.4;
@@ -71,7 +109,7 @@
     height: 28px;
     padding: 0 10px;
     border: 1px solid var(--color-line);
-    border-radius: 6px;
+    border-radius: var(--radius-md);
     background: #fff;
     font-family: var(--font-mono);
     font-size: 12.5px;
@@ -79,14 +117,14 @@
     white-space: nowrap;
   }
 
-  /* Animated underline: <span class="link-ul">text</span> */
+  /* Animated underline: <span class="link-ul">text</span> — 6프레임으로 끊어 그려짐 */
   .link-ul {
     background-image: linear-gradient(currentColor, currentColor);
     background-size: 0% 1px;
     background-repeat: no-repeat;
     background-position: 0 100%;
     padding-bottom: 2px;
-    transition: background-size 0.45s var(--ease-soft), color 0.2s;
+    transition: background-size 0.3s steps(6, end), color 0.2s;
   }
   a:hover .link-ul,
   a:focus-visible .link-ul,
@@ -101,14 +139,14 @@
   .show-ph .ph {
     color: var(--color-accent-ink);
     background: var(--color-accent-wash);
-    border-radius: 4px;
+    border-radius: var(--radius-sm);
     padding: 1px 6px;
     -webkit-box-decoration-break: clone;
     box-decoration-break: clone;
   }
   .ph-block {
     border: 1px dashed #c9c9c4;
-    border-radius: 10px;
+    border-radius: var(--radius-lg);
     padding: 16px 18px;
     color: var(--color-mute);
     font-size: 15px;
@@ -137,11 +175,11 @@
     left: 0;
     right: 0;
     bottom: 2px;
-    height: 1px;
+    height: 2px;
     background: var(--color-accent);
     transform: scaleX(0);
     transform-origin: left;
-    transition: transform 0.35s var(--ease-soft);
+    transition: transform 0.25s steps(5, end);
   }
   .nav-link:hover,
   .nav-link[aria-current='true'] {
@@ -151,27 +189,41 @@
     transform: scaleX(1);
   }
 
-  /* Down-arrow connector for vertical diagrams */
+  /* Down-arrow connector for vertical diagrams — 점선 + 계단형 화살촉 */
   .vline {
     position: relative;
-    width: 1px;
+    width: 2px;
     height: 36px;
     margin: 0 auto;
-    background: #c9c9c4;
+    background: repeating-linear-gradient(to bottom, #c9c9c4 0 2px, transparent 2px 4px);
   }
   .vline::after {
     content: '';
     position: absolute;
-    left: -4px;
-    bottom: -1px;
-    border-left: 4.5px solid transparent;
-    border-right: 4.5px solid transparent;
-    border-top: 6px solid var(--color-faint);
+    left: -3px;
+    bottom: 0;
+    width: 8px;
+    height: 4px;
+    background: var(--color-faint);
+    clip-path: polygon(0 0, 8px 0, 8px 1px, 7px 1px, 7px 2px, 6px 2px, 6px 3px, 5px 3px, 5px 4px, 3px 4px, 3px 3px, 2px 3px, 2px 2px, 1px 2px, 1px 1px, 0 1px);
   }
 
+  /* 2×2 사각 픽셀 그리드 */
   .dot-grid {
-    background-image: radial-gradient(var(--color-line-strong) 1px, transparent 1px);
+    background-image: conic-gradient(from 270deg at 2px 2px, var(--color-line-strong) 25%, transparent 0);
     background-size: 20px 20px;
+    background-position: 9px 9px;
+  }
+
+  /* 픽셀 마침표 — 헤드라인 끝의 악센트. 글리프라서 앞 단어와 떨어져 줄바꿈되지 않음 */
+  .px-dot {
+    font-family: var(--font-pixel);
+    color: var(--color-accent);
+    -webkit-text-stroke: 0.02em currentColor;
+  }
+  /* 로드 직후 커서처럼 네 번 깜빡이고 멈춤 */
+  .px-dot-blink {
+    animation: blink 1s steps(1, end) 1.1s 4;
   }
 }
 
@@ -184,6 +236,12 @@
   to {
     opacity: 1;
     transform: none;
+  }
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
   }
 }
 

@@ -20,7 +20,7 @@ export function About() {
             <ol className="m-0 list-none p-0">
               {about.interests.map((it, i) => (
                 <li key={it.title} className="grid grid-cols-[48px_1fr] gap-3 border-b border-line py-[18px]">
-                  <span className="pt-[5px] font-mono text-xs text-faint">{String(i + 1).padStart(2, '0')}</span>
+                  <span className="pt-[5px] font-pixel text-pixel text-faint">{String(i + 1).padStart(2, '0')}</span>
                   <div>
                     <div className="text-[19px] font-medium tracking-[-0.01em]">{it.title}</div>
                     <div className="text-[15px] text-mute">{it.desc}</div>
