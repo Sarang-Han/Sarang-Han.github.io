@@ -8,7 +8,7 @@ export function Contact() {
   return (
     <section id="contact" className="pt-36 pb-16">
       <Container>
-        <Label className="fade mb-5">(04) — Contact</Label>
+        <Label className="fade mb-5">(05) — Contact</Label>
 
         <ul className="fade m-0 list-none border-t border-fg p-0">
           {contact.rows.map((row) => {

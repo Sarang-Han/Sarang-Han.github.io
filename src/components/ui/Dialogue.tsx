@@ -10,11 +10,14 @@ import { cn } from './primitives';
  */
 export function Dialogue({
   lines,
+  instantLines = 0,
   delay = 0,
   speed = 26,
   className,
 }: {
   lines: string[];
+  /** 앞에서부터 n줄은 처음부터 다 보여 줌 — 핵심 문장을 기다리게 하지 않도록 */
+  instantLines?: number;
   /** 타이핑 시작 전 대기(ms) — 등장 애니메이션과 맞출 때 */
   delay?: number;
   /** 글자당 ms */
@@ -22,7 +25,8 @@ export function Dialogue({
   className?: string;
 }) {
   const total = lines.reduce((n, l) => n + l.length, 0);
-  const [shown, setShown] = useState(0);
+  const instant = lines.slice(0, instantLines).reduce((n, l) => n + l.length, 0);
+  const [shown, setShown] = useState(instant);
 
   useEffect(() => {
     if (matchMedia('(prefers-reduced-motion: reduce)').matches) {

@@ -24,8 +24,9 @@ export const links: ExternalLinks = {
 export const nav: NavItem[] = [
   { id: 'about', label: 'About', n: '01' },
   { id: 'projects', label: 'Projects', n: '02' },
-  { id: 'experience', label: 'Experience', n: '03' },
-  { id: 'contact', label: 'Contact', n: '04' },
+  { id: 'articles', label: 'Articles', n: '03' },
+  { id: 'experience', label: 'Experience', n: '04' },
+  { id: 'contact', label: 'Contact', n: '05' },
 ];
 
 export const about = {
@@ -37,6 +38,7 @@ export const about = {
   facts: [
     { label: 'Role', value: 'Junior AI Engineer' },
     { label: 'Focus', value: 'LLM · RAG · Backend · AI Product' },
+    { label: 'Stack', value: 'Python · FastAPI · LangChain · ChromaDB · Next.js · Docker' },
     { label: 'Now', value: 'AI Product / System Planning', sub: 'Early-stage AI Startup' },
     { label: 'Study', value: 'M.S. Artificial Intelligence', sub: 'Ewha Womans University · from 2027.03' },
   ] satisfies Fact[],

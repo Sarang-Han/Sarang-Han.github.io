@@ -20,6 +20,7 @@ src/
     projects/[slug]/page.tsx 케이스 스터디 (generateStaticParams로 정적 생성)
     articles/[slug]/page.tsx 아티클 (테크 블로그 글, 정적 생성)
     sitemap.ts
+    opengraph-image.tsx      링크 공유 미리보기 이미지 (빌드 시 site.ts 내용으로 생성)
     globals.css              디자인 토큰(@theme) · 공용 클래스 · 모션
   content/                   ← 텍스트는 전부 여기서 수정
     types.ts                 콘텐츠 타입
@@ -57,8 +58,8 @@ src/
   새 블록이 필요하면 `types.ts`의 `Block` 유니온과 `case-study/Blocks.tsx`의 switch에 추가하세요.
 - 새 프로젝트: `projects.ts`에 객체 추가 → 홈 카드와 `/projects/<slug>` 페이지가 함께 생깁니다.
   미리보기·다이어그램은 `components/diagrams`에 컴포넌트를 만들고 `previews` / `diagrams` 맵에 등록.
-- 새 아티클: `articles.ts`에 객체 추가 → About 하단 목록과 `/articles/<slug>` 페이지가 함께 생깁니다.
-  목록은 5개를 넘으면 하단 페이지네이션으로 넘어갑니다(`About.tsx`의 `<ArticleList perPage>`로 조정).
+- 새 아티클: `articles.ts`에 객체 추가 → 홈 Articles 섹션 목록과 `/articles/<slug>` 페이지가 함께 생깁니다.
+  목록은 5개를 넘으면 하단 페이지네이션으로 넘어갑니다(`home/Articles.tsx`의 `<ArticleList perPage>`로 조정).
   `date`(`YYYY.MM.DD`) 기준 최신순으로 정렬되고, 읽기 시간은 본문 글자 수로 자동 계산됩니다.
 
 ## 디자인 토큰 (globals.css `@theme`)
@@ -93,7 +94,8 @@ src/
 
 - **SOUL**: 로고 하트 = 파란 SOUL. 선택 커서로 쓰임 — 내비 현재 섹션, 리스트 hover(`SoulCursor`),
   버튼 hover·키보드 포커스(`BattleButton`).
-- **대화창**: 히어로 소개문(`Dialogue`). 클릭하면 타이핑을 건너뜀, `prefers-reduced-motion`이면 바로 전체 표시.
+- **대화창**: 히어로 소개문(`Dialogue`). 첫 줄은 처음부터 보이고(`instantLines`) 둘째 줄부터 타이핑.
+  클릭하면 타이핑을 건너뜀, `prefers-reduced-motion`이면 바로 전체 표시.
   한글까지 픽셀로 보이도록 [Galmuri11](https://github.com/quiple/galmuri)(OFL-1.1)을 씁니다 — 12px 배수에서 선명해서 18px.
   폰트가 504KB라 `preload: false`로 대화창이 있는 페이지에서만 로드됩니다.
 - **HUD**: `LV · HP` 한 줄(`site.ts`의 `about.status`).

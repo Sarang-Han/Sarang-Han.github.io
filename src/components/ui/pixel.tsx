@@ -10,11 +10,7 @@ export type Sprite = readonly string[];
 export function PixelIcon({ sprite, scale = 1, className }: { sprite: Sprite; scale?: number; className?: string }) {
   const w = sprite[0].length;
   const h = sprite.length;
-  // 행마다 연속된 `#` 구간을 사각형 하나로 합침
-  let d = '';
-  sprite.forEach((row, y) => {
-    for (const m of row.matchAll(/#+/g)) d += `M${m.index} ${y}h${m[0].length}v1h-${m[0].length}z`;
-  });
+  const d = spritePath(sprite);
   return (
     <svg
       aria-hidden="true"
@@ -28,6 +24,15 @@ export function PixelIcon({ sprite, scale = 1, className }: { sprite: Sprite; sc
       <path d={d} />
     </svg>
   );
+}
+
+/** 스프라이트 → SVG path. 행마다 연속된 `#` 구간을 사각형 하나로 합침 */
+export function spritePath(sprite: Sprite) {
+  let d = '';
+  sprite.forEach((row, y) => {
+    for (const m of row.matchAll(/#+/g)) d += `M${m.index} ${y}h${m[0].length}v1h-${m[0].length}z`;
+  });
+  return d;
 }
 
 /** 로고 마크이자 SOUL 커서 — 사랑 */

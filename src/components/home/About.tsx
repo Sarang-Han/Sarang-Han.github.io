@@ -1,10 +1,8 @@
-import { getArticles, readingMinutes } from '@/content/articles';
 import { about, links, site } from '@/content/site';
 import { Dialogue } from '@/components/ui/Dialogue';
 import { BattleButton } from '@/components/ui/game';
 import { arrowRight, arrowUpRight } from '@/components/ui/pixel';
 import { Container, Grid, Label, PixelWords, Rich } from '@/components/ui/primitives';
-import { ArticleList } from './ArticleList';
 
 const delay = (s: number) => ({ animationDelay: `${s}s` });
 
@@ -39,7 +37,7 @@ export function About() {
         <Grid className="mt-[72px] items-end">
           <div className="reveal col-span-12 lg:col-span-6" style={delay(0.42)}>
             <Label className="mb-3.5 text-fg">{site.identity}</Label>
-            <Dialogue lines={[about.tagline, about.intro]} delay={900} />
+            <Dialogue lines={[about.tagline, about.intro]} instantLines={1} delay={700} speed={22} />
             <div className="mt-8 flex flex-wrap gap-4">
               <BattleButton href="#projects" icon={arrowRight}>
                 Projects
@@ -71,19 +69,6 @@ export function About() {
             ))}
           </dl>
         </Grid>
-
-        <div className="fade mt-24">
-          <ArticleList
-            items={getArticles().map((a) => ({
-              slug: a.slug,
-              title: a.title,
-              summary: a.summary,
-              date: a.date,
-              tags: a.tags,
-              minutes: readingMinutes(a),
-            }))}
-          />
-        </div>
       </Container>
     </section>
   );

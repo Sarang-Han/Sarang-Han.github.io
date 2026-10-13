@@ -17,7 +17,7 @@ export type ArticleItem = {
 
 const pad = (n: number) => String(n).padStart(2, '0');
 
-/** About 하단 아티클 목록 — perPage를 넘으면 하단 페이지네이션 */
+/** 아티클 목록 — perPage를 넘으면 하단 페이지네이션 */
 export function ArticleList({ items, perPage = 5 }: { items: ArticleItem[]; perPage?: number }) {
   const [page, setPage] = useState(0);
   const ref = useRef<HTMLDivElement>(null);
@@ -31,12 +31,7 @@ export function ArticleList({ items, perPage = 5 }: { items: ArticleItem[]; perP
   };
 
   return (
-    <div ref={ref} id="articles">
-      <div className="mb-4 flex items-baseline justify-between gap-4">
-        <Label>Articles</Label>
-        <span className="font-pixel text-pixel text-mute">{pad(items.length)} articles</span>
-      </div>
-
+    <div ref={ref}>
       <ol className="m-0 list-none border-t border-fg p-0">
         {shown.map((a) => (
           <li key={a.slug}>
