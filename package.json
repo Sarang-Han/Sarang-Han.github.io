@@ -9,6 +9,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "galmuri": "^2.40.3",
     "geist": "^1.7.0",
     "next": "^15.3.0",
     "react": "^19.0.0",

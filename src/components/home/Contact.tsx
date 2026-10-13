@@ -1,6 +1,7 @@
 import { contact, links, site } from '@/content/site';
 import { Arrow, Container, Label, Rich } from '@/components/ui/primitives';
-import { PixelIcon, check, copy, cursor } from '@/components/ui/pixel';
+import { PixelIcon, check, copy, star } from '@/components/ui/pixel';
+import { SoulCursor } from '@/components/ui/game';
 import { CopyButton } from '@/components/ui/CopyButton';
 
 export function Contact() {
@@ -17,16 +18,12 @@ export function Contact() {
             const isCopy = row.action === 'copy';
             const inner = (
               <>
-                {/* hover 시 게임 메뉴처럼 커서가 나타나고 레이블이 한 칸 밀림 */}
+                {/* 선택된 메뉴처럼 SOUL 커서가 나타나고 레이블이 한 칸 밀림 */}
                 <Label
                   as="span"
-                  className="relative col-span-12 transition-transform duration-150 ease-pixel group-hover:translate-x-4 sm:col-span-3"
+                  className="relative col-span-12 transition-transform duration-150 ease-pixel group-hover:translate-x-5 group-focus-visible:translate-x-5 sm:col-span-3"
                 >
-                  <PixelIcon
-                    sprite={cursor}
-                    scale={2}
-                    className="absolute top-[3px] -left-4 text-accent opacity-0 transition-opacity duration-150 ease-pixel group-hover:opacity-100"
-                  />
+                  <SoulCursor />
                   {row.label}
                 </Label>
                 <span className="col-span-10 text-[22px] tracking-[-0.01em] sm:col-span-8">
@@ -76,8 +73,10 @@ export function SiteFooter({ backHref = '#about', backLabel = 'Back to top ↑' 
     <footer className="border-t border-line">
       <Container className="flex flex-wrap justify-between gap-4 pt-7 pb-10 font-pixel text-pixel text-mute">
         <span>© {new Date().getFullYear()} {site.name}</span>
-        <span>
-          Last updated <Rich text={site.lastUpdated} />
+        {/* 세이브 포인트 */}
+        <span className="inline-flex items-center gap-2.5">
+          <PixelIcon sprite={star} scale={2} className="twinkle text-save" />
+          Last saved <Rich text={site.lastUpdated} />
         </span>
         <a href={backHref} className="link-ul hover:text-fg">
           {backLabel}

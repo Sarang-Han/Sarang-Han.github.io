@@ -2,6 +2,7 @@ import { experience } from '@/content/experience';
 import { Chip, Container, Grid, Label, Rich, TodoBlock, cn, isPlaceholder } from '@/components/ui/primitives';
 
 export function Experience() {
+  const entries = experience.filter((e) => !e.hidden);
   return (
     <section id="experience" className="border-b border-line py-32">
       <Container>
@@ -11,8 +12,8 @@ export function Experience() {
         </div>
 
         <ol className="m-0 list-none p-0">
-          {experience.map((e, idx) => (
-            <li key={e.role} className={cn('fade border-t border-fg pt-8', idx === experience.length - 1 ? 'pb-4' : 'pb-12')}>
+          {entries.map((e, idx) => (
+            <li key={e.role} className={cn('fade border-t border-fg pt-8', idx === entries.length - 1 ? 'pb-4' : 'pb-12')}>
               <Grid>
                 <div className="col-span-12 lg:col-span-3">
                   <p className="m-0 flex items-center gap-2.5 font-pixel text-pixel">

@@ -88,6 +88,8 @@ export type Project = {
 };
 
 export type ExperienceEntry = {
+  /** true면 화면에 표시하지 않음 (데이터는 그대로 유지) */
+  hidden?: boolean;
   period: string;
   kind: 'Industry' | 'Education';
   current: boolean;

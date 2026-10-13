@@ -1,6 +1,9 @@
 import { getArticles, readingMinutes } from '@/content/articles';
 import { about, links, site } from '@/content/site';
-import { Arrow, Container, Grid, Label, PixelWords, Rich } from '@/components/ui/primitives';
+import { Dialogue } from '@/components/ui/Dialogue';
+import { BattleButton } from '@/components/ui/game';
+import { arrowRight, arrowUpRight } from '@/components/ui/pixel';
+import { Container, Grid, Label, PixelWords, Rich } from '@/components/ui/primitives';
 import { ArticleList } from './ArticleList';
 
 const delay = (s: number) => ({ animationDelay: `${s}s` });
@@ -11,9 +14,16 @@ export function About() {
       <Container>
         <div className="reveal mb-14 flex flex-wrap justify-between gap-3" style={delay(0.05)}>
           <Label as="span">(01) — About</Label>
-          <Label as="span">
-            {site.name} · {site.nameKo} — {site.role}
-          </Label>
+          {/* Undertale 전투 HUD */}
+          <p className="m-0 flex items-center gap-5 font-pixel text-pixel text-mute uppercase">
+            <span className="text-fg">{site.name}</span>
+            <span>LV {about.status.lv}</span>
+            <span className="flex items-center gap-2">
+              HP
+              <span aria-hidden="true" className="inline-block h-3 w-20 bg-accent" />
+              {about.status.hp} / {about.status.hp}
+            </span>
+          </p>
         </div>
 
         <h1 className="m-0 max-w-[1100px] text-[clamp(48px,7.4vw,112px)] leading-[0.98] font-medium tracking-[-0.045em]">
@@ -29,16 +39,14 @@ export function About() {
         <Grid className="mt-[72px] items-end">
           <div className="reveal col-span-12 lg:col-span-6" style={delay(0.42)}>
             <Label className="mb-3.5 text-fg">{site.identity}</Label>
-            <p className="m-0 text-[22px] leading-[1.55] tracking-[-0.01em]">{about.tagline}</p>
-            <p className="mt-[18px] mb-0 max-w-[520px] text-base text-sub">{about.intro}</p>
-            <div className="mt-9 flex flex-wrap gap-3">
-              <a
-                href="#projects"
-                className="group inline-flex h-12 items-center gap-2.5 rounded-md bg-fg px-[22px] text-[15px] font-medium text-bg transition-colors hover:bg-accent hover:text-white"
-              >
-                Explore Projects <Arrow />
-              </a>
-              <GithubButton href={links.github} />
+            <Dialogue lines={[about.tagline, about.intro]} delay={900} />
+            <div className="mt-8 flex flex-wrap gap-4">
+              <BattleButton href="#projects" icon={arrowRight}>
+                Projects
+              </BattleButton>
+              <BattleButton href={links.github ?? '#contact'} icon={arrowUpRight}>
+                GitHub
+              </BattleButton>
             </div>
           </div>
 
@@ -78,22 +86,5 @@ export function About() {
         </div>
       </Container>
     </section>
-  );
-}
-
-function GithubButton({ href }: { href: string | null }) {
-  const cls =
-    'group inline-flex h-12 items-center gap-2.5 rounded-md border border-[#d4d4d0] bg-white px-[22px] text-[15px] font-medium transition-[border-color,box-shadow] duration-150 ease-pixel hover:border-fg hover:shadow-px';
-  if (!href) {
-    return (
-      <a href="#contact" className={cls} title="GitHub URL 미입력 — src/content/site.ts">
-        GitHub <Arrow dir="ne" />
-      </a>
-    );
-  }
-  return (
-    <a href={href} target="_blank" rel="noreferrer" className={cls}>
-      GitHub <Arrow dir="ne" />
-    </a>
   );
 }

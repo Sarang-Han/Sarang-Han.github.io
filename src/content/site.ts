@@ -38,8 +38,10 @@ export const about = {
     { label: 'Role', value: 'Junior AI Engineer' },
     { label: 'Focus', value: 'LLM · RAG · Backend · AI Product' },
     { label: 'Now', value: 'AI Product / System Planning', sub: 'Early-stage AI Startup' },
-    { label: 'Study', value: 'M.S. Artificial Intelligence', sub: '[대학원명 · 기간]' },
+    { label: 'Study', value: 'M.S. Artificial Intelligence', sub: 'Ewha Womans University · from 2027.03' },
   ] satisfies Fact[],
+  /** Undertale식 HUD — LV 1은 아무도 해치지 않은 상태 */
+  status: { lv: 1, hp: 20 },
 };
 
 export const contact = {

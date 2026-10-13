@@ -22,11 +22,13 @@ export const experience: ExperienceEntry[] = [
     },
   },
   {
-    period: '[YYYY.MM — YYYY.MM]',
+    // 입학(2027.03) 전까지 숨김 — 입학 후 이 줄을 지우면 Path에 표시됩니다
+    hidden: true,
+    period: '2027.03 — 현재',
     kind: 'Education',
-    current: false,
+    current: true,
     role: "Master's Program — Artificial Intelligence",
-    org: '[대학원명 · 학과]',
+    org: 'Ewha Womans University · Graduate School',
     listLabel: 'Research & Coursework',
     list: ['[연구 주제 또는 연구실]', '[주요 수강 과목]'],
     technologies: ['[도구·기술 입력]'],

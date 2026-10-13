@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { useRef, useState, type ReactNode } from 'react';
+import { SoulCursor } from '@/components/ui/game';
 import { Arrow, Chip, Label, Rich, cn } from '@/components/ui/primitives';
 
 /** 목록에 필요한 필드만 — 본문(sections)은 클라이언트로 보내지 않음 */
@@ -43,7 +44,8 @@ export function ArticleList({ items, perPage = 5 }: { items: ArticleItem[]; perP
               href={`/articles/${a.slug}`}
               className="group grid grid-cols-12 gap-x-6 gap-y-3 border-b border-line px-2 py-7 transition-colors hover:bg-panel"
             >
-              <div className="col-span-12 flex gap-4 sm:col-span-3 sm:flex-col sm:gap-1.5">
+              <div className="relative col-span-12 flex gap-4 transition-transform duration-150 ease-pixel group-hover:translate-x-5 group-focus-visible:translate-x-5 sm:col-span-3 sm:flex-col sm:gap-1.5">
+                <SoulCursor />
                 <span className="font-pixel text-pixel text-mute">
                   <Rich text={a.date} />
                 </span>

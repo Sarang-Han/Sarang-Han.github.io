@@ -39,7 +39,14 @@ export function SiteHeader() {
         <nav aria-label="주요 섹션" className="flex items-center gap-[18px] overflow-x-auto [scrollbar-width:none] lg:gap-7">
           {nav.map((item) => (
             <a key={item.id} href={`#${item.id}`} className="nav-link" aria-current={active === item.id ? 'true' : undefined}>
-              <span className="font-pixel text-pixel text-faint">{item.n}</span>
+              {/* 현재 섹션은 번호 대신 SOUL 하트 */}
+              <span className="inline-flex w-[18px] self-center">
+                {active === item.id ? (
+                  <PixelIcon sprite={heart} scale={2} className="text-accent" />
+                ) : (
+                  <span className="font-pixel text-pixel text-faint">{item.n}</span>
+                )}
+              </span>
               {item.label}
             </a>
           ))}

@@ -14,6 +14,8 @@
   --color-line: #e8e8e5;
   --color-line-strong: #dadad5;
   --color-panel: #f1f1ee;
+  /* 세이브 포인트 별 */
+  --color-save: #eeb000;
   --ease-soft: cubic-bezier(0.2, 0.7, 0.2, 1);
   /* 마이크로 인터랙션용 — 프레임 단위로 끊어지는 8-bit 모션 */
   --ease-pixel: steps(3, end);
@@ -29,6 +31,10 @@
   /* Geist Pixel의 1픽셀(76/1000em)이 정확히 1px — 작은 픽셀 텍스트가 뭉개지지 않는 최소 크기 */
   --text-pixel: 13.158px;
   --text-pixel--letter-spacing: 1px;
+  /* 1픽셀 = 1.5px — 전투 메뉴 버튼 라벨 */
+  --text-pixel-md: 19.737px;
+  --text-pixel-md--line-height: 1;
+  --text-pixel-md--letter-spacing: 1.5px;
 
   /* 블러 없는 하드 섀도 */
   --shadow-px: 2px 2px 0 var(--color-line-strong);
@@ -39,6 +45,8 @@
   --font-mono: var(--font-geist-mono), ui-monospace, monospace;
   /* Geist Pixel에는 한글이 없어 Plex KR로 폴백 */
   --font-pixel: var(--font-geist-pixel-square), var(--font-geist-mono), var(--font-plex-kr), ui-monospace, monospace;
+  /* 대화창 — 한글까지 픽셀 (Galmuri11, 1픽셀 = 1/12em) */
+  --font-dialogue: var(--font-galmuri), var(--font-plex-kr), monospace;
 }
 
 /* corner-shape 지원 브라우저: border-radius → 계단형 모서리 / 미지원: 직각 */
@@ -169,24 +177,9 @@
     white-space: nowrap;
     transition: color 0.2s;
   }
-  .nav-link::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 2px;
-    height: 2px;
-    background: var(--color-accent);
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 0.25s steps(5, end);
-  }
   .nav-link:hover,
   .nav-link[aria-current='true'] {
     color: var(--color-fg);
-  }
-  .nav-link[aria-current='true']::after {
-    transform: scaleX(1);
   }
 
   /* Down-arrow connector for vertical diagrams — 점선 + 계단형 화살촉 */
@@ -221,6 +214,25 @@
     color: var(--color-accent);
     -webkit-text-stroke: 0.02em currentColor;
   }
+  /* Undertale식 대화창 — 검은 바탕 + 안쪽 흰 프레임 */
+  .dialogue {
+    padding: 24px 28px 26px;
+    background: var(--color-fg);
+    color: #fff;
+    /* Galmuri11은 12px 배수에서 선명 — 18px = 1픽셀 1.5px */
+    font-family: var(--font-dialogue);
+    font-size: 18px;
+    line-height: 30px;
+    box-shadow:
+      inset 0 0 0 5px var(--color-fg),
+      inset 0 0 0 8px #fff;
+  }
+
+  /* 세이브 포인트 — 두 프레임으로 천천히 반짝임 */
+  .twinkle {
+    animation: twinkle 1.6s steps(1, end) infinite;
+  }
+
   /* 로드 직후 커서처럼 네 번 깜빡이고 멈춤 */
   .px-dot-blink {
     animation: blink 1s steps(1, end) 1.1s 4;
@@ -236,6 +248,13 @@
   to {
     opacity: 1;
     transform: none;
+  }
+}
+
+@keyframes twinkle {
+  50% {
+    opacity: 0.45;
+    transform: scale(0.72);
   }
 }
 
