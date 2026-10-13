@@ -106,7 +106,7 @@ export function BuddybotArchitecture() {
         <div className="vline" aria-hidden="true" />
         <Node k="Generate" title="LLM Response" note="[사용 모델 입력]" dark />
       </div>
-      <div className="mx-auto mt-10 flex max-w-[640px] flex-wrap items-center gap-2 border-t border-dashed border-[#c9c9c4] pt-4">
+      <div className="mx-auto mt-10 flex max-w-[640px] flex-wrap items-center gap-2 border-t border-dashed border-[#c6c6c2] pt-4">
         <span className="lbl mr-2">Deployment</span>
         <Chip>Docker</Chip>
         <Chip>Hugging Face Spaces</Chip>

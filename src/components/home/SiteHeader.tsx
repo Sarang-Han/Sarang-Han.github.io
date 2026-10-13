@@ -66,7 +66,6 @@ export function SiteHeader() {
         <a href="#about" className="flex shrink-0 items-baseline gap-2.5">
           <PixelIcon sprite={heart} scale={2} className="self-center text-accent" />
           <span className="text-[15px] font-semibold tracking-[-0.01em]">{site.name}</span>
-          <span className="hidden font-mono text-xs text-mute lg:inline">{site.role}</span>
         </a>
 
         <nav aria-label="주요 섹션" className="hidden items-center gap-[18px] md:flex lg:gap-7">

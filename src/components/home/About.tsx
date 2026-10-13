@@ -24,7 +24,7 @@ export function About() {
           </p>
         </div>
 
-        <h1 className="m-0 max-w-[1100px] text-[clamp(48px,7.4vw,112px)] leading-[0.98] font-medium tracking-[-0.045em]">
+        <h1 className="m-0 max-w-[1100px] text-[clamp(48px,5.6vw,80px)] leading-[1.02] font-medium tracking-[-0.045em]">
           <span className="reveal block" style={delay(0.16)}>
             <PixelWords text={about.headline[0]} />
           </span>

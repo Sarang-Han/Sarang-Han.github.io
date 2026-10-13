@@ -66,11 +66,11 @@ src/
 
 | token | value | Tailwind |
 |---|---|---|
-| bg | `#FAFAF8` | `bg-bg` |
+| bg | `#F6F6F4` (아주 살짝 따뜻한 라이트 그레이) | `bg-bg` |
 | fg | `#171717` | `text-fg` |
-| mute | `#737373` | `text-mute` |
+| mute | `#6A6A68` | `text-mute` |
 | accent | `#3455D1` | `text-accent` |
-| line | `#E8E8E5` | `border-line` |
+| line | `#E3E3E0` | `border-line` |
 | font-pixel | Geist Pixel Square | `font-pixel` |
 | text-pixel | `13.158px` / 자간 1px | `text-pixel` |
 | text-pixel-md | `19.737px` (1픽셀 = 1.5px) | `text-pixel-md` |

@@ -3,7 +3,7 @@ import type { ExternalLinks, Fact, NavItem } from './types';
 export const site = {
   name: 'Han Sarang',
   nameKo: '한사랑',
-  role: 'Junior AI Engineer',
+  role: 'AI Engineer',
   identity: 'AI Engineer & Product Builder',
   /** TODO: 배포 도메인으로 교체 (metadataBase, sitemap에 사용) */
   url: 'https://example.com',
@@ -32,18 +32,18 @@ export const nav: NavItem[] = [
 export const about = {
   /** `{...}` 구간은 픽셀 폰트로 렌더링 */
   headline: ['Building AI that', 'works in the real world'],
-  tagline: 'LLM과 AI 기술을 실제 사용자가 경험하는 서비스로 연결하는 주니어 개발자입니다.',
+  tagline: 'LLM과 AI 기술을 실제 사용자가 경험하는 서비스로 연결하는 주니어 엔지니어입니다.',
   intro:
     '하이브리드 검색 기반 RAG 챗봇을 직접 설계·배포했고, 초기 AI 스타트업에서 LLM 대화 시스템의 제품·시스템 기획을 맡고 있습니다.',
   facts: [
-    { label: 'Role', value: 'Junior AI Engineer' },
+    { label: 'Role', value: 'AI Engineer' },
     { label: 'Focus', value: 'LLM · RAG · Backend · AI Product' },
     { label: 'Stack', value: 'Python · FastAPI · LangChain · ChromaDB · Next.js · Docker' },
     { label: 'Now', value: 'AI Product / System Planning', sub: 'Early-stage AI Startup' },
     { label: 'Study', value: 'M.S. Artificial Intelligence', sub: 'Ewha Womans University · from 2027.03' },
   ] satisfies Fact[],
   /** Undertale식 HUD — LV 1은 아무도 해치지 않은 상태 */
-  status: { lv: 1, hp: 20 },
+  status: { lv: 1, hp: 23 },
 };
 
 export const contact = {

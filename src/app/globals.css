@@ -2,18 +2,18 @@
 
 /* ── Design tokens ─────────────────────────────────────────── */
 @theme {
-  --color-bg: #fafaf8;
+  --color-bg: #f6f6f4;
   --color-fg: #171717;
-  --color-mute: #737373;
-  --color-faint: #a3a3a3;
+  --color-mute: #6a6a68;
+  --color-faint: #a3a3a0;
   --color-body: #404040;
   --color-sub: #525252;
   --color-accent: #3455d1;
   --color-accent-ink: #2e4bbe;
   --color-accent-wash: #eef1fb;
-  --color-line: #e8e8e5;
-  --color-line-strong: #dadad5;
-  --color-panel: #f1f1ee;
+  --color-line: #e3e3e0;
+  --color-line-strong: #d4d4d0;
+  --color-panel: #ececea;
   /* 세이브 포인트 별 */
   --color-save: #eeb000;
   --ease-soft: cubic-bezier(0.2, 0.7, 0.2, 1);
@@ -153,7 +153,7 @@
     box-decoration-break: clone;
   }
   .ph-block {
-    border: 1px dashed #c9c9c4;
+    border: 1px dashed #c6c6c2;
     border-radius: var(--radius-lg);
     padding: 16px 18px;
     color: var(--color-mute);
@@ -188,7 +188,7 @@
     width: 2px;
     height: 36px;
     margin: 0 auto;
-    background: repeating-linear-gradient(to bottom, #c9c9c4 0 2px, transparent 2px 4px);
+    background: repeating-linear-gradient(to bottom, #c6c6c2 0 2px, transparent 2px 4px);
   }
   .vline::after {
     content: '';

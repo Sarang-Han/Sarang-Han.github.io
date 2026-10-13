@@ -9,7 +9,7 @@ export const alt = `${site.name} — ${site.role}`;
 export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
 
-const C = { bg: '#fafaf8', fg: '#171717', mute: '#737373', accent: '#3455d1' };
+const C = { bg: '#f6f6f4', fg: '#171717', mute: '#6a6a68', accent: '#3455d1' };
 const font = (p: string) => readFile(join(process.cwd(), 'node_modules', p));
 
 export default async function Image() {
