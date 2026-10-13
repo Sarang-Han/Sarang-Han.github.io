@@ -1,4 +1,4 @@
-import type { ExternalLinks, Fact, NavItem, StackGroup } from './types';
+import type { ExternalLinks, Fact, NavItem } from './types';
 
 export const site = {
   name: 'Han Sarang',
@@ -40,14 +40,6 @@ export const about = {
     { label: 'Now', value: 'AI Product / System Planning', sub: 'Early-stage AI Startup' },
     { label: 'Study', value: 'M.S. Artificial Intelligence', sub: '[대학원명 · 기간]' },
   ] satisfies Fact[],
-  stack: [
-    { domain: 'Languages', icon: 'code', items: ['Python', 'TypeScript'] },
-    { domain: 'AI / ML', icon: 'ai', items: ['LLM Applications', 'RAG', 'LangChain', 'SentenceTransformers'] },
-    { domain: 'Backend', icon: 'server', items: ['FastAPI', 'Uvicorn'] },
-    { domain: 'Retrieval / DB', icon: 'db', items: ['ChromaDB', 'BM25'] },
-    { domain: 'Frontend', icon: 'ui', items: ['Next.js'] },
-    { domain: 'Infrastructure', icon: 'cloud', items: ['Docker', 'Hugging Face Spaces', 'Vercel'] },
-  ] satisfies StackGroup[],
 };
 
 export const contact = {

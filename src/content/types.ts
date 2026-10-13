@@ -2,6 +2,7 @@
  * 콘텐츠 타입 정의.
  * 문자열 안의 `[...]` 구간은 <Rich>가 자동으로 "작성 필요" 플레이스홀더로 렌더링합니다.
  * 값이 확정되면 대괄호를 지우고 실제 내용만 남기면 됩니다.
+ * 같은 <Rich>에서 `[텍스트](URL)`은 링크, 백틱으로 감싼 구간은 인라인 코드가 됩니다.
  */
 
 export type NavItem = { id: string; label: string; n: string };
@@ -17,8 +18,8 @@ export type ExternalLinks = {
 /** 아직 작성하지 않은 블록 — 무엇을 써야 하는지 안내 문구를 함께 둡니다. */
 export type Todo = { label: string; hint: string };
 
-export type PreviewId = 'buddybot-flow' | 'context-layers';
-export type DiagramId = 'buddybot-architecture' | 'context-layers';
+export type PreviewId = 'buddybot-flow';
+export type DiagramId = 'buddybot-architecture';
 
 export type Block =
   | { type: 'prose'; text: string }
@@ -39,7 +40,12 @@ export type Block =
       }[];
     }
   | { type: 'challenges'; items: { challenge: Todo; approach: Todo }[] }
-  | { type: 'areas'; items: { id: string; title: string; hint: string }[] };
+  | { type: 'areas'; items: { id: string; title: string; hint: string }[] }
+  // ── 아티클에서 주로 쓰는 블록 ──
+  | { type: 'heading'; text: string }
+  | { type: 'list'; ordered?: boolean; items: string[] }
+  | { type: 'code'; lang: string; code: string; caption?: string }
+  | { type: 'callout'; label?: string; text: string };
 
 export type CaseSection = {
   id: string;
@@ -93,8 +99,19 @@ export type ExperienceEntry = {
   contributions: Todo;
 };
 
-export type StackGroup = {
-  domain: string;
-  icon: 'code' | 'ai' | 'server' | 'db' | 'ui' | 'cloud';
-  items: string[];
+export type ArticleSection = { id: string; title: string; blocks: Block[] };
+
+export type Article = {
+  slug: string;
+  title: string;
+  /** 홈 목록 · 메타 description용 한두 문장 */
+  summary: string;
+  /** 본문 상단 도입 문단 */
+  lede: string;
+  /** YYYY.MM.DD — 최신순 정렬 기준 */
+  date: string;
+  updated?: string;
+  category: string;
+  tags: string[];
+  sections: ArticleSection[];
 };

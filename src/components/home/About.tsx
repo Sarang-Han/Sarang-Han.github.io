@@ -1,9 +1,7 @@
+import { getArticles, readingMinutes } from '@/content/articles';
 import { about, links, site } from '@/content/site';
-import type { StackGroup } from '@/content/types';
-import { Arrow, Chip, Container, Grid, Label, PixelWords, Rich } from '@/components/ui/primitives';
-import { PixelIcon, browser, chip, cloud, code, database, server, type Sprite } from '@/components/ui/pixel';
-
-const ICONS: Record<StackGroup['icon'], Sprite> = { code, ai: chip, server, db: database, ui: browser, cloud };
+import { Arrow, Container, Grid, Label, PixelWords, Rich } from '@/components/ui/primitives';
+import { ArticleList } from './ArticleList';
 
 const delay = (s: number) => ({ animationDelay: `${s}s` });
 
@@ -67,22 +65,16 @@ export function About() {
         </Grid>
 
         <div className="fade mt-24">
-          <Label className="mb-4">Technical Stack</Label>
-          <dl className="m-0 grid grid-cols-1 gap-x-6 sm:grid-cols-2 lg:grid-cols-3">
-            {about.stack.map((g) => (
-              <div key={g.domain} className="border-t border-line pt-4 pb-7">
-                <dt className="mb-3 flex items-center gap-2.5 text-[15px] font-medium">
-                  <PixelIcon sprite={ICONS[g.icon]} className="text-sub" />
-                  {g.domain}
-                </dt>
-                <dd className="m-0 flex flex-wrap gap-1.5">
-                  {g.items.map((t) => (
-                    <Chip key={t}>{t}</Chip>
-                  ))}
-                </dd>
-              </div>
-            ))}
-          </dl>
+          <ArticleList
+            items={getArticles().map((a) => ({
+              slug: a.slug,
+              title: a.title,
+              summary: a.summary,
+              date: a.date,
+              tags: a.tags,
+              minutes: readingMinutes(a),
+            }))}
+          />
         </div>
       </Container>
     </section>

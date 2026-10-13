@@ -1,8 +1,8 @@
 import type { Block } from '@/content/types';
 import { diagrams } from '@/components/diagrams';
-import { Label, Rich, TodoBlock } from '@/components/ui/primitives';
+import { Label, Rich, TodoBlock, cn } from '@/components/ui/primitives';
 
-/** 케이스 스터디 섹션 본문 블록 — content/projects.ts의 Block 타입과 1:1 대응 */
+/** 본문 블록 렌더러 — 케이스 스터디와 아티클이 공유. content/types.ts의 Block 타입과 1:1 대응 */
 export function BlockView({ block }: { block: Block }) {
   switch (block.type) {
     case 'prose':
@@ -122,6 +122,49 @@ export function BlockView({ block }: { block: Block }) {
             </article>
           ))}
         </div>
+      );
+
+    case 'heading':
+      return <h3 className="mt-4 mb-0 text-[21px] leading-[1.35] font-medium tracking-[-0.015em]">{block.text}</h3>;
+
+    case 'list': {
+      const List = block.ordered ? 'ol' : 'ul';
+      return (
+        <List className={cn('m-0 flex flex-col gap-2 pl-[22px] marker:text-faint', block.ordered ? 'list-decimal' : 'list-[square]')}>
+          {block.items.map((it) => (
+            <li key={it}>
+              <Rich text={it} />
+            </li>
+          ))}
+        </List>
+      );
+    }
+
+    case 'code':
+      return (
+        <figure className="m-0 overflow-hidden rounded-lg bg-fg text-bg shadow-px">
+          <figcaption className="flex justify-between gap-4 border-b border-white/10 px-5 py-2.5">
+            <span className="lbl text-faint">{block.lang}</span>
+            {block.caption && (
+              <span className="truncate font-mono text-xs text-faint">
+                <Rich text={block.caption} />
+              </span>
+            )}
+          </figcaption>
+          <pre className="m-0 overflow-x-auto p-5 font-mono text-[13.5px] leading-[1.7]">
+            <code>{block.code}</code>
+          </pre>
+        </figure>
+      );
+
+    case 'callout':
+      return (
+        <aside className="border-l-2 border-accent bg-accent-wash/60 py-4 pr-5 pl-5">
+          {block.label && <Label className="mb-1.5 text-accent-ink">{block.label}</Label>}
+          <p className="m-0 text-body">
+            <Rich text={block.text} />
+          </p>
+        </aside>
       );
   }
 }

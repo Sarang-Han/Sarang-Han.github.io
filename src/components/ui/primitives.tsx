@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react';
+import Link from 'next/link';
 import type { Todo } from '@/content/types';
 
 export function cn(...classes: (string | false | null | undefined)[]) {
@@ -29,11 +30,43 @@ export function Ph({ children }: { children: ReactNode }) {
 
 export const isPlaceholder = (s: string) => /^\[[^\]]+\]$/.test(s.trim());
 
-/** 문자열 안의 `[...]` 구간을 플레이스홀더로 렌더링 */
+/** 문자열 안의 `[텍스트](URL)` → 링크, 백틱 구간 → 인라인 코드, `[...]` → 플레이스홀더 */
 export function Rich({ text }: { text: string }) {
-  // split에 캡처 그룹을 쓰면 홀수 인덱스가 매칭된 `[...]` 구간
-  const parts = text.split(/(\[[^\]]+\])/);
-  return <>{parts.map((part, i) => (i % 2 === 1 ? <Ph key={i}>{part}</Ph> : part))}</>;
+  // split에 캡처 그룹을 쓰면 홀수 인덱스가 매칭된 토큰 (링크를 플레이스홀더보다 먼저 검사)
+  const parts = text.split(/(\[[^\]]+\]\([^)]+\)|`[^`]+`|\[[^\]]+\])/);
+  return (
+    <>
+      {parts.map((part, i) => {
+        if (i % 2 === 0) return part;
+        if (part.startsWith('`')) {
+          return (
+            <code key={i} className="rounded-sm border border-line bg-panel px-[0.35em] py-[0.1em] font-mono text-[0.86em]">
+              {part.slice(1, -1)}
+            </code>
+          );
+        }
+        const link = part.match(/^\[([^\]]+)\]\(([^)]+)\)$/);
+        if (link) return <InlineLink key={i} href={link[2]} label={link[1]} />;
+        return <Ph key={i}>{part}</Ph>;
+      })}
+    </>
+  );
+}
+
+function InlineLink({ href, label }: { href: string; label: string }) {
+  const cls = 'text-accent-ink underline decoration-accent/35 underline-offset-[3px] transition-colors hover:decoration-accent';
+  if (href.startsWith('/')) {
+    return (
+      <Link href={href} className={cls}>
+        {label}
+      </Link>
+    );
+  }
+  return (
+    <a href={href} target="_blank" rel="noreferrer" className={cls}>
+      {label}
+    </a>
+  );
 }
 
 /** 문자열 안의 `{...}` 구간을 픽셀 폰트로 렌더링 — 헤드라인 악센트용 */

@@ -51,43 +51,8 @@ export function BuddybotFlowMini() {
   );
 }
 
-const LAYERS = [
-  { id: 'L1', name: 'System instructions', desc: '응답 규칙 · 안전 정책' },
-  { id: 'L2', name: 'Character profile', desc: '성격 · 말투 · 관계' },
-  { id: 'L3', name: 'Lorebook entries', desc: '조건에 따라 주입되는 세계관 정보', highlight: true },
-  { id: 'L4', name: 'Conversation memory', desc: '최근 대화 · 요약' },
-  { id: 'L5', name: 'User turn', desc: '현재 입력' },
-];
-
-export function ContextLayersMini() {
-  return (
-    <div className="flex flex-wrap items-center justify-center gap-5">
-      <div className="flex w-[280px] flex-col gap-1.5">
-        {LAYERS.map((l, i) => (
-          <div
-            key={l.id}
-            style={{ marginLeft: i * 12 }}
-            className={`flex justify-between rounded-sm border px-3 py-2 shadow-px ${
-              l.highlight ? 'border-accent bg-accent-wash' : 'border-line-strong bg-white'
-            }`}
-          >
-            <span className={`text-[13px] ${l.highlight ? 'font-medium text-accent-ink' : ''}`}>{l.name}</span>
-            <span className={`font-mono text-[10.5px] ${l.highlight ? 'text-accent' : 'text-faint'}`}>{l.id}</span>
-          </div>
-        ))}
-      </div>
-      <Sep />
-      <div className="flex size-22 flex-col items-center justify-center rounded-lg bg-fg text-bg shadow-px">
-        <span className="font-mono text-[10.5px] opacity-70">reply</span>
-        <span className="text-[15px] font-medium">LLM</span>
-      </div>
-    </div>
-  );
-}
-
 export const previews: Record<PreviewId, () => React.JSX.Element> = {
   'buddybot-flow': BuddybotFlowMini,
-  'context-layers': ContextLayersMini,
 };
 
 /* ─────────────────────────────────────────────────────────────
@@ -157,42 +122,6 @@ export function BuddybotArchitecture() {
   );
 }
 
-export function ContextLayers() {
-  return (
-    <figure className="m-0 rounded-2xl border border-line bg-panel px-6 py-14">
-      <div className="mx-auto flex max-w-[720px] flex-col gap-2.5">
-        {LAYERS.map((l, i) => (
-          <div
-            key={l.id}
-            className={`flex items-center justify-between gap-4 rounded-lg border px-[18px] py-3.5 shadow-px max-lg:!ml-0 ${
-              l.highlight ? 'border-accent bg-accent-wash' : 'border-line-strong bg-white'
-            }`}
-            style={{ marginLeft: i * 24 }}
-          >
-            <span>
-              <span className={`lbl block text-[11px] ${l.highlight ? 'text-accent-ink' : ''}`}>{l.id}</span>
-              <span className={`text-[17px] font-medium ${l.highlight ? 'text-accent-ink' : ''}`}>{l.name}</span>
-            </span>
-            <span className={`text-right text-sm ${l.highlight ? 'text-accent-ink' : 'text-mute'}`}>{l.desc}</span>
-          </div>
-        ))}
-        <div className="mt-3 flex items-center justify-end gap-4">
-          <span className="font-mono text-xs text-mute">
-            assembled context <span className="font-pixel">→</span>
-          </span>
-          <span className="rounded-md bg-fg px-6 py-3 text-base font-medium text-bg shadow-px">
-            LLM <span className="font-pixel">→</span> Character reply
-          </span>
-        </div>
-      </div>
-      <figcaption className="mx-auto mt-8 max-w-[720px] font-mono text-xs text-mute">
-        fig. 02 — Conceptual. 일반적인 캐릭터 대화 컨텍스트 구성. 실제 서비스 구조가 아님.
-      </figcaption>
-    </figure>
-  );
-}
-
 export const diagrams: Record<DiagramId, () => React.JSX.Element> = {
   'buddybot-architecture': BuddybotArchitecture,
-  'context-layers': ContextLayers,
 };

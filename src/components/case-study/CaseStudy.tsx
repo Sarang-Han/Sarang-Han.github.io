@@ -1,7 +1,9 @@
 import Link from 'next/link';
 import { getAdjacentProject, projects } from '@/content/projects';
+import { site } from '@/content/site';
 import type { CaseSection, Project, Scope } from '@/content/types';
 import { SiteFooter } from '@/components/home/Contact';
+import { PageHeader } from '@/components/ui/PageHeader';
 import { Arrow, Chip, Container, Grid, Label, Rich } from '@/components/ui/primitives';
 import { BlockView } from './Blocks';
 
@@ -14,17 +16,9 @@ export function CaseStudy({ project: p }: { project: Project }) {
 
   return (
     <>
-      <header className="sticky top-0 z-20 border-b border-line bg-bg/90 backdrop-blur-sm">
-        <Container className="flex h-16 items-center justify-between gap-4 font-mono text-[13px]">
-          <Link href="/#projects" className="group inline-flex gap-2 text-sub hover:text-accent">
-            <Arrow dir="left" />
-            <span className="link-ul">Han Sarang / Work</span>
-          </Link>
-          <span className="font-pixel text-pixel text-mute">
-            Case Study {String(index).padStart(2, '0')} / {String(projects.length).padStart(2, '0')}
-          </span>
-        </Container>
-      </header>
+      <PageHeader backHref="/#projects" backLabel={`${site.name} / Work`}>
+        Case Study {String(index).padStart(2, '0')} / {String(projects.length).padStart(2, '0')}
+      </PageHeader>
 
       <main>
         <CaseHero project={p} />

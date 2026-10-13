@@ -17,36 +17,45 @@ src/
     icon.svg                 파비콘 (픽셀 하트)
     page.tsx                 홈
     projects/[slug]/page.tsx 케이스 스터디 (generateStaticParams로 정적 생성)
+    articles/[slug]/page.tsx 아티클 (테크 블로그 글, 정적 생성)
     sitemap.ts
     globals.css              디자인 토큰(@theme) · 공용 클래스 · 모션
   content/                   ← 텍스트는 전부 여기서 수정
     types.ts                 콘텐츠 타입
-    site.ts                  이름 · 링크 · About(기술 스택 포함) · Contact · 내비
+    site.ts                  이름 · 링크 · About · Contact · 내비
     projects.ts              프로젝트 카드 + 케이스 스터디 섹션/블록
+    articles.ts              아티클 목록 + 본문 섹션/블록 · 정렬 · 읽기 시간
     experience.ts            경력 타임라인
   components/
-    home/                    홈 섹션 (SiteHeader만 client component — 스크롤 스파이)
-    case-study/              CaseStudy 템플릿 + Blocks (블록 타입별 렌더러)
+    home/                    홈 섹션 (client: SiteHeader 스크롤 스파이, ArticleList 페이지네이션)
+    case-study/              CaseStudy 템플릿 + Blocks (블록 렌더러 — 아티클과 공유)
+    article/                 ArticleView 템플릿 (목차 + 한 열 본문)
     diagrams/                카드 미리보기 · 아키텍처 다이어그램
     ui/primitives.tsx        Container, Grid, Label, Chip, Rich, PixelWords, TodoBlock, Arrow
     ui/pixel.tsx             PixelIcon (ASCII 스프라이트 → SVG) · 아이콘 스프라이트
     ui/CopyButton.tsx        클릭 시 클립보드 복사 (client)
+    ui/PageHeader.tsx        서브 페이지 상단 바 (뒤로 가기 + 보조 정보)
 ```
 
 ## 콘텐츠 편집 규칙
 
 - 문자열 안의 `[...]`는 **작성 필요 플레이스홀더**로 자동 렌더링됩니다(`<Rich>`).
   확정되면 대괄호를 지우세요. 남은 항목 찾기: `grep -rn "\[" src/content`
+- 같은 `<Rich>`에서 `[텍스트](URL)`은 링크(`/`로 시작하면 내부 링크), 백틱 구간은 인라인 코드가 됩니다.
 - 헤드라인 문자열 안의 `{...}`는 픽셀 폰트로 렌더링됩니다(`<PixelWords>`, 예: `'Building {AI} that'`).
 - 링크는 `src/content/site.ts`의 `links`, 프로젝트별 `links`에서 `null` → URL로 바꾸면 실제 링크가 됩니다.
   Contact 목록은 `null`인 항목을 숨깁니다(예: `resume`에 `'/resume.pdf'`를 넣으면 Resume 행이 나타남).
   각 행의 `action`으로 동작을 정합니다: `copy`(클릭 시 복사) · `link`(새 탭) · `download`.
 - 공개 전 `site.highlightPlaceholders`를 `false`로, `site.url`을 실제 도메인으로.
-- 케이스 스터디 섹션은 `sections[].blocks` 배열로 구성됩니다. 블록 타입:
+- 케이스 스터디·아티클 섹션은 `sections[].blocks` 배열로 구성됩니다. 블록 타입:
   `prose · todo · todoGrid · columns · diagram · stackTable · decisions · challenges · areas`
+  `heading · list · code · callout` (주로 아티클용 — 소제목, 목록, 코드 블록, TL;DR·노트 박스)
   새 블록이 필요하면 `types.ts`의 `Block` 유니온과 `case-study/Blocks.tsx`의 switch에 추가하세요.
 - 새 프로젝트: `projects.ts`에 객체 추가 → 홈 카드와 `/projects/<slug>` 페이지가 함께 생깁니다.
   미리보기·다이어그램은 `components/diagrams`에 컴포넌트를 만들고 `previews` / `diagrams` 맵에 등록.
+- 새 아티클: `articles.ts`에 객체 추가 → About 하단 목록과 `/articles/<slug>` 페이지가 함께 생깁니다.
+  목록은 5개를 넘으면 하단 페이지네이션으로 넘어갑니다(`About.tsx`의 `<ArticleList perPage>`로 조정).
+  `date`(`YYYY.MM.DD`) 기준 최신순으로 정렬되고, 읽기 시간은 본문 글자 수로 자동 계산됩니다.
 
 ## 디자인 토큰 (globals.css `@theme`)
 
