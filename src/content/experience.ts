@@ -1,4 +1,4 @@
-import type { ExperienceEntry, StackGroup } from './types';
+import type { ExperienceEntry } from './types';
 
 export const experience: ExperienceEntry[] = [
   {
@@ -34,53 +34,5 @@ export const experience: ExperienceEntry[] = [
       label: 'To write — Key contributions',
       hint: '논문, 과제, 프로젝트 등 확인 가능한 결과물만 적습니다. (Buddybot이 과정 중 프로젝트라면 여기서 연결)',
     },
-  },
-];
-
-/** 숙련도 대신 "어디서 무엇으로 썼는지"로 표기 */
-export const stack: StackGroup[] = [
-  {
-    domain: 'Languages',
-    icon: 'code',
-    items: [
-      { name: 'Python', use: 'Buddybot — 백엔드 · 검색 파이프라인' },
-      { name: 'TypeScript', use: '[사용 프로젝트 입력]' },
-    ],
-  },
-  {
-    domain: 'AI / ML',
-    icon: 'ai',
-    items: [
-      { name: 'LLM Applications', use: 'Buddybot — 응답 생성 · Character Chat — 대화 시스템 기획' },
-      { name: 'RAG', use: 'Buddybot — 검색 증강 응답 파이프라인' },
-      { name: 'LangChain', use: '[사용 프로젝트 입력]' },
-      { name: 'SentenceTransformers', use: 'Buddybot — Dense 임베딩' },
-    ],
-  },
-  {
-    domain: 'Backend',
-    icon: 'server',
-    items: [
-      { name: 'FastAPI', use: 'Buddybot — API 서버' },
-      { name: 'Uvicorn', use: '[사용 프로젝트 입력]' },
-    ],
-  },
-  {
-    domain: 'Retrieval / DB',
-    icon: 'db',
-    items: [
-      { name: 'ChromaDB', use: 'Buddybot — 벡터 저장소' },
-      { name: 'BM25', use: 'Buddybot — 키워드(Sparse) 검색' },
-    ],
-  },
-  { domain: 'Frontend', icon: 'ui', items: [{ name: 'Next.js', use: 'Buddybot — 채팅 클라이언트' }] },
-  {
-    domain: 'Infrastructure',
-    icon: 'cloud',
-    items: [
-      { name: 'Docker', use: 'Buddybot — 컨테이너화' },
-      { name: 'Hugging Face Spaces', use: 'Buddybot — 배포' },
-      { name: 'Vercel', use: 'Buddybot — 배포' },
-    ],
   },
 ];

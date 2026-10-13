@@ -21,15 +21,16 @@ src/
     globals.css              디자인 토큰(@theme) · 공용 클래스 · 모션
   content/                   ← 텍스트는 전부 여기서 수정
     types.ts                 콘텐츠 타입
-    site.ts                  이름 · 링크 · 히어로 · About · Contact · 내비
+    site.ts                  이름 · 링크 · About(기술 스택 포함) · Contact · 내비
     projects.ts              프로젝트 카드 + 케이스 스터디 섹션/블록
-    experience.ts            경력 타임라인 · 기술 스택
+    experience.ts            경력 타임라인
   components/
     home/                    홈 섹션 (SiteHeader만 client component — 스크롤 스파이)
     case-study/              CaseStudy 템플릿 + Blocks (블록 타입별 렌더러)
     diagrams/                카드 미리보기 · 아키텍처 다이어그램
     ui/primitives.tsx        Container, Grid, Label, Chip, Rich, PixelWords, TodoBlock, Arrow
-    ui/pixel.tsx             PixelIcon (ASCII 스프라이트 → SVG) · heart · cursor
+    ui/pixel.tsx             PixelIcon (ASCII 스프라이트 → SVG) · 아이콘 스프라이트
+    ui/CopyButton.tsx        클릭 시 클립보드 복사 (client)
 ```
 
 ## 콘텐츠 편집 규칙
@@ -38,6 +39,8 @@ src/
   확정되면 대괄호를 지우세요. 남은 항목 찾기: `grep -rn "\[" src/content`
 - 헤드라인 문자열 안의 `{...}`는 픽셀 폰트로 렌더링됩니다(`<PixelWords>`, 예: `'Building {AI} that'`).
 - 링크는 `src/content/site.ts`의 `links`, 프로젝트별 `links`에서 `null` → URL로 바꾸면 실제 링크가 됩니다.
+  Contact 목록은 `null`인 항목을 숨깁니다(예: `resume`에 `'/resume.pdf'`를 넣으면 Resume 행이 나타남).
+  각 행의 `action`으로 동작을 정합니다: `copy`(클릭 시 복사) · `link`(새 탭) · `download`.
 - 공개 전 `site.highlightPlaceholders`를 `false`로, `site.url`을 실제 도메인으로.
 - 케이스 스터디 섹션은 `sections[].blocks` 배열로 구성됩니다. 블록 타입:
   `prose · todo · todoGrid · columns · diagram · stackTable · decisions · challenges · areas`

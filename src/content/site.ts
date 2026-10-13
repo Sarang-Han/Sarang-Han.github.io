@@ -1,4 +1,4 @@
-import type { ExternalLinks, Fact, NavItem } from './types';
+import type { ExternalLinks, Fact, NavItem, StackGroup } from './types';
 
 export const site = {
   name: 'Han Sarang',
@@ -14,22 +14,21 @@ export const site = {
   lastUpdated: '[YYYY.MM.DD]',
 } as const;
 
+/** null인 항목은 Contact에서 숨겨짐 */
 export const links: ExternalLinks = {
-  email: null, // 'name@example.com'
-  github: null, // 'https://github.com/username'
-  blog: null,
-  resume: null, // '/resume.pdf' — public/ 폴더에 넣으면 됨
+  email: 'hangpfm0518@ewhain.net',
+  github: 'https://github.com/Sarang-Han',
+  resume: null, // '/resume.pdf' — public/ 폴더에 넣으면 Contact에 나타남
 };
 
 export const nav: NavItem[] = [
-  { id: 'home', label: 'Home', n: '01' },
-  { id: 'about', label: 'About', n: '02' },
-  { id: 'projects', label: 'Projects', n: '03' },
-  { id: 'experience', label: 'Experience', n: '04' },
-  { id: 'contact', label: 'Contact', n: '06' },
+  { id: 'about', label: 'About', n: '01' },
+  { id: 'projects', label: 'Projects', n: '02' },
+  { id: 'experience', label: 'Experience', n: '03' },
+  { id: 'contact', label: 'Contact', n: '04' },
 ];
 
-export const hero = {
+export const about = {
   /** `{...}` 구간은 픽셀 폰트로 렌더링 */
   headline: ['Building AI that', 'works in the real world'],
   tagline: 'LLM과 AI 기술을 실제 사용자가 경험하는 서비스로 연결하는 주니어 개발자입니다.',
@@ -41,59 +40,21 @@ export const hero = {
     { label: 'Now', value: 'AI Product / System Planning', sub: 'Early-stage AI Startup' },
     { label: 'Study', value: 'M.S. Artificial Intelligence', sub: '[대학원명 · 기간]' },
   ] satisfies Fact[],
-  strengths: [
-    {
-      key: 'A',
-      title: 'AI Engineering',
-      body: '검색·임베딩·LLM을 하나의 응답 파이프라인으로 설계하고 구현합니다.',
-      evidence: { label: 'Buddybot', href: '/projects/buddybot' },
-    },
-    {
-      key: 'B',
-      title: 'Problem Solving',
-      body: '문제를 먼저 정의하고, 제약 안에서 기술을 고르고, 동작하는 형태까지 배포합니다.',
-      evidence: { label: 'Engineering decisions', href: '/projects/buddybot#s6' },
-    },
-    {
-      key: 'C',
-      title: 'Product Thinking',
-      body: '모델의 동작을 사용자가 겪는 대화 경험과 제품 구조로 번역합니다.',
-      evidence: { label: 'AI Character Chat', href: '/projects/ai-character-chat' },
-    },
-  ],
-};
-
-export const about = {
-  heading: '모델 자체보다,\n모델이 쓰이는\n시스템에 관심이 있습니다.',
-  intro: {
-    label: 'To write — 자기소개',
-    hint: '2–3문장. AI를 시작하게 된 구체적 계기, 지금 붙잡고 있는 기술적 질문, 일하는 방식을 사실 중심으로 적습니다.',
-  },
-  interests: [
-    { title: 'Large Language Models', desc: '프롬프트·컨텍스트 구성과 대화 시스템에서의 LLM 동작' },
-    { title: 'Retrieval-Augmented Generation', desc: 'Dense·Sparse 검색을 결합한 근거 기반 응답 생성' },
-    { title: 'AI Application Development', desc: '모델을 실제로 호출·배포 가능한 애플리케이션으로 만드는 일' },
-    { title: 'Backend Engineering', desc: 'API 설계, 서비스 구성, 컨테이너 기반 배포' },
-    { title: 'AI Product Architecture', desc: 'AI 기능을 제품의 구조와 사용자 흐름 안에 배치하는 설계' },
-  ],
-  cards: [
-    { label: 'Education', title: '인공지능 석사 과정', org: '[대학원명]', period: '[YYYY.MM — YYYY.MM]' },
-    {
-      label: 'Currently',
-      title: 'AI Product / System Planning',
-      org: 'Early-stage AI Startup',
-      period: '[YYYY.MM — 현재]',
-    },
-  ],
+  stack: [
+    { domain: 'Languages', icon: 'code', items: ['Python', 'TypeScript'] },
+    { domain: 'AI / ML', icon: 'ai', items: ['LLM Applications', 'RAG', 'LangChain', 'SentenceTransformers'] },
+    { domain: 'Backend', icon: 'server', items: ['FastAPI', 'Uvicorn'] },
+    { domain: 'Retrieval / DB', icon: 'db', items: ['ChromaDB', 'BM25'] },
+    { domain: 'Frontend', icon: 'ui', items: ['Next.js'] },
+    { domain: 'Infrastructure', icon: 'cloud', items: ['Docker', 'Hugging Face Spaces', 'Vercel'] },
+  ] satisfies StackGroup[],
 };
 
 export const contact = {
-  headline: "Let's build something meaningful",
-  body: 'AI 기술을 활용해 실제 문제를 해결하는 일에 관심이 있습니다.',
+  /** action — copy: 클릭 시 값 복사 · link: 새 탭으로 열기 · download: 파일 링크 */
   rows: [
-    { label: 'Email', key: 'email', placeholder: '[name@example.com]', display: (v: string) => v },
-    { label: 'GitHub', key: 'github', placeholder: '[github.com/username]', display: (v: string) => v.replace(/^https?:\/\//, '') },
-    { label: 'Technical Blog', key: 'blog', placeholder: '[blog URL]', display: (v: string) => v.replace(/^https?:\/\//, '') },
-    { label: 'Resume', key: 'resume', placeholder: 'Resume PDF [PDF 링크]', display: () => 'Resume PDF' },
+    { label: 'Email', key: 'email', action: 'copy', display: (v: string) => v },
+    { label: 'GitHub', key: 'github', action: 'link', display: (v: string) => v.replace(/^https?:\/\//, '') },
+    { label: 'Resume', key: 'resume', action: 'download', display: () => 'Resume PDF' },
   ] as const,
 };

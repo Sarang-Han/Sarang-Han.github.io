@@ -6,7 +6,7 @@ export function Experience() {
     <section id="experience" className="border-b border-line py-32">
       <Container>
         <div className="fade mb-16">
-          <Label className="mb-5">(04) — Experience</Label>
+          <Label className="mb-5">(03) — Experience</Label>
           <h2 className="m-0 text-[clamp(40px,5vw,72px)] leading-none font-medium tracking-[-0.04em]">Path</h2>
         </div>
 

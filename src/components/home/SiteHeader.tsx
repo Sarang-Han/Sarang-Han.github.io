@@ -31,7 +31,7 @@ export function SiteHeader() {
   return (
     <header className="sticky top-0 z-20 border-b border-line bg-bg/90 backdrop-blur-sm backdrop-saturate-150">
       <Container className="flex h-16 items-center justify-between gap-6">
-        <a href="#home" className="flex shrink-0 items-baseline gap-2.5">
+        <a href="#about" className="flex shrink-0 items-baseline gap-2.5">
           <PixelIcon sprite={heart} scale={2} className="self-center text-accent" />
           <span className="text-[15px] font-semibold tracking-[-0.01em]">{site.name}</span>
           <span className="hidden font-mono text-xs text-mute lg:inline">{site.role}</span>

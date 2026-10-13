@@ -10,7 +10,7 @@ export function Projects() {
       <Container>
         <div className="fade mb-16 flex flex-wrap items-end justify-between gap-6">
           <div>
-            <Label className="mb-5">(03) — Featured Projects</Label>
+            <Label className="mb-5">(02) — Featured Projects</Label>
             <h2 className="m-0 text-[clamp(40px,5vw,72px)] leading-none font-medium tracking-[-0.04em]">Selected Work</h2>
           </div>
           <p className="m-0 font-pixel text-pixel text-mute">

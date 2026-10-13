@@ -11,7 +11,6 @@ export type Fact = { label: string; value: string; sub?: string };
 export type ExternalLinks = {
   email: string | null;
   github: string | null;
-  blog: string | null;
   resume: string | null;
 };
 
@@ -97,5 +96,5 @@ export type ExperienceEntry = {
 export type StackGroup = {
   domain: string;
   icon: 'code' | 'ai' | 'server' | 'db' | 'ui' | 'cloud';
-  items: { name: string; use: string }[];
+  items: string[];
 };
