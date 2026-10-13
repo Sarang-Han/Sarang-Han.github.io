@@ -6,7 +6,7 @@ import { CopyButton } from '@/components/ui/CopyButton';
 
 export function Contact() {
   return (
-    <section id="contact" className="pt-36 pb-16">
+    <section id="contact" className="pt-16 pb-16 lg:pt-20">
       <Container>
         <Label className="fade mb-5">(05) — Contact</Label>
 

@@ -4,9 +4,9 @@ import { Chip, Container, Grid, Label, Rich, TodoBlock, cn, isPlaceholder } from
 export function Experience() {
   const entries = experience.filter((e) => !e.hidden);
   return (
-    <section id="experience" className="border-b border-line py-32">
+    <section id="experience" className="border-b border-line py-16 lg:py-20">
       <Container>
-        <div className="fade mb-16">
+        <div className="fade mb-10 lg:mb-12">
           <Label className="mb-5">(04) — Experience</Label>
           <h2 className="m-0 text-[clamp(40px,5vw,72px)] leading-none font-medium tracking-[-0.04em]">Path</h2>
         </div>

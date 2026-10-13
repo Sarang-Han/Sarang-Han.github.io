@@ -8,9 +8,9 @@ const delay = (s: number) => ({ animationDelay: `${s}s` });
 
 export function About() {
   return (
-    <section id="about" className="border-b border-line pt-28 pb-24">
+    <section id="about" className="border-b border-line pt-14 pb-16 lg:pt-16 lg:pb-20">
       <Container>
-        <div className="reveal mb-14 flex flex-wrap justify-between gap-3" style={delay(0.05)}>
+        <div className="reveal mb-10 flex flex-wrap justify-between gap-3 lg:mb-12" style={delay(0.05)}>
           <Label as="span">(01) — About</Label>
           {/* Undertale 전투 HUD */}
           <p className="m-0 flex items-center gap-5 font-pixel text-pixel text-mute uppercase">

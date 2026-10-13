@@ -5,9 +5,9 @@ import { ArticleList } from './ArticleList';
 export function Articles() {
   const articles = getArticles();
   return (
-    <section id="articles" className="border-b border-line py-32">
+    <section id="articles" className="border-b border-line py-16 lg:py-20">
       <Container>
-        <div className="fade mb-16 flex flex-wrap items-end justify-between gap-6">
+        <div className="fade mb-10 flex flex-wrap items-end justify-between gap-6 lg:mb-12">
           <div>
             <Label className="mb-5">(03) — Articles</Label>
             <h2 className="m-0 text-[clamp(40px,5vw,72px)] leading-none font-medium tracking-[-0.04em]">Writing</h2>

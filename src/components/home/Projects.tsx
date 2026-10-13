@@ -6,9 +6,9 @@ import { Arrow, Chip, Container, Grid, Label, Rich, cn } from '@/components/ui/p
 
 export function Projects() {
   return (
-    <section id="projects" className="border-b border-line py-32">
+    <section id="projects" className="border-b border-line py-16 lg:py-20">
       <Container>
-        <div className="fade mb-16 flex flex-wrap items-end justify-between gap-6">
+        <div className="fade mb-10 flex flex-wrap items-end justify-between gap-6 lg:mb-12">
           <div>
             <Label className="mb-5">(02) — Featured Projects</Label>
             <h2 className="m-0 text-[clamp(40px,5vw,72px)] leading-none font-medium tracking-[-0.04em]">Selected Work</h2>

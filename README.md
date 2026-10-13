@@ -29,7 +29,7 @@ src/
     articles.ts              아티클 목록 + 본문 섹션/블록 · 정렬 · 읽기 시간
     experience.ts            경력 타임라인
   components/
-    home/                    홈 섹션 (client: SiteHeader 스크롤 스파이, ArticleList 페이지네이션)
+    home/                    홈 섹션 (client: SiteHeader 스크롤 스파이 · 모바일 메뉴창, ArticleList 페이지네이션)
     case-study/              CaseStudy 템플릿 + Blocks (블록 렌더러 — 아티클과 공유)
     article/                 ArticleView 템플릿 (목차 + 한 열 본문)
     diagrams/                카드 미리보기 · 아키텍처 다이어그램
@@ -99,6 +99,7 @@ src/
   한글까지 픽셀로 보이도록 [Galmuri11](https://github.com/quiple/galmuri)(OFL-1.1)을 씁니다 — 12px 배수에서 선명해서 18px.
   폰트가 504KB라 `preload: false`로 대화창이 있는 페이지에서만 로드됩니다.
 - **HUD**: `LV · HP` 한 줄(`site.ts`의 `about.status`).
+- **모바일 메뉴**: 768px 미만에서 내비 대신 `MENU` 버튼 → 대화창 스타일 메뉴(현재 섹션에 SOUL). Esc · 바깥 탭으로 닫힘.
 - **세이브 포인트**: 푸터 "Last saved"의 별.
 - **404**: `* But nobody came.`
 
