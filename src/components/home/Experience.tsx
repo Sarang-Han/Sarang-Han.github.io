@@ -4,16 +4,16 @@ import { Chip, Container, Grid, Label, Rich, TodoBlock, cn, isPlaceholder } from
 export function Experience() {
   const entries = experience.filter((e) => !e.hidden);
   return (
-    <section id="experience" className="border-b border-line py-16 lg:py-20">
+    <section id="experience" aria-labelledby="experience-title" className="section-space border-b border-line bg-white/40">
       <Container>
         <div className="fade mb-10 lg:mb-12">
-          <Label className="mb-5">(04) — Experience</Label>
-          <h2 className="m-0 text-[clamp(40px,5vw,72px)] leading-none font-medium tracking-[-0.04em]">Path</h2>
+          <Label className="mb-5 flex items-center gap-3"><span className="section-marker">04</span> Experience</Label>
+          <h2 id="experience-title" className="section-title">The path so far<span className="px-dot">.</span></h2>
         </div>
 
         <ol className="m-0 list-none p-0">
           {entries.map((e, idx) => (
-            <li key={e.role} className={cn('fade border-t border-fg pt-8', idx === entries.length - 1 ? 'pb-4' : 'pb-12')}>
+            <li key={e.role} className={cn('fade border-t border-line-strong pt-8', idx === entries.length - 1 ? 'pb-4' : 'pb-12')}>
               <Grid>
                 <div className="col-span-12 lg:col-span-3">
                   <p className="m-0 flex items-center gap-2.5 font-pixel text-pixel">
@@ -26,7 +26,7 @@ export function Experience() {
                   <Label className="mt-3 mb-0">{e.kind}</Label>
                 </div>
 
-                <div className="col-span-12 lg:col-span-9">
+                <div className="col-span-12 min-w-0 lg:col-span-9 lg:border-l lg:border-line lg:pl-8">
                   <h3 className="m-0 text-[28px] leading-[1.2] font-medium tracking-[-0.025em]">{e.role}</h3>
                   <p className="mt-1 mb-0 text-base text-sub">
                     <Rich text={e.org} />
@@ -55,7 +55,7 @@ export function Experience() {
                     </div>
                   </div>
 
-                  <TodoBlock todo={e.contributions} className="mt-6" />
+                  <TodoBlock todo={e.contributions} className="mt-7" />
                 </div>
               </Grid>
             </li>

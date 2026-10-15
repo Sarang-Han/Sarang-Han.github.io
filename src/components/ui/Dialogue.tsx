@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { PixelIcon, asterisk } from './pixel';
 import { cn } from './primitives';
 
@@ -26,31 +26,51 @@ export function Dialogue({
 }) {
   const total = lines.reduce((n, l) => n + l.length, 0);
   const instant = lines.slice(0, instantLines).reduce((n, l) => n + l.length, 0);
+  const contentKey = lines.join('\n');
   const [shown, setShown] = useState(instant);
+  const startRef = useRef<ReturnType<typeof setTimeout>>(undefined);
+  const tickRef = useRef<ReturnType<typeof setInterval>>(undefined);
+  const typing = shown < total;
+
+  const finish = () => {
+    clearTimeout(startRef.current);
+    clearInterval(tickRef.current);
+    setShown(total);
+  };
 
   useEffect(() => {
-    if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      setShown(total);
-      return;
-    }
-    let tick: ReturnType<typeof setInterval> | undefined;
-    const start = setTimeout(() => {
-      tick = setInterval(() => {
-        setShown((n) => {
-          if (n + 1 >= total) clearInterval(tick);
-          return Math.min(n + 1, total);
-        });
-      }, speed);
-    }, delay);
-    return () => {
-      clearTimeout(start);
-      clearInterval(tick);
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const stop = () => {
+      clearTimeout(startRef.current);
+      clearInterval(tickRef.current);
     };
-  }, [total, speed, delay]);
+    const onMotionChange = () => {
+      if (!reducedMotion.matches) return;
+      stop();
+      setShown(total);
+    };
+    stop();
+    setShown(reducedMotion.matches || speed <= 0 ? total : instant);
+    if (!reducedMotion.matches && speed > 0 && instant < total) {
+      let current = instant;
+      startRef.current = setTimeout(() => {
+        tickRef.current = setInterval(() => {
+          current = Math.min(current + 1, total);
+          setShown(current);
+          if (current >= total) stop();
+        }, speed);
+      }, Math.max(0, delay));
+    }
+    reducedMotion.addEventListener('change', onMotionChange);
+    return () => {
+      stop();
+      reducedMotion.removeEventListener('change', onMotionChange);
+    };
+  }, [contentKey, total, instant, speed, delay]);
 
   let budget = shown;
   return (
-    <div className={cn('dialogue cursor-default', className)} onClick={() => setShown(total)}>
+    <div className={cn('dialogue', typing ? 'cursor-pointer' : 'cursor-default', className)} onClick={typing ? finish : undefined}>
       <p className="sr-only">{lines.join(' ')}</p>
       <div aria-hidden="true" className="flex flex-col gap-2.5">
         {lines.map((line, i) => {
@@ -67,9 +87,26 @@ export function Dialogue({
           );
         })}
       </div>
+      {instant < total && (
+        <div className="dialogue-skip mt-4 flex justify-end border-t border-white/15 pt-1">
+          <button
+            type="button"
+            onClick={finish}
+            aria-disabled={!typing}
+            tabIndex={typing ? 0 : -1}
+            className={cn(
+              'inline-flex min-h-11 items-center gap-2 px-1 font-pixel text-[12px] leading-none transition-colors',
+              typing ? 'cursor-pointer text-white/75 hover:text-white focus-visible:text-white' : 'cursor-default text-white/60',
+            )}
+          >
+            <span aria-hidden="true">{typing ? '↵' : '✓'}</span>
+            {typing ? '전체 보기' : '모두 표시됨'}
+          </button>
+        </div>
+      )}
       {/* JS가 없으면 전체 문장을 그대로 보여 줌 */}
       <noscript>
-        <style>{'.tw-rest{visibility:visible}'}</style>
+        <style>{'.tw-rest{visibility:visible}.dialogue-skip{display:none}'}</style>
       </noscript>
     </div>
   );

@@ -59,7 +59,7 @@ export async function GET() {
 
         <div style={{ display: 'flex', flexDirection: 'column', fontSize: 104, lineHeight: 1, letterSpacing: '-0.045em' }}>
           <span>{line1}</span>
-          <span style={{ display: 'flex', alignItems: 'flex-end' }}>
+          <span style={{ display: 'flex', alignItems: 'flex-end', color: C.accent }}>
             {line2}
             <span style={{ width: 15, height: 15, marginLeft: 5, marginBottom: 14, background: C.accent }} />
           </span>

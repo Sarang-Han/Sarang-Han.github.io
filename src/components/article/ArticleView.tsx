@@ -5,6 +5,7 @@ import type { Article } from '@/content/types';
 import { BlockView } from '@/components/case-study/Blocks';
 import { SiteFooter } from '@/components/home/Contact';
 import { PageHeader } from '@/components/ui/PageHeader';
+import { ContentsNav } from '@/components/ui/ContentsNav';
 import { Arrow, Chip, Container, Grid, Label, Rich } from '@/components/ui/primitives';
 
 const delay = (s: number) => ({ animationDelay: `${s}s` });
@@ -26,43 +27,43 @@ export function ArticleView({ article: a }: { article: Article }) {
         {minutes} min read
       </PageHeader>
 
-      <main>
+      <main id="main-content" tabIndex={-1}>
         <article>
-          <header className="pt-24 pb-16">
+          <header className="pt-12 pb-12 sm:pt-16 lg:pt-20 lg:pb-16">
             <Container>
-              <div className="reveal mb-10 flex flex-wrap items-center gap-x-6 gap-y-2.5" style={delay(0.05)}>
-                <span className="font-pixel text-pixel text-accent">
-                  <Rich text={a.date} />
-                </span>
+              <div className="reveal mb-7 flex flex-wrap items-center gap-x-4 gap-y-2.5" style={delay(0.05)}>
+                <span aria-hidden="true" className="size-2 bg-accent" />
+                <Label as="span" className="text-accent">Engineering notes</Label>
+                <span aria-hidden="true" className="h-3 w-px bg-line-strong" />
                 <Label as="span">{a.category}</Label>
               </div>
               <h1
-                className="reveal m-0 max-w-[960px] text-[clamp(36px,5.2vw,72px)] leading-[1.05] font-medium tracking-[-0.04em]"
+                className="reveal m-0 max-w-[900px] text-[clamp(32px,5vw,64px)] leading-[1.22] font-medium tracking-[-0.045em] [overflow-wrap:anywhere]"
                 style={delay(0.16)}
               >
                 {a.title}
               </h1>
 
-              <Grid className="reveal mt-14">
-                <p className="col-span-12 m-0 text-xl leading-[1.6] lg:col-span-7">
+              <Grid className="reveal mt-8 lg:mt-10">
+                <p className="col-span-12 m-0 min-w-0 text-[18px] leading-[1.85] tracking-[-0.015em] text-body lg:col-span-7 lg:text-[19px]">
                   <Rich text={a.lede} />
                 </p>
-                <dl className="col-span-12 m-0 border-t border-fg text-[15px] lg:col-span-4 lg:col-start-9">
+                <dl className="col-span-12 m-0 min-w-0 border-t border-fg text-[14px] lg:col-span-4 lg:col-start-9">
                   {meta.map((m) => (
-                    <div key={m.label} className="grid grid-cols-[96px_1fr] gap-3 border-b border-line py-3">
+                    <div key={m.label} className="grid grid-cols-[80px_minmax(0,1fr)] gap-3 border-b border-line py-3 sm:grid-cols-[96px_minmax(0,1fr)]">
                       <Label as="dt" className="pt-1">
                         {m.label}
                       </Label>
-                      <dd className="m-0 font-mono">
+                      <dd className="m-0 min-w-0 font-mono [overflow-wrap:anywhere]">
                         <Rich text={m.value} />
                       </dd>
                     </div>
                   ))}
-                  <div className="grid grid-cols-[96px_1fr] gap-3 border-b border-line py-3">
+                  <div className="grid grid-cols-[80px_minmax(0,1fr)] gap-3 border-b border-line py-3 sm:grid-cols-[96px_minmax(0,1fr)]">
                     <Label as="dt" className="pt-1">
                       Tags
                     </Label>
-                    <dd className="m-0 flex flex-wrap gap-1.5">
+                    <dd className="m-0 flex min-w-0 flex-wrap gap-1.5">
                       {a.tags.map((t) => (
                         <Chip key={t}>{t}</Chip>
                       ))}
@@ -73,31 +74,24 @@ export function ArticleView({ article: a }: { article: Article }) {
             </Container>
           </header>
 
-          <div className="border-t border-line pt-16 pb-24 lg:pt-20">
+          <div className="border-t border-line pt-10 pb-16 lg:pt-16 lg:pb-24">
             <Container>
               <Grid>
-                <nav aria-label="목차" className="col-span-12 mb-14 lg:col-span-3 lg:mb-0">
-                  <div className="lg:sticky lg:top-24">
-                    <Label className="mb-3">Contents</Label>
-                    <ol className="m-0 list-none border-t border-fg p-0">
-                      {a.sections.map((s, i) => (
-                        <li key={s.id}>
-                          <a href={`#${s.id}`} className="flex items-baseline gap-2.5 border-b border-line py-2.5 text-sm text-sub hover:text-accent">
-                            <span className="font-pixel text-pixel text-faint">{pad(i + 1)}</span>
-                            <span className="link-ul">{s.title}</span>
-                          </a>
-                        </li>
-                      ))}
-                    </ol>
+                <aside className="col-span-12 mb-8 min-w-0 lg:col-span-3 lg:mb-0">
+                  <div className="lg:sticky lg:top-28">
+                    <ContentsNav items={a.sections.map(({ id, title }) => ({ id, title }))} label="아티클 목차" />
+                    <Link href="/#articles" className="group mt-6 hidden items-center gap-2 font-mono text-xs text-mute transition-colors hover:text-accent lg:inline-flex">
+                      <Arrow dir="left" /><span className="link-ul">All articles</span>
+                    </Link>
                   </div>
-                </nav>
+                </aside>
 
-                <div className="col-span-12 flex flex-col gap-16 text-[17px] leading-[1.8] lg:col-span-7 lg:col-start-5">
+                <div className="col-span-12 flex min-w-0 max-w-[720px] flex-col gap-12 text-[16px] leading-[1.9] [overflow-wrap:anywhere] lg:col-span-8 lg:col-start-5 lg:gap-16 lg:text-[17px]">
                   {a.sections.map((s, i) => (
-                    <section key={s.id} id={s.id} className="flex flex-col gap-5">
-                      <h2 className="m-0 flex items-baseline gap-3 text-[28px] leading-[1.25] font-medium tracking-[-0.025em]">
-                        <span className="font-pixel text-pixel text-accent">{pad(i + 1)}</span>
-                        {s.title}
+                    <section key={s.id} id={s.id} className="flex min-w-0 flex-col gap-5">
+                      <h2 className="m-0 mb-1 flex items-baseline gap-3 text-[25px] leading-[1.35] font-medium tracking-[-0.03em] lg:text-[28px]">
+                        <span className="shrink-0 font-pixel text-pixel text-accent">{pad(i + 1)}</span>
+                        <span className="min-w-0">{s.title}</span>
                       </h2>
                       {s.blocks.map((b, j) => (
                         <BlockView key={j} block={b} />
@@ -111,23 +105,23 @@ export function ArticleView({ article: a }: { article: Article }) {
         </article>
 
         {(newer || older) && (
-          <nav aria-label="다른 글" className="border-t border-fg">
+          <nav aria-label="다른 글" className="border-t border-line bg-panel/50">
             <Container>
-              <Grid className="gap-y-10 pt-16 pb-20">
+              <Grid className="gap-y-5 py-10 lg:py-14">
                 {older && (
-                  <Link href={`/articles/${older.slug}`} className="group col-span-12 sm:col-span-6">
-                    <Label as="span" className="mb-3 block">
+                  <Link href={`/articles/${older.slug}`} className="group col-span-12 min-w-0 border border-line bg-white/80 p-5 transition-colors hover:border-accent/40 sm:col-span-6 lg:p-7">
+                    <Label as="span" className="mb-5 block">
                       <Arrow dir="left" /> Previous
                     </Label>
-                    <span className="link-ul text-[clamp(22px,2.4vw,32px)] leading-[1.2] font-medium tracking-[-0.025em]">{older.title}</span>
+                    <span className="link-ul text-[clamp(20px,2.2vw,27px)] leading-[1.4] font-medium tracking-[-0.025em]">{older.title}</span>
                   </Link>
                 )}
                 {newer && (
-                  <Link href={`/articles/${newer.slug}`} className="group col-span-12 sm:col-span-6 sm:col-start-7 sm:text-right">
-                    <Label as="span" className="mb-3 block">
+                  <Link href={`/articles/${newer.slug}`} className="group col-span-12 min-w-0 border border-line bg-white/80 p-5 transition-colors hover:border-accent/40 sm:col-span-6 sm:col-start-7 sm:text-right lg:p-7">
+                    <Label as="span" className="mb-5 block">
                       Next <Arrow />
                     </Label>
-                    <span className="link-ul text-[clamp(22px,2.4vw,32px)] leading-[1.2] font-medium tracking-[-0.025em]">{newer.title}</span>
+                    <span className="link-ul text-[clamp(20px,2.2vw,27px)] leading-[1.4] font-medium tracking-[-0.025em]">{newer.title}</span>
                   </Link>
                 )}
               </Grid>

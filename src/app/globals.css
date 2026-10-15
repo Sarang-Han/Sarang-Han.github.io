@@ -289,3 +289,39 @@
     transition: none !important;
   }
 }
+
+/* ── Editorial surfaces ────────────────────────────────────── */
+@layer components {
+  .section-space { padding-block: 72px; }
+  .section-heading { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 28px; margin-bottom: 40px; }
+  .section-title { margin: 0; font-size: clamp(40px, 5vw, 60px); font-weight: 500; letter-spacing: -0.045em; line-height: 1.1; }
+  .section-marker { display: inline-flex; width: 25px; height: 25px; align-items: center; justify-content: center; border: 1px solid var(--color-line-strong); font-size: 10px; color: var(--color-accent); }
+  .hero-section { background-image: linear-gradient(180deg, #fff8, transparent 55%); }
+  .hero-emblem { background-image: linear-gradient(var(--color-line) 1px, transparent 1px), linear-gradient(90deg, var(--color-line) 1px, transparent 1px); background-size: 20px 20px; }
+  .emblem-cross { position: absolute; color: var(--color-faint); font-family: var(--font-mono); font-size: 15px; line-height: 0; }
+  .profile-card { padding: 22px; border: 1px solid var(--color-line); background: #ffffffa6; box-shadow: 4px 4px 0 #e3e3e04d; }
+  .hp-meter { background: repeating-linear-gradient(90deg, var(--color-accent) 0 7px, transparent 7px 10px); }
+  .project-card { transition: border-color .2s, box-shadow .2s; }
+  .project-card:hover, .project-card:focus-visible { border-color: var(--color-accent); box-shadow: 5px 5px 0 #3455d115; }
+  .project-preview::before { position: absolute; inset: 0; content: ''; background-image: linear-gradient(#3455d108 1px, transparent 1px), linear-gradient(90deg, #3455d108 1px, transparent 1px); background-size: 24px 24px; }
+  .project-arrow { transition: background .15s, border-color .15s, color .15s; }
+  .project-card:hover .project-arrow, .project-card:focus-visible .project-arrow { background: var(--color-accent); border-color: var(--color-accent); color: #fff; }
+  .contact-surface { background: var(--color-fg); color: var(--color-bg); }
+  .contact-surface .lbl { color: #b6b6b2; }
+  .contact-surface .section-marker { border-color: #ffffff40; color: #a8b9ff; }
+  .contact-surface :focus-visible { outline-color: #a8b9ff; }
+}
+@media (min-width: 1024px) {
+  .section-space { padding-block: 96px; }
+  .section-heading { margin-bottom: 48px; }
+}
+@media (max-width: 479px) {
+  .dialogue { padding: 21px 20px 23px; font-size: 15px; line-height: 27px; }
+  .profile-card { padding: 18px; }
+  .chip { font-size: 11px; height: 26px; padding-inline: 8px; }
+}
+@layer base {
+  main:focus { outline: none; }
+  button, a { -webkit-tap-highlight-color: transparent; }
+  p, dd, li { overflow-wrap: break-word; }
+}

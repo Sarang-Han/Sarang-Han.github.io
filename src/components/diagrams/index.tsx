@@ -5,48 +5,28 @@ import { Chip, Ph } from '@/components/ui/primitives';
  * 프로젝트 카드 미리보기 (홈)
  * ──────────────────────────────────────────────────────────── */
 
-function MiniNode({ k, v, tone = 'plain' }: { k: string; v: string; tone?: 'plain' | 'dark' }) {
-  return (
-    <div
-      className={
-        tone === 'dark'
-          ? 'rounded-md bg-fg px-3.5 py-3 text-center text-bg shadow-px'
-          : 'rounded-md border border-line-strong bg-white px-3.5 py-3 text-center shadow-px'
-      }
-    >
-      <div className={`font-mono text-[10.5px] ${tone === 'dark' ? 'opacity-70' : 'text-mute'}`}>{k}</div>
-      <div className="text-sm font-medium">{v}</div>
-    </div>
-  );
+function FlowStep({ number, label, children }: { number: string; label: string; children: React.ReactNode }) {
+  return <div className="flex items-center gap-3 border border-accent/15 bg-white px-4 py-3.5 shadow-[3px_3px_0_#3455d112]">
+    <span className="font-pixel text-[11px] text-accent/70">{number}</span>
+    <div className="flex min-w-0 flex-1 items-center justify-between gap-2"><span className="text-sm font-medium">{label}</span><span className="font-mono text-[10px] text-mute">{children}</span></div>
+  </div>;
 }
-
-const Sep = () => (
-  <span aria-hidden="true" className="font-pixel text-faint">
-    →
-  </span>
-);
 
 export function BuddybotFlowMini() {
   return (
-    <div className="flex flex-wrap items-center justify-center gap-2.5">
-      <MiniNode k="client" v="Next.js" />
-      <Sep />
-      <MiniNode k="api" v="FastAPI" />
-      <Sep />
-      <div className="flex flex-col gap-1.5">
-        <div className="rounded-md bg-accent px-3.5 py-2 text-center text-white shadow-px">
-          <div className="font-mono text-[10.5px] opacity-80">dense</div>
-          <div className="text-[13px] font-medium">Embedding</div>
+    <div className="mx-auto w-full max-w-[380px]" role="img" aria-label="Next.js 질문을 FastAPI가 받아 Dense와 BM25로 검색하고, 컨텍스트를 구성하여 LLM 응답을 생성하는 구조">
+      <FlowStep number="01" label="Question">Next.js → FastAPI</FlowStep>
+      <div aria-hidden="true" className="mx-auto h-5 w-px bg-accent/30" />
+      <div className="border border-accent/30 bg-white p-4 shadow-[3px_3px_0_#3455d112]">
+        <div className="mb-3 flex items-center justify-between"><span className="font-pixel text-[11px] text-accent">02 / HYBRID RETRIEVAL</span><span aria-hidden="true" className="size-1.5 bg-accent" /></div>
+        <div className="grid grid-cols-2 gap-2">
+          <div className="bg-accent px-2 py-4 text-center text-white"><div className="font-pixel text-sm">Dense</div><div className="mt-1 font-mono text-[10px] text-white/75">Semantic search</div></div>
+          <div className="border border-accent/20 bg-accent-wash px-2 py-4 text-center text-accent-ink"><div className="font-pixel text-sm">BM25</div><div className="mt-1 font-mono text-[10px]">Keyword search</div></div>
         </div>
-        <div className="rounded-md border border-accent bg-white px-3.5 py-2 text-center text-accent shadow-px">
-          <div className="font-mono text-[10.5px]">sparse</div>
-          <div className="text-[13px] font-medium">BM25</div>
-        </div>
+        <div className="mt-3 text-center font-mono text-[10px] text-mute">↓ Context construction</div>
       </div>
-      <Sep />
-      <MiniNode k="build" v="Context" />
-      <Sep />
-      <MiniNode k="generate" v="LLM" tone="dark" />
+      <div aria-hidden="true" className="mx-auto h-5 w-px bg-accent/30" />
+      <div className="flex items-center gap-3 bg-fg px-4 py-3.5 text-bg shadow-[3px_3px_0_#3455d120]"><span className="font-pixel text-[11px] text-bg/50">03</span><span className="flex-1 text-sm font-medium">Grounded response</span><span className="font-pixel text-[11px] text-bg/60">LLM ↗</span></div>
     </div>
   );
 }
@@ -62,7 +42,7 @@ export const previews: Record<PreviewId, () => React.JSX.Element> = {
 function Node({ k, title, note, dark }: { k: string; title: string; note: React.ReactNode; dark?: boolean }) {
   return (
     <div
-      className={`flex items-center justify-between gap-3 rounded-lg border px-[18px] py-3.5 shadow-px ${
+      className={`flex min-w-0 flex-col items-start justify-between gap-2 rounded-lg sm:flex-row sm:items-center sm:gap-3 border px-[18px] py-3.5 shadow-px ${
         dark ? 'border-fg bg-fg text-bg' : 'border-line-strong bg-white'
       }`}
     >
@@ -70,14 +50,14 @@ function Node({ k, title, note, dark }: { k: string; title: string; note: React.
         <div className={`lbl text-[11px] ${dark ? 'text-faint' : ''}`}>{k}</div>
         <div className="text-lg font-medium">{title}</div>
       </div>
-      <span className={`text-right font-mono text-xs ${dark ? 'text-faint' : 'text-mute'}`}>{note}</span>
+      <span className={`min-w-0 font-mono text-xs [overflow-wrap:anywhere] sm:text-right ${dark ? 'text-faint' : 'text-mute'}`}>{note}</span>
     </div>
   );
 }
 
 export function BuddybotArchitecture() {
   return (
-    <figure className="dot-grid m-0 rounded-2xl border border-line bg-panel px-6 py-14">
+    <figure className="dot-grid m-0 rounded-2xl border border-line bg-panel px-4 py-8 sm:px-6 sm:py-14">
       <div className="mx-auto flex max-w-[640px] flex-col" role="img" aria-label="Buddybot 요청 흐름: Next.js → FastAPI → 하이브리드 검색(Dense + BM25) → 컨텍스트 구성 → LLM 응답">
         <Node k="Client" title="Next.js Frontend" note="사용자 질문 입력 · 응답 표시" />
         <div className="vline" aria-hidden="true" />

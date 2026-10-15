@@ -5,14 +5,14 @@ import { ArticleList } from './ArticleList';
 export function Articles() {
   const articles = getArticles();
   return (
-    <section id="articles" className="border-b border-line py-16 lg:py-20">
+    <section id="articles" aria-labelledby="articles-title" className="section-space border-b border-line">
       <Container>
-        <div className="fade mb-10 flex flex-wrap items-end justify-between gap-6 lg:mb-12">
+        <div className="section-heading fade">
           <div>
-            <Label className="mb-5">(03) — Articles</Label>
-            <h2 className="m-0 text-[clamp(40px,5vw,72px)] leading-none font-medium tracking-[-0.04em]">Writing</h2>
+            <Label className="mb-5 flex items-center gap-3"><span className="section-marker">03</span> Articles</Label>
+            <h2 id="articles-title" className="section-title">Field Notes<span className="px-dot">.</span></h2>
           </div>
-          <p className="m-0 font-pixel text-pixel text-mute">
+          <p className="m-0 font-pixel text-[11px] tracking-wider text-mute">
             {String(articles.length).padStart(2, '0')} articles — tech notes
           </p>
         </div>

@@ -13,7 +13,7 @@ export const site = {
     'AI 엔지니어 한사랑의 포트폴리오',
   /** true면 `[...]` 플레이스홀더를 파란 하이라이트로 표시. 공개 전 false로. */
   highlightPlaceholders: true,
-  lastUpdated: '[YYYY.MM.DD]',
+  lastUpdated: '2026.10.15',
 } as const;
 
 /** null인 항목은 Contact에서 숨겨짐 */

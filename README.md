@@ -4,8 +4,9 @@ Next.js 15 (App Router) · TypeScript · Tailwind CSS v4
 
 ```bash
 npm install
-npm run dev      # http://localhost:3000
-npm run build    # 정적 내보내기 → out/ (output: 'export'라 `npm start`는 쓰지 않음)
+npm run dev       # http://localhost:3000
+npm run typecheck # TypeScript 검사
+npm run build     # 정적 내보내기 → out/ (output: 'export'라 `npm start`는 쓰지 않음)
 ```
 
 ## 배포 (GitHub Pages)
@@ -37,22 +38,31 @@ src/
     articles.ts              아티클 목록 + 본문 섹션/블록 · 정렬 · 읽기 시간
     experience.ts            경력 타임라인
   components/
-    home/                    홈 섹션 (client: SiteHeader 스크롤 스파이 · 모바일 메뉴창, ArticleList 페이지네이션)
+    home/                    홈 섹션 (client: SiteHeader 스크롤 스파이 · 읽기 진행선 · 모바일 메뉴, ArticleList 페이지네이션)
     case-study/              CaseStudy 템플릿 + Blocks (블록 렌더러 — 아티클과 공유)
     article/                 ArticleView 템플릿 (목차 + 한 열 본문)
     diagrams/                카드 미리보기 · 아키텍처 다이어그램
     ui/primitives.tsx        Container, Grid, Label, Chip, Rich, PixelWords, TodoBlock, Arrow
     ui/pixel.tsx             PixelIcon (ASCII 스프라이트 → SVG) · 아이콘 스프라이트
-    ui/CopyButton.tsx        클릭 시 클립보드 복사 (client)
-    ui/Dialogue.tsx          Undertale식 대화창 — `* ` 줄 타이핑 (client)
+    ui/CopyButton.tsx        클립보드 복사 · 성공/실패 안내 · fallback (client)
+    ui/Dialogue.tsx          Undertale식 대화창 — `* ` 줄 타이핑 · 전체 보기 버튼 (client)
+    ui/ContentsNav.tsx       케이스 스터디·아티클 공용 목차 · 현재 읽는 섹션 표시 (client)
     ui/game.tsx              SoulCursor (hover 하트 커서) · BattleButton (굵은 픽셀 라벨 · 하드 섀도 · 선택 시 아이콘 → 하트)
     ui/PageHeader.tsx        서브 페이지 상단 바 (뒤로 가기 + 보조 정보)
 ```
 
+홈 순서는 **About → Projects → Articles → Experience → Contact**입니다. 섹션 ID와 내비게이션은 유지하며,
+Projects의 화면 제목은 **Selected Work**, Articles는 **Field Notes**, Experience는 **The path so far**입니다.
+
+- **히어로**: 헤드라인은 두 줄·최대 64px를 유지하고 화면 폭에 맞춰 축소합니다. 소개 대화창과 프로필 카드를 나란히 두고, 작은 화면에서는 세로로 배치합니다.
+- **프로젝트**: 격자 배경의 흐름도와 프로젝트 설명을 한 카드로 묶습니다. 미리보기는 질문 → 하이브리드 검색(Dense/BM25) → 응답 순서를 보여 줍니다.
+- **Field Notes**: 번호·날짜·읽기 시간·본문 정보를 구분한 목록입니다. 페이지 버튼은 44px이며, 페이지 변경을 스크린리더에 알립니다.
+- **연락처**: 어두운 배경과 옅은 코발트 강조색으로 마무리합니다. 이메일 보내기와 주소 복사 동작을 구분하고, GitHub 등 외부 링크를 함께 제공합니다.
+
 ## 콘텐츠 편집 규칙
 
 - 문자열 안의 `[...]`는 **작성 필요 플레이스홀더**로 자동 렌더링됩니다(`<Rich>`).
-  확정되면 대괄호를 지우세요. 남은 항목 찾기: `grep -rn "\[" src/content`
+  확정되면 대괄호를 지우세요. 남은 항목 찾기: `rg -n '\[' src/content`
 - 같은 `<Rich>`에서 `[텍스트](URL)`은 링크(`/`로 시작하면 내부 링크), 백틱 구간은 인라인 코드가 됩니다.
 - 헤드라인 문자열 안의 `{...}`는 픽셀 폰트로 렌더링됩니다(`<PixelWords>`, 예: `'Building {AI} that'`).
 - 링크는 `src/content/site.ts`의 `links`, 프로젝트별 `links`에서 `null` → URL로 바꾸면 실제 링크가 됩니다.
@@ -66,7 +76,7 @@ src/
   새 블록이 필요하면 `types.ts`의 `Block` 유니온과 `case-study/Blocks.tsx`의 switch에 추가하세요.
 - 새 프로젝트: `projects.ts`에 객체 추가 → 홈 카드와 `/projects/<slug>` 페이지가 함께 생깁니다.
   미리보기·다이어그램은 `components/diagrams`에 컴포넌트를 만들고 `previews` / `diagrams` 맵에 등록.
-- 새 아티클: `articles.ts`에 객체 추가 → 홈 Articles 섹션 목록과 `/articles/<slug>` 페이지가 함께 생깁니다.
+- 새 아티클: `articles.ts`에 객체 추가 → 홈 Articles(Field Notes) 섹션 목록과 `/articles/<slug>` 페이지가 함께 생깁니다.
   목록은 5개를 넘으면 하단 페이지네이션으로 넘어갑니다(`home/Articles.tsx`의 `<ArticleList perPage>`로 조정).
   `date`(`YYYY.MM.DD`) 기준 최신순으로 정렬되고, 읽기 시간은 본문 글자 수로 자동 계산됩니다.
 
@@ -100,15 +110,23 @@ src/
 
 밝은 미니멀 화면은 그대로 두고, 게임 UI는 아래 몇 곳에만 씁니다.
 
-- **SOUL**: 로고 하트 = 파란 SOUL. 선택 커서로 쓰임 — 내비 현재 섹션, 리스트 hover(`SoulCursor`),
+- **SOUL**: 로고 하트 = 파란 SOUL. 선택 커서로 쓰임 — 내비 현재 섹션, 아티클 목록 hover·키보드 포커스,
   버튼 hover·키보드 포커스(`BattleButton`).
 - **대화창**: 히어로 소개문(`Dialogue`). 첫 줄은 처음부터 보이고(`instantLines`) 둘째 줄부터 타이핑.
-  클릭하면 타이핑을 건너뜀, `prefers-reduced-motion`이면 바로 전체 표시.
-  한글까지 픽셀로 보이도록 [Galmuri11](https://github.com/quiple/galmuri)(OFL-1.1)을 씁니다 — 12px 배수에서 선명해서 18px.
+  대화창 클릭이나 키보드로 접근 가능한 **전체 보기** 버튼으로 타이핑을 건너뜁니다. 스크린리더에는 처음부터 전체 문장을 제공합니다.
+  `prefers-reduced-motion`이면 바로 전체 표시하며, 설정 변경·건너뛰기·컴포넌트 해제 시 타이머를 정리합니다.
+  한글까지 픽셀로 보이도록 [Galmuri11](https://github.com/quiple/galmuri)(OFL-1.1)을 씁니다 — 기본 18px, 480px 미만 화면에서는 15px.
   폰트가 504KB라 `preload: false`로 대화창이 있는 페이지에서만 로드됩니다.
 - **HUD**: `LV · HP` 한 줄(`site.ts`의 `about.status`).
-- **모바일 메뉴**: 768px 미만에서 내비 대신 `MENU` 버튼 → 대화창 스타일 메뉴(현재 섹션에 SOUL). Esc · 바깥 탭으로 닫힘.
+- **모바일 메뉴**: 768px 미만에서 `MENU` 버튼 → 대화창 스타일 메뉴(현재 섹션에 SOUL). 버튼과 메뉴 항목은 최소 44px입니다.
+  열면 현재 섹션에 포커스하고, Esc는 버튼으로 복귀합니다. 바깥 클릭·Tab으로 메뉴 이탈·데스크톱 폭 전환 시 닫히며, 섹션 선택 후 해당 섹션으로 포커스를 옮깁니다.
 - **세이브 포인트**: 푸터 "Last saved"의 별.
 - **404**: `* But nobody came.`
 
 모션: `.reveal`(첫 로드), `.fade`(스크롤 연동, `animation-timeline` 지원 브라우저만), `prefers-reduced-motion`에서 모두 꺼짐.
+
+### 탐색·복사 디테일
+
+- 홈 헤더에 **본문으로 바로가기** 링크와 2px 읽기 진행선을 둡니다. 현재 섹션과 진행선 계산은 `requestAnimationFrame`으로 조절합니다.
+- `ContentsNav`는 상세 페이지의 모든 화면 크기에서 목차 순서를 유지하고, 현재 읽는 섹션을 `aria-current`로 표시합니다.
+- `CopyButton`은 Clipboard API 실패 시 임시 텍스트 영역으로 복사를 재시도하고, 사용한 요소를 제거한 뒤 선택 영역과 포커스를 복원합니다. 재시도도 실패하면 직접 선택 가능한 주소와 안내를 표시합니다.

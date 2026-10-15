@@ -4,6 +4,7 @@ import { site } from '@/content/site';
 import type { CaseSection, Project, Scope } from '@/content/types';
 import { SiteFooter } from '@/components/home/Contact';
 import { PageHeader } from '@/components/ui/PageHeader';
+import { ContentsNav } from '@/components/ui/ContentsNav';
 import { Arrow, Chip, Container, Grid, Label, Rich } from '@/components/ui/primitives';
 import { BlockView } from './Blocks';
 
@@ -17,37 +18,37 @@ export function CaseStudy({ project: p }: { project: Project }) {
   return (
     <>
       <PageHeader backHref="/#projects" backLabel={`${site.name} / Work`}>
-        Case Study {String(index).padStart(2, '0')} / {String(projects.length).padStart(2, '0')}
+        <span className="hidden sm:inline">Case study </span>{String(index).padStart(2, '0')} / {String(projects.length).padStart(2, '0')}
       </PageHeader>
 
-      <main>
+      <main id="main-content" tabIndex={-1}>
         <CaseHero project={p} />
         {p.scope && <ScopeBox scope={p.scope} />}
         <TocAndLegend sections={p.sections} />
 
-        <div className="mt-[72px]">
+        <div className="mt-14 lg:mt-20">
           {p.sections.map((s, i) => (
             <SectionView key={s.id} section={s} n={i + 1} />
           ))}
         </div>
 
-        {next.slug !== p.slug && (
-          <section className="border-t border-fg">
-            <Container>
-              <Link href={`/projects/${next.slug}`} className="group flex flex-wrap items-end justify-between gap-6 pt-16 pb-20">
-                <span>
-                  <Label as="span" className="mb-3.5 block">
-                    Next — {next.number}
-                  </Label>
-                  <span className="link-ul text-[clamp(32px,4.4vw,60px)] leading-[1.05] font-medium tracking-[-0.04em]">
-                    {next.title}
-                  </span>
+        <section className="border-t border-line bg-panel/50">
+          <Container>
+            <Link href={next.slug !== p.slug ? `/projects/${next.slug}` : '/#projects'} className="group flex flex-wrap items-center justify-between gap-6 py-12 lg:py-16">
+              <span className="min-w-0">
+                <Label as="span" className="mb-3.5 block">
+                  {next.slug !== p.slug ? `Next — ${next.number}` : 'Explore more'}
+                </Label>
+                <span className="link-ul text-[clamp(28px,3.8vw,48px)] leading-[1.15] font-medium tracking-[-0.04em]">
+                  {next.slug !== p.slug ? next.title : 'Back to selected work'}
                 </span>
-                <Arrow className="text-[40px]" />
-              </Link>
-            </Container>
-          </section>
-        )}
+              </span>
+              <span className="flex size-12 shrink-0 items-center justify-center border border-line-strong bg-white text-accent transition-colors group-hover:border-accent group-hover:bg-accent-wash">
+                <Arrow className="text-2xl" />
+              </span>
+            </Link>
+          </Container>
+        </section>
       </main>
 
       <SiteFooter backHref="/" backLabel="All work" />
@@ -57,41 +58,49 @@ export function CaseStudy({ project: p }: { project: Project }) {
 
 function CaseHero({ project: p }: { project: Project }) {
   return (
-    <section className="pt-24 pb-[72px]">
+    <section className="pt-12 pb-12 sm:pt-16 lg:pt-20 lg:pb-16">
       <Container>
-        <div className="reveal mb-10 flex flex-wrap items-center gap-x-6 gap-y-2.5" style={delay(0.05)}>
-          <span className="font-pixel text-pixel text-accent">{p.number}</span>
+        <div className="reveal mb-7 flex flex-wrap items-center gap-x-4 gap-y-2.5" style={delay(0.05)}>
+          <span className="flex size-9 items-center justify-center border border-accent/25 bg-accent-wash font-pixel text-pixel text-accent">{p.number}</span>
           <Label as="span">{p.category}</Label>
         </div>
         <h1
-          className="reveal m-0 max-w-[1050px] text-[clamp(48px,8vw,128px)] leading-[0.94] font-medium tracking-[-0.048em]"
+          className="reveal m-0 max-w-[960px] text-[clamp(48px,7.5vw,96px)] leading-[1.02] font-medium tracking-[-0.055em] [overflow-wrap:anywhere]"
           style={delay(0.16)}
         >
           {p.title}
         </h1>
-        <p className="reveal mt-5 mb-0 text-[clamp(20px,2vw,26px)] tracking-[-0.015em] text-body" style={delay(0.16)}>
+        <p className="reveal mt-4 mb-0 max-w-[760px] text-[clamp(17px,2vw,23px)] leading-[1.5] tracking-[-0.02em] text-sub" style={delay(0.16)}>
           {p.subtitle}
         </p>
 
-        <Grid className="reveal mt-16" >
-          <p className="col-span-12 m-0 text-xl leading-[1.6] lg:col-span-6">{p.lede}</p>
-          <dl className="col-span-12 m-0 border-t border-fg text-[15px] lg:col-span-5 lg:col-start-8">
+        <Grid className="reveal mt-10 border-t border-line pt-8 lg:mt-12 lg:pt-10">
+          <div className="col-span-12 min-w-0 lg:col-span-6">
+            <Label className="mb-4 text-accent">Project overview</Label>
+            <p className="m-0 text-[18px] leading-[1.85] tracking-[-0.015em] text-body lg:text-[19px]">{p.lede}</p>
+            {p.tags.label === 'Stack' && (
+              <div className="mt-6 flex flex-wrap gap-1.5">
+                {p.tags.items.map((t) => <Chip key={t}>{t}</Chip>)}
+              </div>
+            )}
+          </div>
+          <dl className="col-span-12 m-0 min-w-0 border-t border-fg text-[14px] lg:col-span-5 lg:col-start-8">
             {p.meta.map((m) => (
-              <div key={m.label} className="grid grid-cols-[96px_1fr] gap-3 border-b border-line py-3">
+              <div key={m.label} className="grid grid-cols-[80px_minmax(0,1fr)] gap-3 border-b border-line py-3.5 sm:grid-cols-[96px_minmax(0,1fr)]">
                 <Label as="dt" className="pt-1">
                   {m.label}
                 </Label>
-                <dd className={`m-0 ${m.label === 'Duration' ? 'font-mono' : ''}`}>
+                <dd className={`m-0 min-w-0 [overflow-wrap:anywhere] ${m.label === 'Duration' ? 'font-mono' : ''}`}>
                   <Rich text={m.value} />
                 </dd>
               </div>
             ))}
             {p.hasLinks && (
-              <div className="grid grid-cols-[96px_1fr] gap-3 border-b border-line py-3">
+              <div className="grid grid-cols-[80px_minmax(0,1fr)] gap-3 border-b border-line py-3.5 sm:grid-cols-[96px_minmax(0,1fr)]">
                 <Label as="dt" className="pt-1">
                   Links
                 </Label>
-                <dd className="m-0 flex flex-wrap gap-[18px] font-mono">
+                <dd className="m-0 flex min-w-0 flex-wrap gap-x-[18px] gap-y-2 font-mono">
                   <HeroLink label="GitHub" href={p.links.github} />
                   <HeroLink label="Live Demo" href={p.links.demo} />
                 </dd>
@@ -99,14 +108,6 @@ function CaseHero({ project: p }: { project: Project }) {
             )}
           </dl>
         </Grid>
-
-        {p.tags.label === 'Stack' && (
-          <div className="reveal mt-8 flex flex-wrap gap-1.5" style={delay(0.3)}>
-            {p.tags.items.map((t) => (
-              <Chip key={t}>{t}</Chip>
-            ))}
-          </div>
-        )}
       </Container>
     </section>
   );
@@ -162,38 +163,24 @@ function ScopeBox({ scope }: { scope: Scope }) {
 }
 
 function TocAndLegend({ sections }: { sections: CaseSection[] }) {
-  // 2열 목차를 세로 순서(1,2,3… 왼쪽 열 먼저)로 배치
-  const half = Math.ceil(sections.length / 2);
   return (
-    <section className="pt-12">
+    <section>
       <Container>
-        <Grid>
-          <nav aria-label="케이스 스터디 목차" className="col-span-12 border-t border-fg lg:col-span-7">
-            <ol
-              className="m-0 grid list-none grid-flow-col gap-x-6 p-0 max-sm:grid-flow-row"
-              style={{ gridTemplateRows: `repeat(${half}, auto)` }}
-            >
-              {sections.map((s, i) => (
-                <li key={s.id}>
-                  <a href={`#${s.id}`} className="flex items-baseline gap-2.5 border-b border-line py-2.5 text-sm text-sub hover:text-accent">
-                    <span className="font-pixel text-pixel text-faint">{String(i + 1).padStart(2, '0')}</span>
-                    <span className="link-ul">{s.title}</span>
-                  </a>
-                </li>
-              ))}
-            </ol>
-          </nav>
-          <div className="col-span-12 border-t border-fg pt-3.5 text-sm text-sub lg:col-span-4 lg:col-start-9">
-            <Label className="mb-3">Reading this page</Label>
-            <p className="mt-0 mb-2 flex items-center gap-2.5">
-              <span aria-hidden="true" className="inline-block size-2.5 bg-fg" />
+        <Grid className="items-start">
+          <div className="col-span-12 min-w-0 lg:col-span-8">
+            <ContentsNav items={sections.map(({ id, title }) => ({ id, title }))} label="케이스 스터디 목차" columns />
+          </div>
+          <aside className="col-span-12 border border-line bg-white/70 p-5 text-[13px] leading-relaxed text-sub lg:col-span-3 lg:col-start-10">
+            <Label className="mb-4 text-fg">Reading notes</Label>
+            <p className="mt-0 mb-3 flex items-baseline gap-2.5">
+              <span aria-hidden="true" className="inline-block size-2 shrink-0 bg-fg" />
               확인된 사실 — 프로젝트 정보 그대로
             </p>
-            <p className="m-0 flex items-center gap-2.5">
-              <span aria-hidden="true" className="inline-block size-2.5 border border-dashed border-accent" />
+            <p className="m-0 flex items-baseline gap-2.5">
+              <span aria-hidden="true" className="inline-block size-2 shrink-0 border border-dashed border-accent" />
               <span className="ph">작성 필요 — 본인이 채울 자리</span>
             </p>
-          </div>
+          </aside>
         </Grid>
       </Container>
     </section>
@@ -201,31 +188,31 @@ function TocAndLegend({ sections }: { sections: CaseSection[] }) {
 }
 
 function SectionView({ section: s, n }: { section: CaseSection; n: number }) {
-  const num = <Label className="mb-3.5">{String(n).padStart(2, '0')}</Label>;
-  const title = <h2 className="m-0 text-[34px] leading-[1.2] font-medium tracking-[-0.03em]">{s.title}</h2>;
+  const num = <Label className="mb-4 inline-flex items-center gap-3 text-accent"><span aria-hidden="true" className="h-px w-6 bg-accent" />{String(n).padStart(2, '0')}</Label>;
+  const title = <h2 className="m-0 text-[clamp(26px,3vw,32px)] leading-[1.25] font-medium tracking-[-0.035em]">{s.title}</h2>;
   const body = s.blocks.map((b, i) => <BlockView key={i} block={b} />);
 
   return (
-    <section id={s.id} className="fade border-t border-line py-[72px] lg:py-24">
+    <section id={s.id} className="fade border-t border-line py-12 lg:py-20">
       <Container>
         {s.layout === 'split' ? (
           <Grid>
-            <div className="col-span-12 lg:col-span-4">
+            <div className="col-span-12 min-w-0 self-start lg:sticky lg:top-28 lg:col-span-4">
               {num}
               {title}
             </div>
-            <div className="col-span-12 flex flex-col gap-[18px] lg:col-span-7 lg:col-start-6">{body}</div>
+            <div className="col-span-12 flex min-w-0 flex-col gap-5 text-[16px] leading-[1.85] [overflow-wrap:anywhere] lg:col-span-7 lg:col-start-6 lg:text-[17px]">{body}</div>
           </Grid>
         ) : (
           <>
-            <Grid className="mb-12">
-              <div className="col-span-12 lg:col-span-4">
+            <Grid className="mb-8 lg:mb-10">
+              <div className="col-span-12 min-w-0 lg:col-span-4">
                 {num}
                 {title}
               </div>
-              {s.intro && <p className="col-span-12 m-0 text-body lg:col-span-7 lg:col-start-6">{s.intro}</p>}
+              {s.intro && <p className="col-span-12 m-0 min-w-0 self-end text-[16px] leading-[1.85] text-body lg:col-span-7 lg:col-start-6 lg:text-[17px]">{s.intro}</p>}
             </Grid>
-            {body}
+            <div className="min-w-0 [overflow-wrap:anywhere]">{body}</div>
           </>
         )}
       </Container>

@@ -58,7 +58,7 @@ export function BlockView({ block }: { block: Block }) {
               <Label as="span" className="pt-1">
                 {r.layer}
               </Label>
-              <span className="font-mono">{r.name}</span>
+              <span className="min-w-0 font-mono [overflow-wrap:anywhere]">{r.name}</span>
               <span className="col-start-2 text-sub sm:col-start-auto">{r.role}</span>
             </div>
           ))}
@@ -142,7 +142,7 @@ export function BlockView({ block }: { block: Block }) {
 
     case 'code':
       return (
-        <figure className="m-0 overflow-hidden rounded-lg bg-fg text-bg shadow-px">
+        <figure className="m-0 min-w-0 overflow-hidden rounded-lg bg-fg text-bg shadow-px">
           <figcaption className="flex justify-between gap-4 border-b border-white/10 px-5 py-2.5">
             <span className="lbl text-faint">{block.lang}</span>
             {block.caption && (
